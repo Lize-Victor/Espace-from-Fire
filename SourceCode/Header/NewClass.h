@@ -7,10 +7,24 @@
 
 #include <CommonClass.h>
 
+#define FLOOR_API_NAME ""
 #define ONE_FLOOR_CELL_NUMBER 10
+#define FLOOR_X 10
+#define FLOOR_Y 10
+#define FLOOR_CELL_X 10
+#define FLOOR_CELL_Y 10
+#define FLOOR_START_X 10
+#define FLOOR_START_Y 10
 
+#define FIRE_API_NAME ""
+#define FIRE_X 10
+#define FIRE_Y 10
 #define FIRE_HURT_COEFFICIENT
+#define FIRE_DIFFUSION_TIME 10.f
+
+#define SMOG_API_NAME ""
 #define SMOG_HURT_COEFFICIENT
+#define SMOG_DIFFUSION_TIME 10.F
 
 #define PERSON_NORMAL_SPEED
 #define PERSON_FULL_BLOOD 100
@@ -22,7 +36,7 @@ struct Point
 };
 
 // 角色类，管理角色的数据
-class person : public CAnimateSprite
+class person
 {
 private:
     CAnimateSprite *m_pPerson;
@@ -46,45 +60,48 @@ public:
 };
 
 // 楼层类，管理单层楼的数据
-class floor : public CSprite
+class floor
 {
 private:
     CSprite *m_pFloor; // 楼层元
 
     Point m_PFloorPoi; // 楼层坐标
-    int m_iFloorNum;   // 楼层编号
+    int m_iFloorNum;   // 楼层编号 , 范围 1~12
 
-    CAnimateSprite *m_pFire; // 火焰元
-    bool m_bFireState[ONE_FLOOR_CELL_NUMBER]; // 单层火焰状态记录
+    CAnimateSprite *m_pFire[ONE_FLOOR_CELL_NUMBER]; // 火焰元
+    bool m_bFireState[ONE_FLOOR_CELL_NUMBER];       // 单层火焰状态记录
 
-    CAnimateSprite *m_pSmog; // 烟雾元
-    bool m_bSmogState[ONE_FLOOR_CELL_NUMBER];  // 单层烟雾状态记录
+    CAnimateSprite *m_pSmog[ONE_FLOOR_CELL_NUMBER]; // 烟雾元
+    bool m_bSmogState[ONE_FLOOR_CELL_NUMBER];       // 单层烟雾状态记录
 
-    prop *m_pPliers; // 钳子元
-
-
+    CAnimateSprite *m_pDoor;
+    bool m_bDoorState;
 
 public:
     floor();
     ~floor();
 
     // FloorInit: 初始化楼层
-    void FloorInit();
+    void FloorInit(int iFloorNum);
+    // FireInit: 初始化火焰
+    void FireInit();
+    // SmogInit: 初始化烟雾
+    void SmogInit();
 
     // FloorUpdate: 更新楼层状态到引擎
     void FloorUpdate();
 
-    // FireDiffusion: 火焰扩散
-    void FireDiffusion();
+    // FireDiffusion: 火焰横向扩散
+    // 参数 fTimeDelta: 两次调用的时间间隔
+    void FireDiffusion(float fTimeDelta);
 
-    // SmogDiffusion: 烟雾扩散
-    void SmogDiffusion();
-
-
+    // SmogDiffusion: 烟雾横向扩散
+    // 参数 fTimeDelta: 两次调用的时间间隔
+    void SmogDiffusion(float fTimeDelta);
 };
 
 // 道具类，管理道具的数据
-class prop : public CSprite
+class prop
 {
 private:
     CSprite *m_pProp;
