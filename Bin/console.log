@@ -1,7 +1,7 @@
-//-------------------------- 7/1/2023 -- 10:56:59 -----
+//-------------------------- 7/3/2023 -- 10:43:21 -----
 Processor Init:
-   Intel Pentium III, ~2.70 Ghz
-     (timed at roughly 2.69 Ghz)
+   Intel Pentium III, ~2.67 Ghz
+     (timed at roughly 2.66 Ghz)
    FPU detected
    MMX detected
    SSE detected
@@ -74,7 +74,7 @@ OpenGL Init: Disabled Extensions
   3DFX_texture_compression_FXT1
 
 Max Texture Size reported as: 32768
-Setting screen mode to 800x600x32 (w)...
+Setting screen mode to 1000x800x32 (w)...
 OpenAL Driver Init:
    Failed to initialize driver.
 Loading compiled script E:/FunCode_CppProject/FunCode_Project/Bin/common/gui/profiles.cs.
