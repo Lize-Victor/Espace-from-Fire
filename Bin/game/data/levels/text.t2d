@@ -35,30 +35,42 @@
    layerSortMode31 = "Normal";
    DebugRendering = "0";
       cameraPosition = "0.000000 0.000000";
-      cameraSize = "100.000000 75.000000";
+      cameraSize = "113.842476 85.381851";
 
    new t2dStaticSprite() {
-      imageMap = "floor1ImageMap";
+      imageMap = "floor2ImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
-      Position = "-0.000 -0.229";
-      size = "100.000 74.234";
+      Position = "6.973 -23.403";
+      size = "123.946 23.195";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "2";
    };
-   new t2dStaticSprite() {
-      imageMap = "fire";
-      frame = "0";
-      useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+   new t2dAnimatedSprite() {
       canSaveDynamicFields = "1";
-      Position = "-43.049 -12.683";
-      size = "29.500 88.500";
+      Position = "-49.799 -16.318";
+      size = "6.767 7.364";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "3";
+   };
+   new t2dAnimatedSprite() {
+      canSaveDynamicFields = "1";
+      Position = "45.432 -16.635";
+      size = "4.679 6.729";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "4";
+   };
+   new t2dAnimatedSprite() {
+      canSaveDynamicFields = "1";
+      Position = "-48.713 -23.663";
+      size = "7.426 7.326";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "5";
    };
 };
