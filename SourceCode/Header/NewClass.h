@@ -90,6 +90,18 @@ public:
     floor();
     ~floor();
 
+    // GET
+    CSprite *GetFloor()
+    {
+        return m_pFloor;
+    }
+
+    // SET
+    void SetFloorPosition(float X, float Y)
+    {
+        m_PFloorPoi.X = X;
+        m_PFloorPoi.Y = Y;
+    }
     // FloorInit: 初始化楼层
     // 参数 FloorInit: 楼层号码
     void FloorInit(int iFloorNum);
