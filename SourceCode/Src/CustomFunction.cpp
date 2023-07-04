@@ -1,6 +1,6 @@
-#include "CustomFunction.h"
+﻿#include "CustomFunction.h"
 
-void FloorMove(float deltaY, vector<floor *> &l_floor)
+void FloorMove(float deltaY, vector<Floor *> &l_floor)
 {
     for (int i = 0; i < 9; i++)
     {

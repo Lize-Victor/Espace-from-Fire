@@ -1,7 +1,7 @@
-//-------------------------- 7/3/2023 -- 10:43:21 -----
+//-------------------------- 7/4/2023 -- 18:09:57 -----
 Processor Init:
    Intel Pentium III, ~2.67 Ghz
-     (timed at roughly 2.66 Ghz)
+     (timed at roughly 2.67 Ghz)
    FPU detected
    MMX detected
    SSE detected
@@ -108,8 +108,12 @@ Loading compiled script E:/FunCode_CppProject/FunCode_Project/Bin/common/gameScr
 Loading compiled script E:/FunCode_CppProject/FunCode_Project/Bin/common/gameScripts/align.cs.
 
 FunCode (v1.7.5) initialized...
+Compiling E:/FunCode_CppProject/FunCode_Project/Bin/game/managed/datablocks.cs...
 Loading compiled script E:/FunCode_CppProject/FunCode_Project/Bin/game/managed/datablocks.cs.
+t2dAnimationDatablock::onAdd() - ImageMap Datablock is invalid, cannot create animation! (UNKNOWN!)
+game/managed/datablocks.cs (0): Register object failed for object SmogAnimation of class t2dAnimationDatablock.
 Loading compiled script E:/FunCode_CppProject/FunCode_Project/Bin/game/managed/persistent.cs.
+Compiling E:/FunCode_CppProject/FunCode_Project/Bin/game/managed/brushes.cs...
 Loading compiled script E:/FunCode_CppProject/FunCode_Project/Bin/game/managed/brushes.cs.
 Loading compiled script E:/FunCode_CppProject/FunCode_Project/Bin/game/gui/mainScreen.gui.
 Loading compiled script E:/FunCode_CppProject/FunCode_Project/Bin/game/gameScripts/game.cs.
@@ -117,7 +121,14 @@ Activating DirectInput...
 DirectInput joystick failed to enable!
 Compiling E:/FunCode_CppProject/FunCode_Project/Bin/game/data/levels/text.t2d...
 Loading compiled script E:/FunCode_CppProject/FunCode_Project/Bin/game/data/levels/text.t2d.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for fire for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of fire from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dAnimationController::playAnimation() - Invalid t2dAnimationDatablock datablock (SmogAnimation)
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 DirectInput deactivated.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for fire for t2dImageMapDatablock.
 Shutting down the OpenGL display device...
 Making the GL rendering context not current...
 Deleting the GL rendering context...

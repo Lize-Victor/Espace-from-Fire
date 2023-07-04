@@ -1,8 +1,4 @@
-/*
-
-*/
-
-#ifndef _NEW_CLASS_H_
+﻿#ifndef _NEW_CLASS_H_
 #define _NEW_CLASS_H_
 
 #include <CommonClass.h>
@@ -69,7 +65,7 @@ public:
 
 // 楼层类，管理单层楼的数据
 // warning::: must using continuous address
-class floor
+class Floor
 {
 private:
     CSprite *m_pFloor; // 楼层元
@@ -87,8 +83,8 @@ private:
     bool m_bDoorState;
 
 public:
-    floor();
-    ~floor();
+    Floor();
+    ~Floor();
 
     // GET
     CSprite *GetFloor()

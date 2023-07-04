@@ -1,16 +1,12 @@
-/*
-
-*/
-
-#include "NewClass.h"
+﻿#include "NewClass.h"
 #include <random>
 #include <cmath>
-#include <time.h>
+#include <ctime>
 #include <vector>
 
 using std::vector;
 
-floor::floor()
+Floor::Floor()
 {
     m_pFloor = nullptr;
     m_PFloorPoi.X = 0;
@@ -35,7 +31,7 @@ floor::floor()
     m_pDoor = nullptr;
     m_bDoorState = 0;
 }
-void floor::FloorInit(int iFloorNum)
+void Floor::FloorInit(int iFloorNum)
 {
     char *destName = CSystem::MakeSpriteName("Floor", iFloorNum);
     m_pFloor = new CSprite(destName);
@@ -47,7 +43,7 @@ void floor::FloorInit(int iFloorNum)
     FloorUpdate();
 }
 
-void floor::FireInit()
+void Floor::FireInit()
 {
     for (int i = 0; i < ONE_FLOOR_CELL_X_NUMBER; i++)
     {
@@ -57,7 +53,7 @@ void floor::FireInit()
     }
 }
 
-void floor::SmogInit()
+void Floor::SmogInit()
 {
     for (int j = 0; j < ONE_FLOOR_CELL_Y_NUMBER - 1; j++)
     {
@@ -69,7 +65,7 @@ void floor::SmogInit()
         }
     }
 }
-void floor::DoorInit()
+void Floor::DoorInit()
 {
     char *destName = CSystem::MakeSpriteName("Door", m_iFloorNum);
     m_pDoor = new CAnimateSprite(destName);
@@ -77,7 +73,7 @@ void floor::DoorInit()
     srand(time(nullptr));
     int m_bDoorState = rand() % 2;
 }
-void floor::FireDiffusionY(float fTimeDelta)
+void Floor::FireDiffusionY(float fTimeDelta)
 {
     float CurTime = FIRE_DIFFUSION_Y_TIME;
     CurTime -= fTimeDelta;
@@ -94,7 +90,7 @@ void floor::FireDiffusionY(float fTimeDelta)
         }
     }
 }
-void floor::FireProduceSmog(float fTimeDelta)
+void Floor::FireProduceSmog(float fTimeDelta)
 {
     float CurTime = FIRE_PRODUCE_SMOG_TIME;
     CurTime -= fTimeDelta;
@@ -110,7 +106,7 @@ void floor::FireProduceSmog(float fTimeDelta)
         }
     }
 }
-void floor::FloorUpdate()
+void Floor::FloorUpdate()
 {
     m_pFloor->SetSpritePosition(m_PFloorPoi.X, m_PFloorPoi.Y);
 
@@ -136,7 +132,7 @@ void floor::FloorUpdate()
     }
 }
 
-void floor::FireDiffusionX(float fTimeDelta)
+void Floor::FireDiffusionX(float fTimeDelta)
 {
     static float CurTime = FIRE_DIFFUSION_X_TIME;
     CurTime -= fTimeDelta;
@@ -175,7 +171,7 @@ void floor::FireDiffusionX(float fTimeDelta)
     }
 }
 
-void floor::SmogDiffusionX(float fTimeDelta)
+void Floor::SmogDiffusionX(float fTimeDelta)
 {
     static float CurTime = SMOG_DIFFUSION_TIME;
     CurTime -= fTimeDelta;

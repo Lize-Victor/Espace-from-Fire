@@ -100,14 +100,19 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="..\..\Src\CustomFunction.cpp" />
     <ClCompile Include="..\..\Src\LessonX.cpp" />
     <ClCompile Include="..\..\Src\Main.cpp" />
-  </ItemGroup>
-  <ItemGroup>
-    <ClInclude Include="..\..\Header\LessonX.h" />
+    <ClCompile Include="..\..\Src\NewClass.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="VCTemplate.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="..\..\Header\CommonClass.h" />
+    <ClInclude Include="..\..\Header\CustomFunction.h" />
+    <ClInclude Include="..\..\Header\LessonX.h" />
+    <ClInclude Include="..\..\Header\NewClass.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

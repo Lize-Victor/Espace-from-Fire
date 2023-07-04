@@ -34,43 +34,37 @@
    layerSortMode30 = "Normal";
    layerSortMode31 = "Normal";
    DebugRendering = "0";
-      cameraPosition = "0.000000 0.000000";
-      cameraSize = "113.842476 85.381851";
+      cameraPosition = "65 -40";
+      cameraSize = "130 80";
 
-   new t2dStaticSprite() {
+   new t2dStaticSprite(floor) {
       imageMap = "floor2ImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 2.36006e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
-      Position = "6.973 -23.403";
-      size = "123.946 23.195";
+      Position = "65.000 -20.236";
+      size = "130.000 25.000";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "2";
    };
-   new t2dAnimatedSprite() {
+   new t2dAnimatedSprite(fire) {
+      animationName = "fireAnimation";
       canSaveDynamicFields = "1";
-      Position = "-49.799 -16.318";
-      size = "6.767 7.364";
+      Position = "5.144 5.834";
+      size = "9.711 8.332";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "3";
    };
-   new t2dAnimatedSprite() {
+   new t2dAnimatedSprite(Smog) {
+      animationName = "SmogAnimation";
       canSaveDynamicFields = "1";
-      Position = "45.432 -16.635";
-      size = "4.679 6.729";
+      Position = "16.817 5.834";
+      size = "9.711 8.332";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "4";
-   };
-   new t2dAnimatedSprite() {
-      canSaveDynamicFields = "1";
-      Position = "-48.713 -23.663";
-      size = "7.426 7.326";
-      WorldLimitMin = "-50.000 -37.500";
-      WorldLimitMax = "50.000 37.500";
-         mountID = "5";
    };
 };

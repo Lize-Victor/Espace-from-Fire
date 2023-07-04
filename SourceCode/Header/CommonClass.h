@@ -1,4 +1,4 @@
-/////////////////////////////////////////////////////////////////////////////////
+ï»¿/////////////////////////////////////////////////////////////////////////////////
 //
 //
 //
@@ -10,52 +10,52 @@
 #include <windows.h>
 /////////////////////////////////////////////////////////////////////////////////
 //
-// È«¾Ö±äÁ¿¡¢ºê¶¨Òå
-#define		MAX_NAME_LEN		128	// Ãû×Ö³¤¶È
+// å…¨å±€å˜é‡ã€å®å®šä¹‰
+#define		MAX_NAME_LEN		128	// åå­—é•¿åº¦
 /////////////////////////////////////////////////////////////////////////////////
 //
-// Sprite¾«ÁéÓëÊÀ½ç±ß½çÅö×²ÏìÓ¦¶¨Òå( Åö×²Ö®ºóAPI OnSpriteColWorldLimit ½«±»µ÷ÓÃ )
+// Spriteç²¾çµä¸Žä¸–ç•Œè¾¹ç•Œç¢°æ’žå“åº”å®šä¹‰( ç¢°æ’žä¹‹åŽAPI OnSpriteColWorldLimit å°†è¢«è°ƒç”¨ )
 enum EWorldLimit
 {
-	WORLD_LIMIT_OFF,			// ¹Ø±ÕÓëÊÀ½ç±ß½çµÄÅö×²
-	WORLD_LIMIT_NULL,			// Åö×²Ö®ºóÒýÇæ²»×öÈÎºÎ´¦Àí£¬ÓÉ¸÷ÓÎÏ·×Ô¼º´¦ÀíÏìÓ¦
-	WORLD_LIMIT_RIGID,			// ¸ÕÐÔÎïÀíÅö×²·´Ó¦
-	WORLD_LIMIT_BOUNCE,			// ·´µ¯Ä£Ê½
-	WORLD_LIMIT_CLAMP,			// Ð¡·ù·´µ¯£¬Öð½¥Í£Ö¹Ä£Ê½(±ÈÈçÀºÇòÂäµØ)
-	WORLD_LIMIT_STICKY,			// Åö×²Ö®ºó¾²Ö¹
-	WORLD_LIMIT_KILL,			// Åö×²Ö®ºó¾«Áé½«±»É¾³ý
+	WORLD_LIMIT_OFF,			// å…³é—­ä¸Žä¸–ç•Œè¾¹ç•Œçš„ç¢°æ’ž
+	WORLD_LIMIT_NULL,			// ç¢°æ’žä¹‹åŽå¼•æ“Žä¸åšä»»ä½•å¤„ç†ï¼Œç”±å„æ¸¸æˆè‡ªå·±å¤„ç†å“åº”
+	WORLD_LIMIT_RIGID,			// åˆšæ€§ç‰©ç†ç¢°æ’žååº”
+	WORLD_LIMIT_BOUNCE,			// åå¼¹æ¨¡å¼
+	WORLD_LIMIT_CLAMP,			// å°å¹…åå¼¹ï¼Œé€æ¸åœæ­¢æ¨¡å¼(æ¯”å¦‚ç¯®çƒè½åœ°)
+	WORLD_LIMIT_STICKY,			// ç¢°æ’žä¹‹åŽé™æ­¢
+	WORLD_LIMIT_KILL,			// ç¢°æ’žä¹‹åŽç²¾çµå°†è¢«åˆ é™¤
 
-	WORLD_LIMIT_INVALID,		//	ÎÞÐ§Öµ
+	WORLD_LIMIT_INVALID,		//	æ— æ•ˆå€¼
 };
 /////////////////////////////////////////////////////////////////////////////////
 //
-/// ¾«ÁéÓë¾«ÁéÖ®¼ä¡¢¾«ÁéÓëµØÍ¼ÖÐÆäËü¾«ÁéÖ®¼äµÄÅö×²ÏìÓ¦( Åö×²Ö®ºóAPI OnSpriteColSprite ½«±»µ÷ÓÃ )
+/// ç²¾çµä¸Žç²¾çµä¹‹é—´ã€ç²¾çµä¸Žåœ°å›¾ä¸­å…¶å®ƒç²¾çµä¹‹é—´çš„ç¢°æ’žå“åº”( ç¢°æ’žä¹‹åŽAPI OnSpriteColSprite å°†è¢«è°ƒç”¨ )
 enum ECollisionResponse
 {
-	COL_RESPONSE_OFF,			//	¹Ø±ÕÅö×²ÏìÓ¦(²»µ÷ÓÃOnSpriteColSprite)
+	COL_RESPONSE_OFF,			//	å…³é—­ç¢°æ’žå“åº”(ä¸è°ƒç”¨OnSpriteColSprite)
 
-	COL_RESPONSE_RIGID,			//	¸ÕÐÔÎïÀíÅö×²ÏìÓ¦
-	COL_RESPONSE_BOUNCE,		//	·´µ¯Ä£Ê½
-	COL_RESPONSE_CLAMP,			//	Ð¡·ù·´µ¯£¬Öð½¥Í£Ö¹Ä£Ê½(±ÈÈçÀºÇòÂäµØ)
-	COL_RESPONSE_STICKY,		//	Åö×²Ö®ºó¾²Ö¹
-	COL_RESPONSE_KILL,			//	Åö×²Ö®ºó¾«Áé½«±»É¾³ý
-	COL_RESPONSE_CUSTOM,		//	Åö×²Ö®ºóÒýÇæ²»×öÈÎºÎ´¦Àí£¬ÓÉ¸÷ÓÎÏ·×Ô¼º´¦ÀíÏìÓ¦
+	COL_RESPONSE_RIGID,			//	åˆšæ€§ç‰©ç†ç¢°æ’žå“åº”
+	COL_RESPONSE_BOUNCE,		//	åå¼¹æ¨¡å¼
+	COL_RESPONSE_CLAMP,			//	å°å¹…åå¼¹ï¼Œé€æ¸åœæ­¢æ¨¡å¼(æ¯”å¦‚ç¯®çƒè½åœ°)
+	COL_RESPONSE_STICKY,		//	ç¢°æ’žä¹‹åŽé™æ­¢
+	COL_RESPONSE_KILL,			//	ç¢°æ’žä¹‹åŽç²¾çµå°†è¢«åˆ é™¤
+	COL_RESPONSE_CUSTOM,		//	ç¢°æ’žä¹‹åŽå¼•æ“Žä¸åšä»»ä½•å¤„ç†ï¼Œç”±å„æ¸¸æˆè‡ªå·±å¤„ç†å“åº”
 
-	COL_RESPONSE_INVALID,		//	ÎÞÐ§Öµ
+	COL_RESPONSE_INVALID,		//	æ— æ•ˆå€¼
 };
 //================================================================================
 //
-// Êó±ê°´¼üÖµ¶¨Òå
-enum MouseTypes 
+// é¼ æ ‡æŒ‰é”®å€¼å®šä¹‰
+enum MouseTypes
 {
-	MOUSE_LEFT		=	0,		// ×ó¼ü
-	MOUSE_RIGHT		=	1,		// ÓÒ¼ü
-	MOUSE_MIDDLE	=	2		// ÖÐ¼ü
+	MOUSE_LEFT		=	0,		// å·¦é”®
+	MOUSE_RIGHT		=	1,		// å³é”®
+	MOUSE_MIDDLE	=	2		// ä¸­é”®
 };
 /////////////////////////////////////////////////////////////////////////////////
 //
-// ¼üÅÌKEYÖµ¶¨Òå
-enum KeyCodes 
+// é”®ç›˜KEYå€¼å®šä¹‰
+enum KeyCodes
 {
 	KEY_NULL          = 0x000,     ///< Invalid KeyCode
 	KEY_BACKSPACE     = 0x001,
@@ -226,573 +226,573 @@ enum KeyCodes
 };
 //////////////////////////////////////////////////////////////////////////////
 //
-// Àà£ºCSprite
-// ËùÓÐ¾«ÁéµÄ»ùÀà¡£°üÀ¨ÏÂÃæµÄ¾²Ì¬¾«Áé£¬¶¯Ì¬¾«Áé£¬ÎÄ×Ö£¬ÌØÐ§µÈ¾ùÓÉ´ËÀà¼Ì³ÐÏÂÈ¥
-// Ò»°ãµÄÍ¼Æ¬¾«Áé´Ó±¾Àà¼Ì³ÐÏÂÈ¥¼´¿É¡£Ö»ÓÐÌØÊâµÄ¾«Áé£¬±ÈÈç´ø¶¯»­µÄ¾«Áé£¬²ÅÐèÒª´Ó¶¯Ì¬¾«Áé¼Ì³ÐÏÂÈ¥
+// ç±»ï¼šCSprite
+// æ‰€æœ‰ç²¾çµçš„åŸºç±»ã€‚åŒ…æ‹¬ä¸‹é¢çš„é™æ€ç²¾çµï¼ŒåŠ¨æ€ç²¾çµï¼Œæ–‡å­—ï¼Œç‰¹æ•ˆç­‰å‡ç”±æ­¤ç±»ç»§æ‰¿ä¸‹åŽ»
+// ä¸€èˆ¬çš„å›¾ç‰‡ç²¾çµä»Žæœ¬ç±»ç»§æ‰¿ä¸‹åŽ»å³å¯ã€‚åªæœ‰ç‰¹æ®Šçš„ç²¾çµï¼Œæ¯”å¦‚å¸¦åŠ¨ç”»çš„ç²¾çµï¼Œæ‰éœ€è¦ä»ŽåŠ¨æ€ç²¾çµç»§æ‰¿ä¸‹åŽ»
 //
 class CSprite
 {
 private:
-	char		m_szName[MAX_NAME_LEN];		// ¾«ÁéÃû×Ö
+	char		m_szName[MAX_NAME_LEN];		// ç²¾çµåå­—
 
 public:
 
-	// ¹¹Ôìº¯Êý£¬ÐèÒª´«ÈëÒ»¸ö·Ç¿ÕµÄ¾«ÁéÃû×Ö×Ö·û´®¡£Èç¹û´«ÈëµÄÊÇµØÍ¼Àï°Ú·ÅºÃµÄ¾«ÁéÃû×Ö£¬Ôò´ËÀà¼´ÓëµØÍ¼ÀïµÄ¾«Áé°ó¶¨
-	// Èç¹û´«ÈëµÄÊÇÒ»¸öÐÂµÄ¾«ÁéÃû×Ö£¬ÔòÐèÒªµ÷ÓÃ³ÉÔ±º¯Êý CloneSprite£¬¸´ÖÆÒ»·Ý¾«Áé¶ÔÏóÊµÀý£¬²ÅÓëÊµ¼ÊµÄµØÍ¼¾«Áé¹ØÁªÆðÀ´
-	// szCloneName : Ô¤ÏÈ´æÔÚÓÚ³¡¾°ÖÐ£¬ÐèÒª¿ËÂ¡µÄ¾«ÁéÃû×Ö
+	// æž„é€ å‡½æ•°ï¼Œéœ€è¦ä¼ å…¥ä¸€ä¸ªéžç©ºçš„ç²¾çµåå­—å­—ç¬¦ä¸²ã€‚å¦‚æžœä¼ å…¥çš„æ˜¯åœ°å›¾é‡Œæ‘†æ”¾å¥½çš„ç²¾çµåå­—ï¼Œåˆ™æ­¤ç±»å³ä¸Žåœ°å›¾é‡Œçš„ç²¾çµç»‘å®š
+	// å¦‚æžœä¼ å…¥çš„æ˜¯ä¸€ä¸ªæ–°çš„ç²¾çµåå­—ï¼Œåˆ™éœ€è¦è°ƒç”¨æˆå‘˜å‡½æ•° CloneSpriteï¼Œå¤åˆ¶ä¸€ä»½ç²¾çµå¯¹è±¡å®žä¾‹ï¼Œæ‰ä¸Žå®žé™…çš„åœ°å›¾ç²¾çµå…³è”èµ·æ¥
+	// szCloneName : é¢„å…ˆå­˜åœ¨äºŽåœºæ™¯ä¸­ï¼Œéœ€è¦å…‹éš†çš„ç²¾çµåå­—
 	CSprite( const char *szName );
 	CSprite( const char *szName, const char *szCloneName );
 	virtual ~CSprite();
 
 	// GetName
-	// ·µ»ØÖµ£º·µ»Ø¾«ÁéÃû×Ö
+	// è¿”å›žå€¼ï¼šè¿”å›žç²¾çµåå­—
 	const char *GetName();
 
 
-	// CloneSprite£º¸´ÖÆ(´´½¨)Ò»¸ö¾«Áé¡£¾«ÁéµÄ´´½¨·½Ê½£ºÏÈÔÚµØÍ¼ÖÐ°Ú·ÅÒ»¸ö¾«Áé×öÎªÄ£°å£¬ÉèÖÃºÃ¸÷Ïî²ÎÊý£¬È»ºóÔÚ´úÂëÀïÊ¹ÓÃ´Ëº¯Êý¿ËÂ¡Ò»¸öÊµÀý
-	// ·µ»ØÖµ£ºtrue±íÊ¾¿ËÂ¡³É¹¦£¬false¿ËÂ¡Ê§°Ü¡£Ê§°ÜµÄÔ­Òò¿ÉÄÜÊÇÔÚµØÍ¼ÖÐÎ´ÕÒµ½¶ÔÓ¦Ãû×ÖµÄ¾«Áé
-	// ²ÎÊý szSrcName£ºµØÍ¼ÖÐÓÃ×öÄ£°åµÄ¾«ÁéÃû×Ö
+	// CloneSpriteï¼šå¤åˆ¶(åˆ›å»º)ä¸€ä¸ªç²¾çµã€‚ç²¾çµçš„åˆ›å»ºæ–¹å¼ï¼šå…ˆåœ¨åœ°å›¾ä¸­æ‘†æ”¾ä¸€ä¸ªç²¾çµåšä¸ºæ¨¡æ¿ï¼Œè®¾ç½®å¥½å„é¡¹å‚æ•°ï¼Œç„¶åŽåœ¨ä»£ç é‡Œä½¿ç”¨æ­¤å‡½æ•°å…‹éš†ä¸€ä¸ªå®žä¾‹
+	// è¿”å›žå€¼ï¼štrueè¡¨ç¤ºå…‹éš†æˆåŠŸï¼Œfalseå…‹éš†å¤±è´¥ã€‚å¤±è´¥çš„åŽŸå› å¯èƒ½æ˜¯åœ¨åœ°å›¾ä¸­æœªæ‰¾åˆ°å¯¹åº”åå­—çš„ç²¾çµ
+	// å‚æ•° szSrcNameï¼šåœ°å›¾ä¸­ç”¨åšæ¨¡æ¿çš„ç²¾çµåå­—
 	//
 	bool		CloneSprite( const char *szSrcName );
 
-	// DeleteSprite£ºÔÚµØÍ¼ÖÐÉ¾³ýÓë±¾¶ÔÏóÊµÀý¹ØÁªµÄ¾«Áé
+	// DeleteSpriteï¼šåœ¨åœ°å›¾ä¸­åˆ é™¤ä¸Žæœ¬å¯¹è±¡å®žä¾‹å…³è”çš„ç²¾çµ
 	//
 	void		DeleteSprite();
 
-	// SetSpriteVisible£ºÉèÖÃ¾«ÁéÒþ²Ø»òÕßÏÔÊ¾(¿É¼û²»¿É¼û)
-	// ²ÎÊý bVisible£ºtrue ¿É¼û false²»¿É¼û
+	// SetSpriteVisibleï¼šè®¾ç½®ç²¾çµéšè—æˆ–è€…æ˜¾ç¤º(å¯è§ä¸å¯è§)
+	// å‚æ•° bVisibleï¼štrue å¯è§ falseä¸å¯è§
 	//
 	void		SetSpriteVisible( const bool bVisible );
 
-	// IsSpriteVisible£º»ñÈ¡¸Ã¾«Áéµ±Ç°ÊÇ·ñ¿É¼û
+	// IsSpriteVisibleï¼šèŽ·å–è¯¥ç²¾çµå½“å‰æ˜¯å¦å¯è§
 	//
 	bool		IsSpriteVisible();
 
-	// SetSpriteEnable£º½ûÖ¹»òÕßÆôÓÃ¸Ã¾«Áé¡£±»½ûÖ¹µÄ¾«Áé½«²»²ÎÓëÈÎºÎÏìÓ¦£¬°üÀ¨²»ÒÆ¶¯£¬Ã»ÓÐÅö×²µÈ£¬½ö½öÊÇÔÚµØÍ¼ÖÐÏÔÊ¾
-	// ²ÎÊý bEnable£ºtrueÆôÓÃ false½ûÖ¹
+	// SetSpriteEnableï¼šç¦æ­¢æˆ–è€…å¯ç”¨è¯¥ç²¾çµã€‚è¢«ç¦æ­¢çš„ç²¾çµå°†ä¸å‚ä¸Žä»»ä½•å“åº”ï¼ŒåŒ…æ‹¬ä¸ç§»åŠ¨ï¼Œæ²¡æœ‰ç¢°æ’žç­‰ï¼Œä»…ä»…æ˜¯åœ¨åœ°å›¾ä¸­æ˜¾ç¤º
+	// å‚æ•° bEnableï¼štrueå¯ç”¨ falseç¦æ­¢
 	//
 	void		SetSpriteEnable( const bool bEnable );
 
-	// SetSpriteScale£ºÉèÖÃ¾«ÁéµÄËõ·ÅÖµ
-	// ²ÎÊý fScale£ºËõ·ÅÖµ¡£´óÓÚ0µÄÖµ
+	// SetSpriteScaleï¼šè®¾ç½®ç²¾çµçš„ç¼©æ”¾å€¼
+	// å‚æ•° fScaleï¼šç¼©æ”¾å€¼ã€‚å¤§äºŽ0çš„å€¼
 	//
 	void		SetSpriteScale( const float fScale );
 
-	// IsPointInSprite£ºÅÐ¶ÏÄ³¸ö×ø±êµãÊÇ·ñÎ»ÓÚ¾«ÁéÄÚ²¿
-	// ²ÎÊý fPosX£ºX×ø±êµã
-	// ²ÎÊý fPosY£ºY×ø±êµã
+	// IsPointInSpriteï¼šåˆ¤æ–­æŸä¸ªåæ ‡ç‚¹æ˜¯å¦ä½äºŽç²¾çµå†…éƒ¨
+	// å‚æ•° fPosXï¼šXåæ ‡ç‚¹
+	// å‚æ•° fPosYï¼šYåæ ‡ç‚¹
 	//
 	bool 		IsPointInSprite( const float fPosX, const float fPosY );
 
-	// SetSpritePosition£ºÉèÖÃ¾«ÁéÎ»ÖÃ
-	// ²ÎÊý fPosX£ºX×ø±ê
-	// ²ÎÊý fPosY£ºY×ø±ê
+	// SetSpritePositionï¼šè®¾ç½®ç²¾çµä½ç½®
+	// å‚æ•° fPosXï¼šXåæ ‡
+	// å‚æ•° fPosYï¼šYåæ ‡
 	//
 	void		SetSpritePosition( const float fPosX, const float fPosY );
 
-	// SetSpritePositionX£ºÖ»ÉèÖÃ¾«ÁéX×ø±ê
-	// ²ÎÊý fPosX£ºX×ø±ê
+	// SetSpritePositionXï¼šåªè®¾ç½®ç²¾çµXåæ ‡
+	// å‚æ•° fPosXï¼šXåæ ‡
 	//
 	void		SetSpritePositionX( const float fPosX );
 
-	// SetSpritePositionY£ºÖ»ÉèÖÃ¾«ÁéY×ø±ê
-	// ²ÎÊý fPosY£ºY×ø±ê
+	// SetSpritePositionYï¼šåªè®¾ç½®ç²¾çµYåæ ‡
+	// å‚æ•° fPosYï¼šYåæ ‡
 	//
 	void		SetSpritePositionY( const float fPosY );
 
-	// GetSpritePositionX£º»ñÈ¡¾«ÁéX×ø±ê
-	// ·µ»ØÖµ£º¾«ÁéµÄX×ø±ê
+	// GetSpritePositionXï¼šèŽ·å–ç²¾çµXåæ ‡
+	// è¿”å›žå€¼ï¼šç²¾çµçš„Xåæ ‡
 	//
 	float		GetSpritePositionX();
 
-	// GetSpritePositionY£º»ñÈ¡¾«ÁéY×ø±ê
-	// ·µ»ØÖµ£º¾«ÁéµÄY×ø±ê
+	// GetSpritePositionYï¼šèŽ·å–ç²¾çµYåæ ‡
+	// è¿”å›žå€¼ï¼šç²¾çµçš„Yåæ ‡
 	//
 	float		GetSpritePositionY();
 
-	// GetSpriteLinkPointPosX£º»ñÈ¡¾«ÁéÁ´½ÓµãX×ø±ê¡£Á´½ÓµãÊÇÒÀ¸½ÓÚ¾«ÁéµÄÒ»¸ö×ø±êµã£¬¿ÉÒÔÔÚ±à¼­Æ÷ÀïÔö¼Ó»òÕßÉ¾³ý
-	// ²ÎÊý iId£ºÁ´½ÓµãÐòºÅ£¬µÚÒ»¸öÎª1£¬ºóÃæÒÀ´ÎµÝ¼Ó
+	// GetSpriteLinkPointPosXï¼šèŽ·å–ç²¾çµé“¾æŽ¥ç‚¹Xåæ ‡ã€‚é“¾æŽ¥ç‚¹æ˜¯ä¾é™„äºŽç²¾çµçš„ä¸€ä¸ªåæ ‡ç‚¹ï¼Œå¯ä»¥åœ¨ç¼–è¾‘å™¨é‡Œå¢žåŠ æˆ–è€…åˆ é™¤
+	// å‚æ•° iIdï¼šé“¾æŽ¥ç‚¹åºå·ï¼Œç¬¬ä¸€ä¸ªä¸º1ï¼ŒåŽé¢ä¾æ¬¡é€’åŠ 
 	//
 	float		GetSpriteLinkPointPosX( const int iId );
 
-	// GetSpriteLinkPointPosY£º»ñÈ¡¾«ÁéÁ´½ÓµãY×ø±ê¡£Á´½ÓµãÊÇÒÀ¸½ÓÚ¾«ÁéµÄÒ»¸ö×ø±êµã£¬¿ÉÒÔÔÚ±à¼­Æ÷ÀïÔö¼Ó»òÕßÉ¾³ý
-	// ²ÎÊý iId£ºÁ´½ÓµãÐòºÅ£¬µÚÒ»¸öÎª1£¬ºóÃæÒÀ´ÎµÝ¼Ó
+	// GetSpriteLinkPointPosYï¼šèŽ·å–ç²¾çµé“¾æŽ¥ç‚¹Yåæ ‡ã€‚é“¾æŽ¥ç‚¹æ˜¯ä¾é™„äºŽç²¾çµçš„ä¸€ä¸ªåæ ‡ç‚¹ï¼Œå¯ä»¥åœ¨ç¼–è¾‘å™¨é‡Œå¢žåŠ æˆ–è€…åˆ é™¤
+	// å‚æ•° iIdï¼šé“¾æŽ¥ç‚¹åºå·ï¼Œç¬¬ä¸€ä¸ªä¸º1ï¼ŒåŽé¢ä¾æ¬¡é€’åŠ 
 	//
 	float		GetSpriteLinkPointPosY( const int iId );
 
-	// SetSpriteRotation£ºÉèÖÃ¾«ÁéµÄÐý×ª½Ç¶È
-	// ²ÎÊý fRot£ºÐý×ª½Ç¶È£¬·¶Î§0 - 360
+	// SetSpriteRotationï¼šè®¾ç½®ç²¾çµçš„æ—‹è½¬è§’åº¦
+	// å‚æ•° fRotï¼šæ—‹è½¬è§’åº¦ï¼ŒèŒƒå›´0 - 360
 	//
 	void		SetSpriteRotation( const float fRot );
 
-	// GetSpriteRotation£º»ñÈ¡¾«ÁéµÄÐý×ª½Ç¶È
-	// ·µ»ØÖµ£º¾«ÁéµÄÐý×ª½Ç¶È
+	// GetSpriteRotationï¼šèŽ·å–ç²¾çµçš„æ—‹è½¬è§’åº¦
+	// è¿”å›žå€¼ï¼šç²¾çµçš„æ—‹è½¬è§’åº¦
 	//
 	float		GetSpriteRotation();
 
-	// SetSpriteAutoRot£ºÉèÖÃ¾«Áé°´ÕÕÖ¸¶¨ËÙ¶È×Ô¶¯Ðý×ª
-	// ²ÎÊý fRotSpeed£ºÐý×ªËÙ¶È
+	// SetSpriteAutoRotï¼šè®¾ç½®ç²¾çµæŒ‰ç…§æŒ‡å®šé€Ÿåº¦è‡ªåŠ¨æ—‹è½¬
+	// å‚æ•° fRotSpeedï¼šæ—‹è½¬é€Ÿåº¦
 	//
 	void 		SetSpriteAutoRot( const float fRotSpeed );
 
-	// SetSpriteWidth£ºÉèÖÃ¾«ÁéÍâÐÎ¿í¶È
-	// ²ÎÊý fWidth£º¿í¶ÈÖµ£¬´óÓÚ0
+	// SetSpriteWidthï¼šè®¾ç½®ç²¾çµå¤–å½¢å®½åº¦
+	// å‚æ•° fWidthï¼šå®½åº¦å€¼ï¼Œå¤§äºŽ0
 	//
 	void		SetSpriteWidth( const float fWidth );
 
-	// GetSpriteWidth£º»ñÈ¡¾«ÁéÍâÐÎ¿í¶È
-	// ·µ»ØÖµ£º¾«Áé¿í¶ÈÖµ
+	// GetSpriteWidthï¼šèŽ·å–ç²¾çµå¤–å½¢å®½åº¦
+	// è¿”å›žå€¼ï¼šç²¾çµå®½åº¦å€¼
 	//
 	float		GetSpriteWidth();
 
-	// SetSpriteHeight£ºÉèÖÃ¾«ÁéÍâÐÎ¸ß¶È
-	// ²ÎÊý fHeight£º¾«Áé¸ß¶ÈÖµ
+	// SetSpriteHeightï¼šè®¾ç½®ç²¾çµå¤–å½¢é«˜åº¦
+	// å‚æ•° fHeightï¼šç²¾çµé«˜åº¦å€¼
 	//
 	void		SetSpriteHeight( const float fHeight );
 
-	// GetSpriteHeight£º»ñÈ¡¾«ÁéÍâÐÎ¸ß¶È
-	// ·µ»ØÖµ£º¾«Áé¸ß¶ÈÖµ
+	// GetSpriteHeightï¼šèŽ·å–ç²¾çµå¤–å½¢é«˜åº¦
+	// è¿”å›žå€¼ï¼šç²¾çµé«˜åº¦å€¼
 	//
 	float		GetSpriteHeight();
 
-	// SetSpriteFlipX£ºÉèÖÃ¾«ÁéÍ¼Æ¬X·½Ïò·­×ªÏÔÊ¾
-	// ²ÎÊý bFlipX£ºtrue ·­×ª false²»·­×ª(»Ö¸´Ô­À´³¯Ïò)
+	// SetSpriteFlipXï¼šè®¾ç½®ç²¾çµå›¾ç‰‡Xæ–¹å‘ç¿»è½¬æ˜¾ç¤º
+	// å‚æ•° bFlipXï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬(æ¢å¤åŽŸæ¥æœå‘)
 	//
 	void		SetSpriteFlipX( const bool bFlipX );
 
-	// GetSpriteFlipX£º»ñÈ¡µ±Ç°¾«ÁéÍ¼Æ¬X·½ÏòÊÇ·ñÊÇ·­×ªÏÔÊ¾
-	// ·µ»ØÖµ£ºtrue ·­×ª false²»·­×ª
+	// GetSpriteFlipXï¼šèŽ·å–å½“å‰ç²¾çµå›¾ç‰‡Xæ–¹å‘æ˜¯å¦æ˜¯ç¿»è½¬æ˜¾ç¤º
+	// è¿”å›žå€¼ï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬
 	//
 	bool		GetSpriteFlipX();
 
-	// SetSpriteFlipY£ºÉèÖÃ¾«ÁéÍ¼Æ¬Y·½Ïò·­×ªÏÔÊ¾
-	// ²ÎÊý bFlipY£ºtrue ·­×ª false²»·­×ª(»Ö¸´Ô­À´³¯Ïò)
+	// SetSpriteFlipYï¼šè®¾ç½®ç²¾çµå›¾ç‰‡Yæ–¹å‘ç¿»è½¬æ˜¾ç¤º
+	// å‚æ•° bFlipYï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬(æ¢å¤åŽŸæ¥æœå‘)
 	//
 	void		SetSpriteFlipY( const bool bFlipY );
 
-	// GetSpriteFlipY£º»ñÈ¡µ±Ç°¾«ÁéÍ¼Æ¬Y·½ÏòÊÇ·ñÊÇ·­×ªÏÔÊ¾
-	// ·µ»ØÖµ£ºtrue ·­×ª false²»·­×ª
+	// GetSpriteFlipYï¼šèŽ·å–å½“å‰ç²¾çµå›¾ç‰‡Yæ–¹å‘æ˜¯å¦æ˜¯ç¿»è½¬æ˜¾ç¤º
+	// è¿”å›žå€¼ï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬
 	//
 	bool		GetSpriteFlipY();
 
-	// SetSpriteFlip£ºÍ¬Ê±ÉèÖÃ¾«Áé·­×ªX¼°Y·½Ïò
-	// ²ÎÊý bFlipX£ºtrue ·­×ª false²»·­×ª(»Ö¸´Ô­À´³¯Ïò)
-	// ²ÎÊý bFlipY£ºtrue ·­×ª false²»·­×ª(»Ö¸´Ô­À´³¯Ïò)
+	// SetSpriteFlipï¼šåŒæ—¶è®¾ç½®ç²¾çµç¿»è½¬XåŠYæ–¹å‘
+	// å‚æ•° bFlipXï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬(æ¢å¤åŽŸæ¥æœå‘)
+	// å‚æ•° bFlipYï¼štrue ç¿»è½¬ falseä¸ç¿»è½¬(æ¢å¤åŽŸæ¥æœå‘)
 	//
 	void		SetSpriteFlip( const bool bFlipX, const bool bFlipY );
 
-	// SetSpriteLifeTime£ºÉèÖÃ¾«ÁéµÄÉúÃüÊ±³¤£¬Ê±¼äµ½ÁËÖ®ºó½«×Ô¶¯±»É¾³ý
-	// ²ÎÊý fLifeTime£ºÉúÃüÊ±³¤£¬µ¥Î» Ãë
+	// SetSpriteLifeTimeï¼šè®¾ç½®ç²¾çµçš„ç”Ÿå‘½æ—¶é•¿ï¼Œæ—¶é—´åˆ°äº†ä¹‹åŽå°†è‡ªåŠ¨è¢«åˆ é™¤
+	// å‚æ•° fLifeTimeï¼šç”Ÿå‘½æ—¶é•¿ï¼Œå•ä½ ç§’
 	//
 	void		SetSpriteLifeTime( const float fLifeTime );
 
-	// GetSpriteLifeTime£º»ñÈ¡¾«ÁéÉúÃüÊ±³¤
-	// ·µ»ØÖµ£ºÉúÃüÊ±³¤£¬µ¥Î» Ãë
+	// GetSpriteLifeTimeï¼šèŽ·å–ç²¾çµç”Ÿå‘½æ—¶é•¿
+	// è¿”å›žå€¼ï¼šç”Ÿå‘½æ—¶é•¿ï¼Œå•ä½ ç§’
 	//
-	float		GetSpriteLifeTime();	
+	float		GetSpriteLifeTime();
 
 
-	// SpriteMoveTo£ºÈÃ¾«Áé°´ÕÕ¸ø¶¨ËÙ¶ÈÒÆ¶¯µ½¸ø¶¨×ø±êµã
-	// ²ÎÊý fPosX£ºÒÆ¶¯µÄÄ¿±êX×ø±êÖµ
-	// ²ÎÊý fPosY£ºÒÆ¶¯µÄÄ¿±êY×ø±êÖµ
-	// ²ÎÊý fSpeed£ºÒÆ¶¯ËÙ¶È
-	// ²ÎÊý bAutoStop£ºÒÆ¶¯µ½ÖÕµãÖ®ºóÊÇ·ñ×Ô¶¯Í£Ö¹
+	// SpriteMoveToï¼šè®©ç²¾çµæŒ‰ç…§ç»™å®šé€Ÿåº¦ç§»åŠ¨åˆ°ç»™å®šåæ ‡ç‚¹
+	// å‚æ•° fPosXï¼šç§»åŠ¨çš„ç›®æ ‡Xåæ ‡å€¼
+	// å‚æ•° fPosYï¼šç§»åŠ¨çš„ç›®æ ‡Yåæ ‡å€¼
+	// å‚æ•° fSpeedï¼šç§»åŠ¨é€Ÿåº¦
+	// å‚æ•° bAutoStopï¼šç§»åŠ¨åˆ°ç»ˆç‚¹ä¹‹åŽæ˜¯å¦è‡ªåŠ¨åœæ­¢
 	//
 	void		SpriteMoveTo( const float fPosX, const float fPosY, const float fSpeed, const bool bAutoStop );
 
-	// SpriteRotateTo£ºÈÃ¾«Áé°´ÕÕ¸ø¶¨ËÙ¶ÈÐý×ªµ½¸ø¶¨µÄ½Ç¶È
-	// ²ÎÊý fRotation£º¸ø¶¨µÄÄ¿±êÐý×ªÖµ
-	// ²ÎÊý fRotSpeed£ºÐý×ªËÙ¶È
-	// ²ÎÊý bAutoStop£ºÐý×ªµ½ÖÕµãÖ®ºóÊÇ·ñ×Ô¶¯Í£Ö¹
+	// SpriteRotateToï¼šè®©ç²¾çµæŒ‰ç…§ç»™å®šé€Ÿåº¦æ—‹è½¬åˆ°ç»™å®šçš„è§’åº¦
+	// å‚æ•° fRotationï¼šç»™å®šçš„ç›®æ ‡æ—‹è½¬å€¼
+	// å‚æ•° fRotSpeedï¼šæ—‹è½¬é€Ÿåº¦
+	// å‚æ•° bAutoStopï¼šæ—‹è½¬åˆ°ç»ˆç‚¹ä¹‹åŽæ˜¯å¦è‡ªåŠ¨åœæ­¢
 	//
 	void		SpriteRotateTo( const float fRotation, const float fRotSpeed, const bool bAutoStop );
 
-	// SetSpriteWorldLimit£ºÉèÖÃ¾«ÁéµÄÊÀ½ç±ß½ç×ø±êÏÞÖÆ¼°Åö×²Ä£Ê½
-	// ²ÎÊý Limit£ºÅö×²µ½ÊÀ½ç±ß½çÖ®ºóµÄÏìÓ¦Ä£Ê½£¬Èç¹ûÎªOFF£¬ÔòÊÇ¹Ø±ÕÊÀ½ç±ß½çÅö×²¡£ÆäËüÖµ¼û EWorldLimit
-	// ²ÎÊý fLeft£º±ß½çµÄ×ó±ßX×ø±ê
-	// ²ÎÊý fTop£º±ß½çµÄÉÏ±ßY×ø±ê
-	// ²ÎÊý fRight£º±ß½çµÄÓÒ±ßX×ø±ê
-	// ²ÎÊý fBottom£º±ß½çµÄÏÂ±ßY×ø±ê
+	// SetSpriteWorldLimitï¼šè®¾ç½®ç²¾çµçš„ä¸–ç•Œè¾¹ç•Œåæ ‡é™åˆ¶åŠç¢°æ’žæ¨¡å¼
+	// å‚æ•° Limitï¼šç¢°æ’žåˆ°ä¸–ç•Œè¾¹ç•Œä¹‹åŽçš„å“åº”æ¨¡å¼ï¼Œå¦‚æžœä¸ºOFFï¼Œåˆ™æ˜¯å…³é—­ä¸–ç•Œè¾¹ç•Œç¢°æ’žã€‚å…¶å®ƒå€¼è§ EWorldLimit
+	// å‚æ•° fLeftï¼šè¾¹ç•Œçš„å·¦è¾¹Xåæ ‡
+	// å‚æ•° fTopï¼šè¾¹ç•Œçš„ä¸Šè¾¹Yåæ ‡
+	// å‚æ•° fRightï¼šè¾¹ç•Œçš„å³è¾¹Xåæ ‡
+	// å‚æ•° fBottomï¼šè¾¹ç•Œçš„ä¸‹è¾¹Yåæ ‡
 	//
 	void		SetSpriteWorldLimit( const EWorldLimit Limit, const float fLeft, const float fTop, const float fRight, const float fBottom );
 
-	// SetSpriteWorldLimitMode£ºÉèÖÃ¾«ÁéµÄÊÀ½ç±ß½çÅö×²Ä£Ê½
-	// ²ÎÊý Limit£ºÅö×²µ½ÊÀ½ç±ß½çÖ®ºóµÄÏìÓ¦Ä£Ê½£¬Èç¹ûÎªOFF£¬ÔòÊÇ¹Ø±ÕÊÀ½ç±ß½çÅö×²¡£ÆäËüÖµ¼û EWorldLimit
+	// SetSpriteWorldLimitModeï¼šè®¾ç½®ç²¾çµçš„ä¸–ç•Œè¾¹ç•Œç¢°æ’žæ¨¡å¼
+	// å‚æ•° Limitï¼šç¢°æ’žåˆ°ä¸–ç•Œè¾¹ç•Œä¹‹åŽçš„å“åº”æ¨¡å¼ï¼Œå¦‚æžœä¸ºOFFï¼Œåˆ™æ˜¯å…³é—­ä¸–ç•Œè¾¹ç•Œç¢°æ’žã€‚å…¶å®ƒå€¼è§ EWorldLimit
 	//
 	void		SetSpriteWorldLimitMode( const EWorldLimit Limit );
 
-	// SetSpriteWorldLimitMin£ºÉèÖÃ¾«ÁéµÄÊÀ½ç±ß½çÉÏ±ß¼°×ó±ß×ø±êÏÞÖÆ
-	// ²ÎÊý fLeft£º±ß½çµÄ×ó±ßX×ø±ê
-	// ²ÎÊý fTop£º±ß½çµÄÉÏ±ßY×ø±ê
+	// SetSpriteWorldLimitMinï¼šè®¾ç½®ç²¾çµçš„ä¸–ç•Œè¾¹ç•Œä¸Šè¾¹åŠå·¦è¾¹åæ ‡é™åˆ¶
+	// å‚æ•° fLeftï¼šè¾¹ç•Œçš„å·¦è¾¹Xåæ ‡
+	// å‚æ•° fTopï¼šè¾¹ç•Œçš„ä¸Šè¾¹Yåæ ‡
 	//
 	void		SetSpriteWorldLimitMin( const float fLeft, const float fTop );
 
-	// SetSpriteWorldLimitMax£ºÉèÖÃ¾«ÁéµÄÊÀ½ç±ß½çÏÂ±ß¼°ÓÒ±ß×ø±êÏÞÖÆ
-	// ²ÎÊý fRight£º±ß½çµÄÓÒ±ßX×ø±ê
-	// ²ÎÊý fBottom£º±ß½çµÄÏÂ±ßY×ø±ê
+	// SetSpriteWorldLimitMaxï¼šè®¾ç½®ç²¾çµçš„ä¸–ç•Œè¾¹ç•Œä¸‹è¾¹åŠå³è¾¹åæ ‡é™åˆ¶
+	// å‚æ•° fRightï¼šè¾¹ç•Œçš„å³è¾¹Xåæ ‡
+	// å‚æ•° fBottomï¼šè¾¹ç•Œçš„ä¸‹è¾¹Yåæ ‡
 	//
 	void		SetSpriteWorldLimitMax( const float fRight, const float fBottom );
 
-	// GetSpriteWorldLimitLeft£º»ñÈ¡¾«ÁéÊÀ½ç±ß½ç×ó±ß½çÏÞÖÆ
+	// GetSpriteWorldLimitLeftï¼šèŽ·å–ç²¾çµä¸–ç•Œè¾¹ç•Œå·¦è¾¹ç•Œé™åˆ¶
 	//
 	float		GetSpriteWorldLimitLeft();
 
-	// GetSpriteWorldLimitTop£º»ñÈ¡¾«ÁéÊÀ½ç±ß½çÉÏ±ß½çÏÞÖÆ
+	// GetSpriteWorldLimitTopï¼šèŽ·å–ç²¾çµä¸–ç•Œè¾¹ç•Œä¸Šè¾¹ç•Œé™åˆ¶
 	//
 	float		GetSpriteWorldLimitTop();
 
-	// GetSpriteWorldLimitRight£º»ñÈ¡¾«ÁéÊÀ½ç±ß½çÓÒ±ß½çÏÞÖÆ
+	// GetSpriteWorldLimitRightï¼šèŽ·å–ç²¾çµä¸–ç•Œè¾¹ç•Œå³è¾¹ç•Œé™åˆ¶
 	//
 	float		GetSpriteWorldLimitRight();
 
-	// GetSpriteWorldLimitBottom£º»ñÈ¡¾«ÁéÊÀ½ç±ß½çÏÂ±ß½çÏÞÖÆ
+	// GetSpriteWorldLimitBottomï¼šèŽ·å–ç²¾çµä¸–ç•Œè¾¹ç•Œä¸‹è¾¹ç•Œé™åˆ¶
 	//
 	float		GetSpriteWorldLimitBottom();
 
-	// SetSpriteCollisionSend£ºÉèÖÃ¾«ÁéÊÇ·ñ¿ÉÒÔ·¢ËÍ(²úÉú)Åö×²
-	// ¾«ÁéµÄÅö×²·½Ê½Îª£ºµ±AÒÆ¶¯ÖÐÅöÉÏBÊ±£¬Èç¹ûAÊÇ¿ÉÒÔ²úÉúÅö×²µÄ£¬BÊÇ¿ÉÒÔ½ÓÊÜÅö×²µÄ£¬ÔòÕâ2¸öÎïÌå»á²úÉúÅö×²£¬¾«ÁéÅö×²µÄAPI½«±»µ÷ÓÃ¡£·ñÔòÎÞÅö×²·¢Éú
-	// ²ÎÊý bSend£ºtrue ¿ÉÒÔ²úÉú false ²»²úÉú
+	// SetSpriteCollisionSendï¼šè®¾ç½®ç²¾çµæ˜¯å¦å¯ä»¥å‘é€(äº§ç”Ÿ)ç¢°æ’ž
+	// ç²¾çµçš„ç¢°æ’žæ–¹å¼ä¸ºï¼šå½“Aç§»åŠ¨ä¸­ç¢°ä¸ŠBæ—¶ï¼Œå¦‚æžœAæ˜¯å¯ä»¥äº§ç”Ÿç¢°æ’žçš„ï¼ŒBæ˜¯å¯ä»¥æŽ¥å—ç¢°æ’žçš„ï¼Œåˆ™è¿™2ä¸ªç‰©ä½“ä¼šäº§ç”Ÿç¢°æ’žï¼Œç²¾çµç¢°æ’žçš„APIå°†è¢«è°ƒç”¨ã€‚å¦åˆ™æ— ç¢°æ’žå‘ç”Ÿ
+	// å‚æ•° bSendï¼štrue å¯ä»¥äº§ç”Ÿ false ä¸äº§ç”Ÿ
 	//
 	void 		SetSpriteCollisionSend( const bool bSend );
 
-	// SetSpriteCollisionReceive£ºÉèÖÃ¾«ÁéÊÇ·ñ¿ÉÒÔ½ÓÊÜÅö×²
-	// ¾«ÁéµÄÅö×²·½Ê½Îª£ºµ±AÒÆ¶¯ÖÐÅöÉÏBÊ±£¬Èç¹ûAÊÇ¿ÉÒÔ²úÉúÅö×²µÄ£¬BÊÇ¿ÉÒÔ½ÓÊÜÅö×²µÄ£¬ÔòÕâ2¸öÎïÌå»á²úÉúÅö×²£¬¾«ÁéÅö×²µÄAPI½«±»µ÷ÓÃ¡£·ñÔòÎÞÅö×²·¢Éú
-	// ²ÎÊý bReceive£ºtrue ¿ÉÒÔ½ÓÊÜ false ²»½ÓÊÜ
+	// SetSpriteCollisionReceiveï¼šè®¾ç½®ç²¾çµæ˜¯å¦å¯ä»¥æŽ¥å—ç¢°æ’ž
+	// ç²¾çµçš„ç¢°æ’žæ–¹å¼ä¸ºï¼šå½“Aç§»åŠ¨ä¸­ç¢°ä¸ŠBæ—¶ï¼Œå¦‚æžœAæ˜¯å¯ä»¥äº§ç”Ÿç¢°æ’žçš„ï¼ŒBæ˜¯å¯ä»¥æŽ¥å—ç¢°æ’žçš„ï¼Œåˆ™è¿™2ä¸ªç‰©ä½“ä¼šäº§ç”Ÿç¢°æ’žï¼Œç²¾çµç¢°æ’žçš„APIå°†è¢«è°ƒç”¨ã€‚å¦åˆ™æ— ç¢°æ’žå‘ç”Ÿ
+	// å‚æ•° bReceiveï¼štrue å¯ä»¥æŽ¥å— false ä¸æŽ¥å—
 	//
 	void 		SetSpriteCollisionReceive( const bool bReceive );
 
-	// SetSpriteCollisionActive£ºÍ¬Ê±ÉèÖÃ¾«ÁéÊÇ·ñ¿ÉÒÔ²úÉú¼°½ÓÊÜÅö×²
-	// ¾«ÁéµÄÅö×²·½Ê½Îª£ºµ±AÒÆ¶¯ÖÐÅöÉÏBÊ±£¬Èç¹ûAÊÇ¿ÉÒÔ²úÉúÅö×²µÄ£¬BÊÇ¿ÉÒÔ½ÓÊÜÅö×²µÄ£¬ÔòÕâ2¸öÎïÌå»á²úÉúÅö×²£¬¾«ÁéÅö×²µÄAPI½«±»µ÷ÓÃ¡£·ñÔòÎÞÅö×²·¢Éú
-	// ²ÎÊý bSend£ºtrue ¿ÉÒÔ²úÉú false ²»²úÉú
-	// ²ÎÊý bReceive£ºtrue ¿ÉÒÔ½ÓÊÜ false ²»½ÓÊÜ
+	// SetSpriteCollisionActiveï¼šåŒæ—¶è®¾ç½®ç²¾çµæ˜¯å¦å¯ä»¥äº§ç”ŸåŠæŽ¥å—ç¢°æ’ž
+	// ç²¾çµçš„ç¢°æ’žæ–¹å¼ä¸ºï¼šå½“Aç§»åŠ¨ä¸­ç¢°ä¸ŠBæ—¶ï¼Œå¦‚æžœAæ˜¯å¯ä»¥äº§ç”Ÿç¢°æ’žçš„ï¼ŒBæ˜¯å¯ä»¥æŽ¥å—ç¢°æ’žçš„ï¼Œåˆ™è¿™2ä¸ªç‰©ä½“ä¼šäº§ç”Ÿç¢°æ’žï¼Œç²¾çµç¢°æ’žçš„APIå°†è¢«è°ƒç”¨ã€‚å¦åˆ™æ— ç¢°æ’žå‘ç”Ÿ
+	// å‚æ•° bSendï¼štrue å¯ä»¥äº§ç”Ÿ false ä¸äº§ç”Ÿ
+	// å‚æ•° bReceiveï¼štrue å¯ä»¥æŽ¥å— false ä¸æŽ¥å—
 	//
 	void 		SetSpriteCollisionActive( const bool bSend, const bool bReceive );
 
-	// SetSpriteCollisionPhysicsSend£ºÉèÖÃ¾«ÁéÊÇ·ñ¿ÉÒÔ·¢ËÍ(²úÉú)ÎïÀíÅö×²
-	// ²ÎÊý bSend£ºtrue ¿ÉÒÔ²úÉú false ²»²úÉú
+	// SetSpriteCollisionPhysicsSendï¼šè®¾ç½®ç²¾çµæ˜¯å¦å¯ä»¥å‘é€(äº§ç”Ÿ)ç‰©ç†ç¢°æ’ž
+	// å‚æ•° bSendï¼štrue å¯ä»¥äº§ç”Ÿ false ä¸äº§ç”Ÿ
 	//
 	void 		SetSpriteCollisionPhysicsSend( const bool bSend );
 
-	// SetSpriteCollisionPhysicsReceive£ºÉèÖÃ¾«ÁéÊÇ·ñ¿ÉÒÔ½ÓÊÜÎïÀíÅö×²
-	// ²ÎÊý bReceive£ºtrue ¿ÉÒÔ½ÓÊÜ false ²»½ÓÊÜ
+	// SetSpriteCollisionPhysicsReceiveï¼šè®¾ç½®ç²¾çµæ˜¯å¦å¯ä»¥æŽ¥å—ç‰©ç†ç¢°æ’ž
+	// å‚æ•° bReceiveï¼štrue å¯ä»¥æŽ¥å— false ä¸æŽ¥å—
 	//
 	void 		SetSpriteCollisionPhysicsReceive( const bool bReceive );
 
-	// GetSpriteCollisionSend£º»ñÈ¡¾«Áéµ±Ç°ÊÇ·ñÊÇ¿ÉÒÔ²úÉúÅö×²
-	// ·µ»ØÖµ£ºtrue ¿ÉÒÔ²úÉú false ²»²úÉú
+	// GetSpriteCollisionSendï¼šèŽ·å–ç²¾çµå½“å‰æ˜¯å¦æ˜¯å¯ä»¥äº§ç”Ÿç¢°æ’ž
+	// è¿”å›žå€¼ï¼štrue å¯ä»¥äº§ç”Ÿ false ä¸äº§ç”Ÿ
 	//
 	bool 		GetSpriteCollisionSend();
 
-	// GetSpriteCollisionReceive£º»ñÈ¡¾«Áéµ±Ç°ÊÇ·ñÊÇ¿ÉÒÔ½ÓÊÜÅö×²
-	// ·µ»ØÖµ£ºtrue ¿ÉÒÔ½ÓÊÜ false ²»½ÓÊÜ
+	// GetSpriteCollisionReceiveï¼šèŽ·å–ç²¾çµå½“å‰æ˜¯å¦æ˜¯å¯ä»¥æŽ¥å—ç¢°æ’ž
+	// è¿”å›žå€¼ï¼štrue å¯ä»¥æŽ¥å— false ä¸æŽ¥å—
 	//
 	bool 		GetSpriteCollisionReceive();
 
-	// SetSpriteCollisionResponse£ºÉèÖÃ¾«ÁéÓë¾«ÁéµÄÅö×²ÏìÓ¦Ä£Ê½
-	// ²ÎÊý Response£ºÏìÓ¦Ä£Ê½£¬Èç¹ûÎªOFF£¬ÔòÎª¹Ø±ÕÅö×²ÏìÓ¦£¬Åö×²API½«²»»á±»µ÷ÓÃ¡£ÆäËüÖµ¼û ECollisionResponse
+	// SetSpriteCollisionResponseï¼šè®¾ç½®ç²¾çµä¸Žç²¾çµçš„ç¢°æ’žå“åº”æ¨¡å¼
+	// å‚æ•° Responseï¼šå“åº”æ¨¡å¼ï¼Œå¦‚æžœä¸ºOFFï¼Œåˆ™ä¸ºå…³é—­ç¢°æ’žå“åº”ï¼Œç¢°æ’žAPIå°†ä¸ä¼šè¢«è°ƒç”¨ã€‚å…¶å®ƒå€¼è§ ECollisionResponse
 	//
 	void		SetSpriteCollisionResponse( const ECollisionResponse Response );
 
-	// SetSpriteCollisionMaxIterations£ºÉèÖÃ¾«ÁéÅö×²Ö®ºóµÄ×î´ó·´µ¯´ÎÊý
-	// ²ÎÊý iTimes£º·´µ¯´ÎÊý
+	// SetSpriteCollisionMaxIterationsï¼šè®¾ç½®ç²¾çµç¢°æ’žä¹‹åŽçš„æœ€å¤§åå¼¹æ¬¡æ•°
+	// å‚æ•° iTimesï¼šåå¼¹æ¬¡æ•°
 	//
 	void		SetSpriteCollisionMaxIterations( const int iTimes );
 
-	// SetSpriteForwardMovementOnly£ºÉèÖÃ¾«ÁéÊÇ·ñÖ»ÄÜ³¯Ç°ÒÆ¶¯
-	// ²ÎÊý bForward£ºtrue Ö»ÄÜ³¯Ç°ÒÆ¶¯ false ¿ÉÒÔ³¯ÆäËû·½ÏòÒÆ¶¯
+	// SetSpriteForwardMovementOnlyï¼šè®¾ç½®ç²¾çµæ˜¯å¦åªèƒ½æœå‰ç§»åŠ¨
+	// å‚æ•° bForwardï¼štrue åªèƒ½æœå‰ç§»åŠ¨ false å¯ä»¥æœå…¶ä»–æ–¹å‘ç§»åŠ¨
 	//
 	void		SetSpriteForwardMovementOnly( const bool bForward );
 
-	// GetSpriteForwardMovementOnly£º»ñÈ¡¾«Áéµ±Ç°ÊÇ·ñÖ»ÄÜ³¯Ç°ÒÆ¶¯
-	// ·µ»ØÖµ£ºtrue Ö»ÄÜ³¯Ç°ÒÆ¶¯ false ¿ÉÒÔ³¯ÆäËü·½ÏòÒÆ¶¯
+	// GetSpriteForwardMovementOnlyï¼šèŽ·å–ç²¾çµå½“å‰æ˜¯å¦åªèƒ½æœå‰ç§»åŠ¨
+	// è¿”å›žå€¼ï¼štrue åªèƒ½æœå‰ç§»åŠ¨ false å¯ä»¥æœå…¶å®ƒæ–¹å‘ç§»åŠ¨
 	//
 	bool		GetSpriteForwardMovementOnly();
 
-	// SetSpriteForwardSpeed£ºÉèÖÃ¾«ÁéÏòÇ°µÄËÙ¶È
-	// ²ÎÊý fSpeed£ºËÙ¶È
+	// SetSpriteForwardSpeedï¼šè®¾ç½®ç²¾çµå‘å‰çš„é€Ÿåº¦
+	// å‚æ•° fSpeedï¼šé€Ÿåº¦
 	//
 	void		SetSpriteForwardSpeed( const float fSpeed );
 
-	// SetSpriteImpulseForce£ºÉèÖÃ¾«ÁéË²¼äÍÆÁ¦
-	// ²ÎÊý fForceX£ºX·½ÏòÍÆÁ¦´óÐ¡
-	// ²ÎÊý fForceY£ºY·½ÏòÍÆÁ¦´óÐ¡
-	// ²ÎÊý bGravitic£ºÊÇ·ñ¼ÆËãÖØÁ¦
+	// SetSpriteImpulseForceï¼šè®¾ç½®ç²¾çµçž¬é—´æŽ¨åŠ›
+	// å‚æ•° fForceXï¼šXæ–¹å‘æŽ¨åŠ›å¤§å°
+	// å‚æ•° fForceYï¼šYæ–¹å‘æŽ¨åŠ›å¤§å°
+	// å‚æ•° bGraviticï¼šæ˜¯å¦è®¡ç®—é‡åŠ›
 	//
 	void 		SetSpriteImpulseForce( const float fForceX, const float fForceY, const bool bGravitic );
 
-	// SetSpriteImpulseForcePolar£º°´½Ç¶È³¯ÏòÉèÖÃ¾«ÁéË²¼äÍÆÁ¦
-	// ²ÎÊý fPolar£º½Ç¶È³¯Ïò
-	// ²ÎÊý fForce£ºÍÆÁ¦´óÐ¡
-	// ²ÎÊý bGravitic£ºÊÇ·ñ¼ÆËãÖØÁ¦
+	// SetSpriteImpulseForcePolarï¼šæŒ‰è§’åº¦æœå‘è®¾ç½®ç²¾çµçž¬é—´æŽ¨åŠ›
+	// å‚æ•° fPolarï¼šè§’åº¦æœå‘
+	// å‚æ•° fForceï¼šæŽ¨åŠ›å¤§å°
+	// å‚æ•° bGraviticï¼šæ˜¯å¦è®¡ç®—é‡åŠ›
 	//
 	void 		SetSpriteImpulseForcePolar( const float fPolar, const float fForce, const bool bGravitic );
 
-	// SetSpriteConstantForceX£ºÉèÖÃ¾«ÁéX·½Ïò³£Á¿ÍÆÁ¦
-	// ²ÎÊý fForceX£ºX·½ÏòÍÆÁ¦´óÐ¡
+	// SetSpriteConstantForceXï¼šè®¾ç½®ç²¾çµXæ–¹å‘å¸¸é‡æŽ¨åŠ›
+	// å‚æ•° fForceXï¼šXæ–¹å‘æŽ¨åŠ›å¤§å°
 	//
 	void 		SetSpriteConstantForceX( const float fForceX );
 
-	// SetSpriteConstantForceY£ºÉèÖÃ¾«ÁéY·½Ïò³£Á¿ÍÆÁ¦
-	// ²ÎÊý fForceY£ºY·½ÏòÍÆÁ¦´óÐ¡
+	// SetSpriteConstantForceYï¼šè®¾ç½®ç²¾çµYæ–¹å‘å¸¸é‡æŽ¨åŠ›
+	// å‚æ•° fForceYï¼šYæ–¹å‘æŽ¨åŠ›å¤§å°
 	//
 	void 		SetSpriteConstantForceY( const float fForceY );
 
-	// SetSpriteConstantForceGravitic£º¾«ÁéÔÚ¼ÆËã³£Á¿ÍÆÁ¦µÄÊ±ºò£¬ÊÇ·ñ¼ÆËãÖØÁ¦
-	// ²ÎÊý bGravitic£ºÊÇ·ñ¼ÆËãÖØÁ¦
+	// SetSpriteConstantForceGraviticï¼šç²¾çµåœ¨è®¡ç®—å¸¸é‡æŽ¨åŠ›çš„æ—¶å€™ï¼Œæ˜¯å¦è®¡ç®—é‡åŠ›
+	// å‚æ•° bGraviticï¼šæ˜¯å¦è®¡ç®—é‡åŠ›
 	//
 	void 		SetSpriteConstantForceGravitic( const bool bGravitic );
 
-	// SetSpriteConstantForce£ºÉèÖÃ¾«Áé³£Á¿ÍÆÁ¦
-	// ²ÎÊý fForceX£ºX·½ÏòÍÆÁ¦´óÐ¡
-	// ²ÎÊý fForceY£ºY·½ÏòÍÆÁ¦´óÐ¡
-	// ²ÎÊý bGravitic£ºÊÇ·ñ¼ÆËãÖØÁ¦
+	// SetSpriteConstantForceï¼šè®¾ç½®ç²¾çµå¸¸é‡æŽ¨åŠ›
+	// å‚æ•° fForceXï¼šXæ–¹å‘æŽ¨åŠ›å¤§å°
+	// å‚æ•° fForceYï¼šYæ–¹å‘æŽ¨åŠ›å¤§å°
+	// å‚æ•° bGraviticï¼šæ˜¯å¦è®¡ç®—é‡åŠ›
 	//
 	void 		SetSpriteConstantForce( const float fForceX, const float fForceY, const bool bGravitic );
 
-	// SetSpriteConstantForcePolar£º°´½Ç¶È³¯ÏòÉèÖÃ¾«Áé³£Á¿ÍÆÁ¦
-	// ²ÎÊý fPolar£º½Ç¶È³¯Ïò
-	// ²ÎÊý fForce£ºÍÆÁ¦´óÐ¡
-	// ²ÎÊý bGravitic£ºÊÇ·ñ¼ÆËãÖØÁ¦
+	// SetSpriteConstantForcePolarï¼šæŒ‰è§’åº¦æœå‘è®¾ç½®ç²¾çµå¸¸é‡æŽ¨åŠ›
+	// å‚æ•° fPolarï¼šè§’åº¦æœå‘
+	// å‚æ•° fForceï¼šæŽ¨åŠ›å¤§å°
+	// å‚æ•° bGraviticï¼šæ˜¯å¦è®¡ç®—é‡åŠ›
 	//
 	void 		SetSpriteConstantForcePolar( const float fPolar, const float fForce, const bool bGravitic );
 
-	// StopSpriteConstantForce£ºÍ£Ö¹¾«Áé³£Á¿ÍÆÁ¦
+	// StopSpriteConstantForceï¼šåœæ­¢ç²¾çµå¸¸é‡æŽ¨åŠ›
 	//
 	void 		StopSpriteConstantForce();
 
-	// SetSpriteForceScale£º°´±¶ÊýËõ·Å¾«Áéµ±Ç°ÊÜµÄÍÆÁ¦
-	// ²ÎÊý fScale£ºËõ·ÅÖµ
+	// SetSpriteForceScaleï¼šæŒ‰å€æ•°ç¼©æ”¾ç²¾çµå½“å‰å—çš„æŽ¨åŠ›
+	// å‚æ•° fScaleï¼šç¼©æ”¾å€¼
 	//
 	void 		SetSpriteForceScale( const float fScale );
 
-	// SetSpriteAtRest£ºÔÝÍ£/¼ÌÐø¾«ÁéµÄ¸÷ÖÖÊÜÁ¦¼ÆËã
-	// ²ÎÊý bRest£ºtrue ÔÝÍ£ false ¼ÌÐø
+	// SetSpriteAtRestï¼šæš‚åœ/ç»§ç»­ç²¾çµçš„å„ç§å—åŠ›è®¡ç®—
+	// å‚æ•° bRestï¼štrue æš‚åœ false ç»§ç»­
 	//
 	void 		SetSpriteAtRest( const bool bRest );
 
-	// GetSpriteAtRest£º»ñÈ¡¾«Áéµ±Ç°ÊÇ·ñÔÚÔÝÍ£ÖÐ
-	// ·µ»ØÖµ£ºtrue ÔÝÍ£ÖÐ false Õý³£
+	// GetSpriteAtRestï¼šèŽ·å–ç²¾çµå½“å‰æ˜¯å¦åœ¨æš‚åœä¸­
+	// è¿”å›žå€¼ï¼štrue æš‚åœä¸­ false æ­£å¸¸
 	//
 	bool 		GetSpriteAtRest( );
 
-	// SetSpriteFriction£ºÉèÖÃ¾«ÁéÄ¦²ÁÁ¦
-	// ²ÎÊý fFriction£ºÄ¦²ÁÁ¦´óÐ¡
+	// SetSpriteFrictionï¼šè®¾ç½®ç²¾çµæ‘©æ“¦åŠ›
+	// å‚æ•° fFrictionï¼šæ‘©æ“¦åŠ›å¤§å°
 	//
 	void 		SetSpriteFriction( const float fFriction );
 
-	// SetSpriteRestitution£ºÉèÖÃ¾«Áéµ¯Á¦
-	// ²ÎÊý fRestitution£ºµ¯Á¦Öµ´óÐ¡
+	// SetSpriteRestitutionï¼šè®¾ç½®ç²¾çµå¼¹åŠ›
+	// å‚æ•° fRestitutionï¼šå¼¹åŠ›å€¼å¤§å°
 	//
 	void 		SetSpriteRestitution( const float fRestitution );
 
-	// SetSpriteMass£ºÉèÖÃ¾«ÁéÖÊÁ¿
-	// ²ÎÊý fMass£ºÖÊÁ¿´óÐ¡
+	// SetSpriteMassï¼šè®¾ç½®ç²¾çµè´¨é‡
+	// å‚æ•° fMassï¼šè´¨é‡å¤§å°
 	//
 	void 		SetSpriteMass( const float fMass );
 
-	// GetSpriteMass£º»ñÈ¡¾«ÁéÖÊÁ¿
-	// ·µ»ØÖµ £ºÖÊÁ¿´óÐ¡
+	// GetSpriteMassï¼šèŽ·å–ç²¾çµè´¨é‡
+	// è¿”å›žå€¼ ï¼šè´¨é‡å¤§å°
 	//
 	float 		GetSpriteMass();
 
-	// SetSpriteAutoMassInertia£º¿ªÆô»òÕß¹Ø±Õ¾«Áé¹ßÐÔ
-	// ²ÎÊý bStatus£ºtrue ¿ªÆô false ¹Ø±Õ
+	// SetSpriteAutoMassInertiaï¼šå¼€å¯æˆ–è€…å…³é—­ç²¾çµæƒ¯æ€§
+	// å‚æ•° bStatusï¼štrue å¼€å¯ false å…³é—­
 	//
 	void 		SetSpriteAutoMassInertia( const bool bStatus );
 
-	// SetSpriteInertialMoment£ºÉèÖÃ¾«Áé¹ßÐÔ´óÐ¡
-	// ²ÎÊý fInert£º¹ßÐÔ´óÐ¡
+	// SetSpriteInertialMomentï¼šè®¾ç½®ç²¾çµæƒ¯æ€§å¤§å°
+	// å‚æ•° fInertï¼šæƒ¯æ€§å¤§å°
 	//
 	void 		SetSpriteInertialMoment( const float fInert );
 
-	// SetSpriteDamping£ºÉèÖÃ¾«ÁéË¥¼õÖµ
-	// ²ÎÊý fDamp£ºË¥¼õÖµ´óÐ¡
+	// SetSpriteDampingï¼šè®¾ç½®ç²¾çµè¡°å‡å€¼
+	// å‚æ•° fDampï¼šè¡°å‡å€¼å¤§å°
 	//
 	void 		SetSpriteDamping( const float fDamp );
 
-	// SetSpriteImmovable£ºÉèÖÃ¾«ÁéÊÇ·ñ²»¿ÉÒÆ¶¯
-	// ²ÎÊý bImmovable£ºtrue ²»¿ÉÒÔÒÆ¶¯ false ¿ÉÒÔÒÆ¶¯
+	// SetSpriteImmovableï¼šè®¾ç½®ç²¾çµæ˜¯å¦ä¸å¯ç§»åŠ¨
+	// å‚æ•° bImmovableï¼štrue ä¸å¯ä»¥ç§»åŠ¨ false å¯ä»¥ç§»åŠ¨
 	//
 	void 		SetSpriteImmovable( const bool bImmovable );
 
-	// GetSpriteImmovable£º»ñÈ¡¾«Áéµ±Ç°ÊÇ·ñ²»¿ÉÒÔÒÆ¶¯
-	// ·µ»ØÖµ£ºtrue ²»¿ÉÒÔÒÆ¶¯ false ¿ÉÒÔÒÆ¶¯
+	// GetSpriteImmovableï¼šèŽ·å–ç²¾çµå½“å‰æ˜¯å¦ä¸å¯ä»¥ç§»åŠ¨
+	// è¿”å›žå€¼ï¼štrue ä¸å¯ä»¥ç§»åŠ¨ false å¯ä»¥ç§»åŠ¨
 	//
 	bool 		GetSpriteImmovable();
 
-	// SetSpriteLinearVelocity£ºÉèÖÃ¾«ÁéÒÆ¶¯ËÙ¶È
-	// ²ÎÊý fVelX£ºX·½ÏòËÙ¶È
-	// ²ÎÊý fVelY£ºY·½ÏòËÙ¶È
+	// SetSpriteLinearVelocityï¼šè®¾ç½®ç²¾çµç§»åŠ¨é€Ÿåº¦
+	// å‚æ•° fVelXï¼šXæ–¹å‘é€Ÿåº¦
+	// å‚æ•° fVelYï¼šYæ–¹å‘é€Ÿåº¦
 	//
 	void 		SetSpriteLinearVelocity( const float fVelX, const float fVelY );
 
-	// SetSpriteLinearVelocityX£ºÉèÖÃ¾«ÁéX·½ÏòÒÆ¶¯ËÙ¶È
-	// ²ÎÊý fVelX£ºX·½ÏòËÙ¶È
+	// SetSpriteLinearVelocityXï¼šè®¾ç½®ç²¾çµXæ–¹å‘ç§»åŠ¨é€Ÿåº¦
+	// å‚æ•° fVelXï¼šXæ–¹å‘é€Ÿåº¦
 	//
 	void 		SetSpriteLinearVelocityX( const float fVelX );
 
-	// SetSpriteLinearVelocityY£ºÉèÖÃ¾«ÁéY·½ÏòÒÆ¶¯ËÙ¶È
-	// ²ÎÊý fVelY£ºY·½ÏòËÙ¶È
+	// SetSpriteLinearVelocityYï¼šè®¾ç½®ç²¾çµYæ–¹å‘ç§»åŠ¨é€Ÿåº¦
+	// å‚æ•° fVelYï¼šYæ–¹å‘é€Ÿåº¦
 	//
 	void 		SetSpriteLinearVelocityY( const float fVelY );
 
-	// SetSpriteLinearVelocityPolar£º°´½Ç¶È³¯ÏòÉèÖÃ¾«ÁéÒÆ¶¯ËÙ¶È
-	// ²ÎÊý fSpeed£ºÒÆ¶¯ËÙ¶È
-	// ²ÎÊý fPolar£º½Ç¶È³¯Ïò
+	// SetSpriteLinearVelocityPolarï¼šæŒ‰è§’åº¦æœå‘è®¾ç½®ç²¾çµç§»åŠ¨é€Ÿåº¦
+	// å‚æ•° fSpeedï¼šç§»åŠ¨é€Ÿåº¦
+	// å‚æ•° fPolarï¼šè§’åº¦æœå‘
 	//
 	void 		SetSpriteLinearVelocityPolar( const float fSpeed, const float fPolar );
 
-	// SetSpriteAngularVelocity£ºÉèÖÃ¾«Áé½Ç¶ÈÐý×ªËÙ¶È
-	// ²ÎÊý fAngular£º½Ç¶ÈÐý×ªËÙ¶È
+	// SetSpriteAngularVelocityï¼šè®¾ç½®ç²¾çµè§’åº¦æ—‹è½¬é€Ÿåº¦
+	// å‚æ•° fAngularï¼šè§’åº¦æ—‹è½¬é€Ÿåº¦
 	//
 	void 		SetSpriteAngularVelocity( const float fAngular );
 
-	// SetSpriteMinLinearVelocity£ºÉèÖÃ¾«Áé×îÐ¡ËÙ¶È
-	// ²ÎÊý fMin£º×îÐ¡ËÙ¶ÈÖµ
+	// SetSpriteMinLinearVelocityï¼šè®¾ç½®ç²¾çµæœ€å°é€Ÿåº¦
+	// å‚æ•° fMinï¼šæœ€å°é€Ÿåº¦å€¼
 	//
 	void 		SetSpriteMinLinearVelocity( const float fMin );
 
-	// SetSpriteMaxLinearVelocity£ºÉèÖÃ¾«Áé×î´óËÙ¶È
-	// ²ÎÊý fMax£º×î´óËÙ¶ÈÖµ
+	// SetSpriteMaxLinearVelocityï¼šè®¾ç½®ç²¾çµæœ€å¤§é€Ÿåº¦
+	// å‚æ•° fMaxï¼šæœ€å¤§é€Ÿåº¦å€¼
 	//
 	void 		SetSpriteMaxLinearVelocity( const float fMax );
 
-	// SetSpriteMinAngularVelocity£ºÉèÖÃ¾«Áé×îÐ¡½ÇËÙ¶È
-	// ²ÎÊý fMin£º×îÐ¡½ÇËÙ¶È
+	// SetSpriteMinAngularVelocityï¼šè®¾ç½®ç²¾çµæœ€å°è§’é€Ÿåº¦
+	// å‚æ•° fMinï¼šæœ€å°è§’é€Ÿåº¦
 	//
 	void 		SetSpriteMinAngularVelocity( const float fMin );
 
-	// SetSpriteMaxAngularVelocity£ºÉèÖÃ¾«Áé×î´ó½ÇËÙ¶È
-	// ²ÎÊý fMax£º×î´ó½ÇËÙ¶È
+	// SetSpriteMaxAngularVelocityï¼šè®¾ç½®ç²¾çµæœ€å¤§è§’é€Ÿåº¦
+	// å‚æ•° fMaxï¼šæœ€å¤§è§’é€Ÿåº¦
 	//
 	void 		SetSpriteMaxAngularVelocity( const float fMax );
 
-	// GetSpriteLinearVelocityX£º»ñÈ¡¾«ÁéX·½ÏòËÙ¶È
-	// ·µ»ØÖµ£ºX·½ÏòËÙ¶È
+	// GetSpriteLinearVelocityXï¼šèŽ·å–ç²¾çµXæ–¹å‘é€Ÿåº¦
+	// è¿”å›žå€¼ï¼šXæ–¹å‘é€Ÿåº¦
 	//
 	float 		GetSpriteLinearVelocityX();
 
-	// GetSpriteLinearVelocityY£º»ñÈ¡¾«ÁéY·½ÏòËÙ¶È
-	// ·µ»ØÖµ£ºY·½ÏòËÙ¶È
+	// GetSpriteLinearVelocityYï¼šèŽ·å–ç²¾çµYæ–¹å‘é€Ÿåº¦
+	// è¿”å›žå€¼ï¼šYæ–¹å‘é€Ÿåº¦
 	//
 	float 		GetSpriteLinearVelocityY();
 
 
-	// SpriteMountToSprite£º½«Ò»¸ö¾«Áé°ó¶¨µ½ÁíÒ»¸ö¾«ÁéÉÏ£¬ÔÝÊ±µÄ³ÉÎªÁíÒ»¸ö¾«ÁéµÄÒ»²¿·Ö£¬¸úËæÆäÔË¶¯µÈ
-	// ²ÎÊý szDstName£º³ÐÔØ°ó¶¨µÄÄ¸Ìå¾«ÁéÃû×Ö
-	// ²ÎÊý fOffSetX£º°ó¶¨Æ«ÒÆX
-	// ²ÎÊý fOffsetY£º°ó¶¨Æ«ÒÆY
-	// ·µ»ØÖµ£º·µ»ØÒ»¸ö°ó¶¨ID
+	// SpriteMountToSpriteï¼šå°†ä¸€ä¸ªç²¾çµç»‘å®šåˆ°å¦ä¸€ä¸ªç²¾çµä¸Šï¼Œæš‚æ—¶çš„æˆä¸ºå¦ä¸€ä¸ªç²¾çµçš„ä¸€éƒ¨åˆ†ï¼Œè·Ÿéšå…¶è¿åŠ¨ç­‰
+	// å‚æ•° szDstNameï¼šæ‰¿è½½ç»‘å®šçš„æ¯ä½“ç²¾çµåå­—
+	// å‚æ•° fOffSetXï¼šç»‘å®šåç§»X
+	// å‚æ•° fOffsetYï¼šç»‘å®šåç§»Y
+	// è¿”å›žå€¼ï¼šè¿”å›žä¸€ä¸ªç»‘å®šID
 	//
 	int			SpriteMountToSprite( const char *szDstName, const float fOffSetX, const float fOffsetY );
 
-	// SpriteMountToSpriteLinkPoint£º½«Ò»¸ö¾«Áé°ó¶¨µ½ÁíÒ»¸ö¾«ÁéÉÏ£¬°ó¶¨Î»ÖÃÎªÖ¸¶¨µÄÁ´½Óµã£¬ÔÝÊ±µÄ³ÉÎªÁíÒ»¸ö¾«ÁéµÄÒ»²¿·Ö£¬¸úËæÆäÔË¶¯µÈ
-	// ²ÎÊý szDstName£º³ÐÔØ°ó¶¨µÄÄ¸Ìå¾«ÁéÃû×Ö
-	// ²ÎÊý iPointId£ºÁ´½ÓµãÐòºÅ
-	// ·µ»ØÖµ£º·µ»ØÒ»¸ö°ó¶¨ID
+	// SpriteMountToSpriteLinkPointï¼šå°†ä¸€ä¸ªç²¾çµç»‘å®šåˆ°å¦ä¸€ä¸ªç²¾çµä¸Šï¼Œç»‘å®šä½ç½®ä¸ºæŒ‡å®šçš„é“¾æŽ¥ç‚¹ï¼Œæš‚æ—¶çš„æˆä¸ºå¦ä¸€ä¸ªç²¾çµçš„ä¸€éƒ¨åˆ†ï¼Œè·Ÿéšå…¶è¿åŠ¨ç­‰
+	// å‚æ•° szDstNameï¼šæ‰¿è½½ç»‘å®šçš„æ¯ä½“ç²¾çµåå­—
+	// å‚æ•° iPointIdï¼šé“¾æŽ¥ç‚¹åºå·
+	// è¿”å›žå€¼ï¼šè¿”å›žä¸€ä¸ªç»‘å®šID
 	//
 	int			SpriteMountToSpriteLinkPoint( const char *szDstName, const int iPointId );
 
-	// SetSpriteMountRotation£ºÉèÖÃ¾«ÁéµÄ°ó¶¨³¯Ïò£¬¼´Ïà¶ÔÓÚÄ¸ÌåµÄ³¯Ïò
-	// ²ÎÊý fRot£º½Ç¶È³¯Ïò£¬0 - 360
+	// SetSpriteMountRotationï¼šè®¾ç½®ç²¾çµçš„ç»‘å®šæœå‘ï¼Œå³ç›¸å¯¹äºŽæ¯ä½“çš„æœå‘
+	// å‚æ•° fRotï¼šè§’åº¦æœå‘ï¼Œ0 - 360
 	//
 	void		SetSpriteMountRotation( const float fRot );
 
-	// GetSpriteMountRotation£º»ñÈ¡¾«ÁéµÄ°ó¶¨³¯Ïò£¬¼´Ïà¶ÔÓÚÄ¸ÌåµÄ³¯Ïò
-	// ·µ»ØÖµ£º½Ç¶È³¯Ïò
+	// GetSpriteMountRotationï¼šèŽ·å–ç²¾çµçš„ç»‘å®šæœå‘ï¼Œå³ç›¸å¯¹äºŽæ¯ä½“çš„æœå‘
+	// è¿”å›žå€¼ï¼šè§’åº¦æœå‘
 	//
 	float		GetSpriteMountRotation();
 
-	// SetSpriteAutoMountRotation£ºÉèÖÃ¾«Áé°ó¶¨Ö®ºó×Ô¶¯Ðý×ª
-	// ²ÎÊý fRot£ºÐý×ªËÙ¶È
+	// SetSpriteAutoMountRotationï¼šè®¾ç½®ç²¾çµç»‘å®šä¹‹åŽè‡ªåŠ¨æ—‹è½¬
+	// å‚æ•° fRotï¼šæ—‹è½¬é€Ÿåº¦
 	//
 	void		SetSpriteAutoMountRotation( const float fRot );
 
-	// GetSpriteAutoMountRotation£º»ñÈ¡¾«Áé°ó¶¨Ö®ºóµÄ×Ô¶¯Ðý×ªÖµ
-	// ·µ»ØÖµ£ºÐý×ªËÙ¶È
+	// GetSpriteAutoMountRotationï¼šèŽ·å–ç²¾çµç»‘å®šä¹‹åŽçš„è‡ªåŠ¨æ—‹è½¬å€¼
+	// è¿”å›žå€¼ï¼šæ—‹è½¬é€Ÿåº¦
 	//
 	float		GetSpriteAutoMountRotation();
 
-	// SetSpriteMountForce£º°ó¶¨ÖÁÁíÒ»¸ö¾«ÁéÊ±£¬¸½¼ÓµÄ×÷ÓÃÁ¦
-	// ²ÎÊý fFroce£º×÷ÓÃÁ¦
+	// SetSpriteMountForceï¼šç»‘å®šè‡³å¦ä¸€ä¸ªç²¾çµæ—¶ï¼Œé™„åŠ çš„ä½œç”¨åŠ›
+	// å‚æ•° fFroceï¼šä½œç”¨åŠ›
 	//
 	void		SetSpriteMountForce( const float fForce );
 
-	// SetSpriteMountTrackRotation£º°ó¶¨µÄ¾«ÁéÊÇ·ñ¸úËæÄ¸ÌåÐý×ª
-	// ²ÎÊý bTrackRotation£ºtrue ¸úËæ false ²»¸úËæ
+	// SetSpriteMountTrackRotationï¼šç»‘å®šçš„ç²¾çµæ˜¯å¦è·Ÿéšæ¯ä½“æ—‹è½¬
+	// å‚æ•° bTrackRotationï¼štrue è·Ÿéš false ä¸è·Ÿéš
 	//
 	void		SetSpriteMountTrackRotation( const bool bTrackRotation );
 
-	// SetSpriteMountOwned£ºÄ¸Ìå±»É¾³ýµÄÊ±ºò£¬°ó¶¨µÄ¾«ÁéÊÇ·ñÒ²¸ú×Å±»É¾³ý
-	// ²ÎÊý bMountOwned£ºtrue ¸ú×Å false ²»¸ú×Å
+	// SetSpriteMountOwnedï¼šæ¯ä½“è¢«åˆ é™¤çš„æ—¶å€™ï¼Œç»‘å®šçš„ç²¾çµæ˜¯å¦ä¹Ÿè·Ÿç€è¢«åˆ é™¤
+	// å‚æ•° bMountOwnedï¼štrue è·Ÿç€ false ä¸è·Ÿç€
 	//
 	void		SetSpriteMountOwned( const bool bMountOwned );
 
-	// SetSpriteMountInheritAttributes£º°ó¶¨µÄÊ±ºò£¬ÊÇ·ñ¼Ì³ÐÄ¸ÌåµÄÊôÐÔ
-	// ²ÎÊý bInherAttr£ºtrue ¼Ì³Ð false ²»¼Ì³Ð
+	// SetSpriteMountInheritAttributesï¼šç»‘å®šçš„æ—¶å€™ï¼Œæ˜¯å¦ç»§æ‰¿æ¯ä½“çš„å±žæ€§
+	// å‚æ•° bInherAttrï¼štrue ç»§æ‰¿ false ä¸ç»§æ‰¿
 	//
 	void		SetSpriteMountInheritAttributes( const bool bInherAttr );
 
-	// SpriteDismount£º½«ÒÑ¾­°ó¶¨µÄ¾«Áé½øÐÐ½â°ó
+	// SpriteDismountï¼šå°†å·²ç»ç»‘å®šçš„ç²¾çµè¿›è¡Œè§£ç»‘
 	//
 	void		SpriteDismount();
 
-	// GetSpriteIsMounted£ºÅÐ¶Ï¾«ÁéÊÇ·ñ°ó¶¨ÔÚÁíÒ»¸ö¾«ÁéÉÏ
-	// ·µ»ØÖµ£ºtrue °ó¶¨ false ²»°ó¶¨
+	// GetSpriteIsMountedï¼šåˆ¤æ–­ç²¾çµæ˜¯å¦ç»‘å®šåœ¨å¦ä¸€ä¸ªç²¾çµä¸Š
+	// è¿”å›žå€¼ï¼štrue ç»‘å®š false ä¸ç»‘å®š
 	//
 	bool		GetSpriteIsMounted();
 
-	// GetSpriteMountedParent£º»ñÈ¡°ó¶¨µÄÄ¸Ìå¾«ÁéµÄÃû×Ö
-	// ·µ»ØÖµ£ºÄ¸Ìå¾«ÁéÃû×Ö£¬Èç¹ûÎ´°ó¶¨£¬Ôò·µ»Ø¿Õ×Ö·û´®
+	// GetSpriteMountedParentï¼šèŽ·å–ç»‘å®šçš„æ¯ä½“ç²¾çµçš„åå­—
+	// è¿”å›žå€¼ï¼šæ¯ä½“ç²¾çµåå­—ï¼Œå¦‚æžœæœªç»‘å®šï¼Œåˆ™è¿”å›žç©ºå­—ç¬¦ä¸²
 	//
 	const char*	GetSpriteMountedParent();
 
 
-	// SetSpriteColorRed£º¸ü¸Ä¾«ÁéÏÔÊ¾ÑÕÉ«ÖÐµÄºìÉ«¡£Ä¬ÈÏ¾«ÁéµÄºìÂÌÀ¶ÈýÑÕÉ«µÄÖµ¾ùÎª255£¬ÐÞ¸ÄÆäÖÐÒ»Ïî½«¿ÉÒÔ¸Ä±äÆäÑÕÉ«
-	// ²ÎÊý iCol£ºÑÕÉ«·¶Î§ 0 - 255
+	// SetSpriteColorRedï¼šæ›´æ”¹ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„çº¢è‰²ã€‚é»˜è®¤ç²¾çµçš„çº¢ç»¿è“ä¸‰é¢œè‰²çš„å€¼å‡ä¸º255ï¼Œä¿®æ”¹å…¶ä¸­ä¸€é¡¹å°†å¯ä»¥æ”¹å˜å…¶é¢œè‰²
+	// å‚æ•° iColï¼šé¢œè‰²èŒƒå›´ 0 - 255
 	//
 	void		SetSpriteColorRed( const int iCol );
 
-	// SetSpriteColorGreen£º¸ü¸Ä¾«ÁéÏÔÊ¾ÑÕÉ«ÖÐµÄÂÌÉ«¡£Ä¬ÈÏ¾«ÁéµÄºìÂÌÀ¶ÈýÑÕÉ«µÄÖµ¾ùÎª255£¬ÐÞ¸ÄÆäÖÐÒ»Ïî½«¿ÉÒÔ¸Ä±äÆäÑÕÉ«
-	// ²ÎÊý iCol£ºÑÕÉ«·¶Î§ 0 - 255
+	// SetSpriteColorGreenï¼šæ›´æ”¹ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„ç»¿è‰²ã€‚é»˜è®¤ç²¾çµçš„çº¢ç»¿è“ä¸‰é¢œè‰²çš„å€¼å‡ä¸º255ï¼Œä¿®æ”¹å…¶ä¸­ä¸€é¡¹å°†å¯ä»¥æ”¹å˜å…¶é¢œè‰²
+	// å‚æ•° iColï¼šé¢œè‰²èŒƒå›´ 0 - 255
 	//
 	void		SetSpriteColorGreen( const int iCol );
 
-	// SetSpriteColorBlue£º¸ü¸Ä¾«ÁéÏÔÊ¾ÑÕÉ«ÖÐµÄÀ¶É«¡£Ä¬ÈÏ¾«ÁéµÄºìÂÌÀ¶ÈýÑÕÉ«µÄÖµ¾ùÎª255£¬ÐÞ¸ÄÆäÖÐÒ»Ïî½«¿ÉÒÔ¸Ä±äÆäÑÕÉ«
-	// ²ÎÊý iCol£ºÑÕÉ«·¶Î§ 0 - 255
+	// SetSpriteColorBlueï¼šæ›´æ”¹ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„è“è‰²ã€‚é»˜è®¤ç²¾çµçš„çº¢ç»¿è“ä¸‰é¢œè‰²çš„å€¼å‡ä¸º255ï¼Œä¿®æ”¹å…¶ä¸­ä¸€é¡¹å°†å¯ä»¥æ”¹å˜å…¶é¢œè‰²
+	// å‚æ•° iColï¼šé¢œè‰²èŒƒå›´ 0 - 255
 	//
 	void		SetSpriteColorBlue( const int iCol );
 
-	// SetSpriteColorAlpha£ºÉèÖÃ¾«ÁéÍ¸Ã÷¶È
-	// ²ÎÊý iCol£ºÍ¸Ã÷¶È£¬Öµ0 - 255£¬´ÓÍêÈ«Í¸Ã÷ÖÁÍêÈ«²»Í¸Ã÷
+	// SetSpriteColorAlphaï¼šè®¾ç½®ç²¾çµé€æ˜Žåº¦
+	// å‚æ•° iColï¼šé€æ˜Žåº¦ï¼Œå€¼0 - 255ï¼Œä»Žå®Œå…¨é€æ˜Žè‡³å®Œå…¨ä¸é€æ˜Ž
 	//
 	void		SetSpriteColorAlpha( const int iCol );
 
-	// GetSpriteColorRed£º»ñÈ¡¾«ÁéÏÔÊ¾ÑÕÉ«ÖÐµÄºìÉ«Öµ
-	// ·µ»ØÖµ£ºÑÕÉ«Öµ
+	// GetSpriteColorRedï¼šèŽ·å–ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„çº¢è‰²å€¼
+	// è¿”å›žå€¼ï¼šé¢œè‰²å€¼
 	//
 	int			GetSpriteColorRed();
 
-	// GetSpriteColorGreen£º»ñÈ¡¾«ÁéÏÔÊ¾ÑÕÉ«ÖÐµÄÂÌÉ«Öµ
-	// ·µ»ØÖµ£ºÑÕÉ«Öµ
+	// GetSpriteColorGreenï¼šèŽ·å–ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„ç»¿è‰²å€¼
+	// è¿”å›žå€¼ï¼šé¢œè‰²å€¼
 	//
 	int			GetSpriteColorGreen();
 
-	// GetSpriteColorBlue£º»ñÈ¡¾«ÁéÏÔÊ¾ÑÕÉ«ÖÐµÄÀ¶É«Öµ
-	// ·µ»ØÖµ£ºÑÕÉ«Öµ
+	// GetSpriteColorBlueï¼šèŽ·å–ç²¾çµæ˜¾ç¤ºé¢œè‰²ä¸­çš„è“è‰²å€¼
+	// è¿”å›žå€¼ï¼šé¢œè‰²å€¼
 	//
 	int			GetSpriteColorBlue();
 
-	// GetSpriteColorAlpha£º»ñÈ¡¾«ÁéÍ¸Ã÷¶È
-	// ·µ»ØÖµ£ºÍ¸Ã÷¶È
+	// GetSpriteColorAlphaï¼šèŽ·å–ç²¾çµé€æ˜Žåº¦
+	// è¿”å›žå€¼ï¼šé€æ˜Žåº¦
 	//
 	int			GetSpriteColorAlpha();
 };
 //////////////////////////////////////////////////////////////////////////////
 //
-// Àà£ºCStaticSprite
-// ¾²Ì¬¾«Áé(¾²Ì¬Í¼Æ¬ÏÔÊ¾)£¬´ÓCSprite¾«Áé»ùÀà¼Ì³ÐÏÂÀ´£¬±È»ùÀà¶àÁË¼¸¸ö¿ØÖÆ¾«ÁéÍ¼Æ¬ÏÔÊ¾µÄº¯Êý
-// 
+// ç±»ï¼šCStaticSprite
+// é™æ€ç²¾çµ(é™æ€å›¾ç‰‡æ˜¾ç¤º)ï¼Œä»ŽCSpriteç²¾çµåŸºç±»ç»§æ‰¿ä¸‹æ¥ï¼Œæ¯”åŸºç±»å¤šäº†å‡ ä¸ªæŽ§åˆ¶ç²¾çµå›¾ç‰‡æ˜¾ç¤ºçš„å‡½æ•°
+//
 class CStaticSprite : public CSprite
 {
 public:
@@ -800,32 +800,32 @@ public:
 	CStaticSprite( const char *szName, const char *szCloneName );
 	~CStaticSprite();
 
-	// SetStaticSpriteImage£ºÉèÖÃ/¸ü¸Ä¾²Ì¬¾«ÁéµÄÏÔÊ¾Í¼Æ¬
-	// ²ÎÊý szImageName£ºÍ¼Æ¬Ãû×Ö
-	// ²ÎÊý iFrame£º¸ÃÍ¼Æ¬µÄÏÔÊ¾Ö¡Êý¡£Îª±à¼­Æ÷Ô¤ÀÀÍ¼ÀïÏÔÊ¾µÄ1/N£¬·¶Î§Îª 0 µ½ N - 1
+	// SetStaticSpriteImageï¼šè®¾ç½®/æ›´æ”¹é™æ€ç²¾çµçš„æ˜¾ç¤ºå›¾ç‰‡
+	// å‚æ•° szImageNameï¼šå›¾ç‰‡åå­—
+	// å‚æ•° iFrameï¼šè¯¥å›¾ç‰‡çš„æ˜¾ç¤ºå¸§æ•°ã€‚ä¸ºç¼–è¾‘å™¨é¢„è§ˆå›¾é‡Œæ˜¾ç¤ºçš„1/Nï¼ŒèŒƒå›´ä¸º 0 åˆ° N - 1
 	//
 	void		SetStaticSpriteImage( const char *szImageName, const int iFrame );
 
-	// SetStaticSpriteFrame£ºÉèÖÃ¾²Ì¬¾«Áéµ±Ç°Í¼Æ¬µÄÏÔÊ¾Ö¡Êý
-	// ²ÎÊý iFrame£º¸ÃÍ¼Æ¬µÄÏÔÊ¾Ö¡Êý¡£Îª±à¼­Æ÷Ô¤ÀÀÍ¼ÀïÏÔÊ¾µÄ1/N£¬·¶Î§Îª 0 µ½ N - 1
+	// SetStaticSpriteFrameï¼šè®¾ç½®é™æ€ç²¾çµå½“å‰å›¾ç‰‡çš„æ˜¾ç¤ºå¸§æ•°
+	// å‚æ•° iFrameï¼šè¯¥å›¾ç‰‡çš„æ˜¾ç¤ºå¸§æ•°ã€‚ä¸ºç¼–è¾‘å™¨é¢„è§ˆå›¾é‡Œæ˜¾ç¤ºçš„1/Nï¼ŒèŒƒå›´ä¸º 0 åˆ° N - 1
 	//
 	void		SetStaticSpriteFrame( const int iFrame );
 	//
 
-	// GetStaticSpriteImage£º»ñÈ¡¾«Áéµ±Ç°ÏÔÊ¾µÄÍ¼Æ¬Ãû×Ö
-	// ·µ»ØÖµ£ºÍ¼Æ¬Ãû×Ö
+	// GetStaticSpriteImageï¼šèŽ·å–ç²¾çµå½“å‰æ˜¾ç¤ºçš„å›¾ç‰‡åå­—
+	// è¿”å›žå€¼ï¼šå›¾ç‰‡åå­—
 	//
 	const char* GetStaticSpriteImage();
 
-	// GetStaticSpriteFrame£º»ñÈ¡¾«Áéµ±Ç°ÏÔÊ¾µÄÍ¼Æ¬Ö¡Êý
-	// ·µ»ØÖµ£ºÖ¡Êý
+	// GetStaticSpriteFrameï¼šèŽ·å–ç²¾çµå½“å‰æ˜¾ç¤ºçš„å›¾ç‰‡å¸§æ•°
+	// è¿”å›žå€¼ï¼šå¸§æ•°
 	//
 	int			GetStaticSpriteFrame();
 };
 //////////////////////////////////////////////////////////////////////////////
 //
-// Àà£ºCAnimateSprite
-// ¶¯Ì¬¾«Áé(´øÍ¼Æ¬¶¯»­)£¬´ÓCSprite¾«Áé»ùÀà¼Ì³ÐÏÂÀ´£¬±È»ùÀà¶àÁË¼¸¸ö¿ØÖÆÍ¼Æ¬¶¯»­µÄº¯Êý
+// ç±»ï¼šCAnimateSprite
+// åŠ¨æ€ç²¾çµ(å¸¦å›¾ç‰‡åŠ¨ç”»)ï¼Œä»ŽCSpriteç²¾çµåŸºç±»ç»§æ‰¿ä¸‹æ¥ï¼Œæ¯”åŸºç±»å¤šäº†å‡ ä¸ªæŽ§åˆ¶å›¾ç‰‡åŠ¨ç”»çš„å‡½æ•°
 //
 class CAnimateSprite : public CSprite
 {
@@ -834,38 +834,38 @@ public:
 	CAnimateSprite( const char *szName, const char *szCloneName );
 	~CAnimateSprite();
 
-	// SetAnimateSpriteFrame£ºÉèÖÃ¶¯Ì¬¾«ÁéµÄ¶¯»­Ö¡Êý
-	// ²ÎÊý iFrame£º¶¯»­Ö¡Êý
+	// SetAnimateSpriteFrameï¼šè®¾ç½®åŠ¨æ€ç²¾çµçš„åŠ¨ç”»å¸§æ•°
+	// å‚æ•° iFrameï¼šåŠ¨ç”»å¸§æ•°
 	//
 	void		SetAnimateSpriteFrame( const int iFrame );
 
-	// GetAnimateSpriteAnimationName£º»ñÈ¡¶¯Ì¬¾«Áéµ±Ç°¶¯»­Ãû×Ö
-	// ·µ»ØÖµ£º¶¯»­Ãû×Ö
+	// GetAnimateSpriteAnimationNameï¼šèŽ·å–åŠ¨æ€ç²¾çµå½“å‰åŠ¨ç”»åå­—
+	// è¿”å›žå€¼ï¼šåŠ¨ç”»åå­—
 	//
 	const char* GetAnimateSpriteAnimationName();
 
-	// GetAnimateSpriteAnimationTime£º»ñÈ¡¶¯»­¾«Áéµ±Ç°¶¯»­Ê±¼ä³¤¶È
-	// ·µ»ØÖµ£º³¤¶È£¬µ¥Î»Ãë
+	// GetAnimateSpriteAnimationTimeï¼šèŽ·å–åŠ¨ç”»ç²¾çµå½“å‰åŠ¨ç”»æ—¶é—´é•¿åº¦
+	// è¿”å›žå€¼ï¼šé•¿åº¦ï¼Œå•ä½ç§’
 	//
 	float		GetAnimateSpriteAnimationTime();
 
-	// IsAnimateSpriteAnimationFinished£ºÅÐ¶Ï¶¯Ì¬¾«Áéµ±Ç°¶¯»­ÊÇ·ñ²¥·ÅÍê±Ï£¬Ö»Õë¶Ô·ÇÑ­»·¶¯»­¶øÑÔ
-	// ·µ»ØÖµ£ºtrue Íê±Ï false Î´Íê±Ï
+	// IsAnimateSpriteAnimationFinishedï¼šåˆ¤æ–­åŠ¨æ€ç²¾çµå½“å‰åŠ¨ç”»æ˜¯å¦æ’­æ”¾å®Œæ¯•ï¼Œåªé’ˆå¯¹éžå¾ªçŽ¯åŠ¨ç”»è€Œè¨€
+	// è¿”å›žå€¼ï¼štrue å®Œæ¯• false æœªå®Œæ¯•
 	//
 	bool		IsAnimateSpriteAnimationFinished();
 
-	// AnimateSpritePlayAnimation£º¶¯»­¾«Áé²¥·Å¶¯»­
-	// ²ÎÊý szAnim£º¶¯»­Ãû×Ö
-	// ²ÎÊý bRestore£º²¥·ÅÍê±ÏºóÊÇ·ñ»Ö¸´µ±Ç°¶¯»­
-	// ·µ»ØÖµ£ºÊÇ·ñ²¥·Å³É¹¦
+	// AnimateSpritePlayAnimationï¼šåŠ¨ç”»ç²¾çµæ’­æ”¾åŠ¨ç”»
+	// å‚æ•° szAnimï¼šåŠ¨ç”»åå­—
+	// å‚æ•° bRestoreï¼šæ’­æ”¾å®Œæ¯•åŽæ˜¯å¦æ¢å¤å½“å‰åŠ¨ç”»
+	// è¿”å›žå€¼ï¼šæ˜¯å¦æ’­æ”¾æˆåŠŸ
 	//
 	bool		AnimateSpritePlayAnimation( const char *szAnim, const bool bRestore );
 };
 //////////////////////////////////////////////////////////////////////////////
 //
-// Àà£ºCTextSprite
-// ÎÄ×Ö¾«Áé£¬ÒàÊôÓÚ¾«ÁéÖÐµÄÒ»ÖÖ¡£»ù±¾ÓÃ·¨£ºÔÚµØÍ¼Àï°Ú·ÅÒ»¸ö¡°ÎÄ×Ö¡±ÎïÌå£¬Æð¸öÃû×Ö
-// È»ºóÔÚ´úÂëÀï¶¨ÒåÒ»¸öÎÄ×Ö¾«ÁéµÄ¶ÔÏóÊµÀý£¬½«´ËÃû×Ö×öÎª¹¹Ôìº¯ÊýµÄ²ÎÊý£¬È»ºóµ÷ÓÃ¶ÔÓ¦µÄ³ÉÔ±º¯Êý¸üÐÂÎÄ×ÖÏÔÊ¾¼´¿É
+// ç±»ï¼šCTextSprite
+// æ–‡å­—ç²¾çµï¼Œäº¦å±žäºŽç²¾çµä¸­çš„ä¸€ç§ã€‚åŸºæœ¬ç”¨æ³•ï¼šåœ¨åœ°å›¾é‡Œæ‘†æ”¾ä¸€ä¸ªâ€œæ–‡å­—â€ç‰©ä½“ï¼Œèµ·ä¸ªåå­—
+// ç„¶åŽåœ¨ä»£ç é‡Œå®šä¹‰ä¸€ä¸ªæ–‡å­—ç²¾çµçš„å¯¹è±¡å®žä¾‹ï¼Œå°†æ­¤åå­—åšä¸ºæž„é€ å‡½æ•°çš„å‚æ•°ï¼Œç„¶åŽè°ƒç”¨å¯¹åº”çš„æˆå‘˜å‡½æ•°æ›´æ–°æ–‡å­—æ˜¾ç¤ºå³å¯
 //
 class CTextSprite : public CSprite
 {
@@ -875,119 +875,119 @@ public:
 	~CTextSprite();
 
 
-	// SetTextValue£ºÎÄ×Ö¾«ÁéÏÔÊ¾Ä³¸öÊýÖµ
-	// ²ÎÊý iValue£ºÒªÏÔÊ¾µÄÊýÖµ
+	// SetTextValueï¼šæ–‡å­—ç²¾çµæ˜¾ç¤ºæŸä¸ªæ•°å€¼
+	// å‚æ•° iValueï¼šè¦æ˜¾ç¤ºçš„æ•°å€¼
 	//
 	void		SetTextValue( int iValue );
 
-	// SetTextValueFloat£ºÎÄ×Ö¾«ÁéÏÔÊ¾Ä³¸ö¸¡µãÊýÖµ
-	// ²ÎÊý fValue£ºÒªÏÔÊ¾µÄÊýÖµ
+	// SetTextValueFloatï¼šæ–‡å­—ç²¾çµæ˜¾ç¤ºæŸä¸ªæµ®ç‚¹æ•°å€¼
+	// å‚æ•° fValueï¼šè¦æ˜¾ç¤ºçš„æ•°å€¼
 	//
 	void		SetTextValueFloat( float fValue );
 
-	// SetTextString£ºÎÄ×Ö¾«ÁéÏÔÊ¾Ä³¸ö×Ö·û´®ÎÄ×Ö
-	// ²ÎÊý szStr£ºÒªÏÔÊ¾µÄ×Ö·û´®
+	// SetTextStringï¼šæ–‡å­—ç²¾çµæ˜¾ç¤ºæŸä¸ªå­—ç¬¦ä¸²æ–‡å­—
+	// å‚æ•° szStrï¼šè¦æ˜¾ç¤ºçš„å­—ç¬¦ä¸²
 	//
 	void		SetTextString( const char *szStr );
 
-	// SetTextChar£ºÎÄ×Ö¾«ÁéÏÔÊ¾Ä³¸ö×Ö·û
-	// ²ÎÊý szChar£ºÒªÏÔÊ¾µÄ×Ö·û
+	// SetTextCharï¼šæ–‡å­—ç²¾çµæ˜¾ç¤ºæŸä¸ªå­—ç¬¦
+	// å‚æ•° szCharï¼šè¦æ˜¾ç¤ºçš„å­—ç¬¦
 	//
 	void		SetTextChar( char szChar );
 };
 /////////////////////////////////////////////////////////////////////////////
 //
-// Àà£ºCEffect
-// ÌØÐ§¾«Áé£¬ÊôÓÚ¾«ÁéÖÐµÄÒ»ÖÖ¡£ÓÃ·¨ºÍÎÄ×Ö¾«ÁéÒ»Ñù£¬ÏÈÔÚµØÍ¼Àï°Ú·ÅÒ»¸öÌØÐ§×öÎªÄ£°å£¬²¢ÃüÃû
-// È»ºóÔÚ´úÂëÀï¶¨ÒåÒ»¸öÌØÐ§¾«ÁéµÄ¶ÔÏóÊµÀý¼´¿ÉÊ¹ÓÃ
+// ç±»ï¼šCEffect
+// ç‰¹æ•ˆç²¾çµï¼Œå±žäºŽç²¾çµä¸­çš„ä¸€ç§ã€‚ç”¨æ³•å’Œæ–‡å­—ç²¾çµä¸€æ ·ï¼Œå…ˆåœ¨åœ°å›¾é‡Œæ‘†æ”¾ä¸€ä¸ªç‰¹æ•ˆåšä¸ºæ¨¡æ¿ï¼Œå¹¶å‘½å
+// ç„¶åŽåœ¨ä»£ç é‡Œå®šä¹‰ä¸€ä¸ªç‰¹æ•ˆç²¾çµçš„å¯¹è±¡å®žä¾‹å³å¯ä½¿ç”¨
 class CEffect : public CSprite
 {
-	char		m_szCloneName[MAX_NAME_LEN];		// ÔÚµØÍ¼ÖÐÔ¤ÏÈ°Ú·ÅºÃµÄÓÃ×ö¿ËÂ¡µÄÌØÐ§Ãû×Ö
-	float		m_fTime;							// ·ÇÑ­»·ÌØÐ§£ºÉúÃüÊ±³¤£»Ñ­»·ÌØÐ§£ºÑ­»·Ê±³¤
+	char		m_szCloneName[MAX_NAME_LEN];		// åœ¨åœ°å›¾ä¸­é¢„å…ˆæ‘†æ”¾å¥½çš„ç”¨åšå…‹éš†çš„ç‰¹æ•ˆåå­—
+	float		m_fTime;							// éžå¾ªçŽ¯ç‰¹æ•ˆï¼šç”Ÿå‘½æ—¶é•¿ï¼›å¾ªçŽ¯ç‰¹æ•ˆï¼šå¾ªçŽ¯æ—¶é•¿
 public:
-	
-	// ¹¹Ôìº¯Êý 
-	// ²ÎÊý szCloneName£ºµØÍ¼Àï°Ú·ÅºÃµÄÌØÐ§Ãû×Ö
-	// ²ÎÊý szMyName£ºÐÂµÄÌØÐ§Ãû×Ö¡£×¢Òâ£ºÈç¹ûÊÇÑ­»·ÌØÐ§£¬ÄÇÃ´±ØÐëÒ»¸öÑ­»·ÌØÐ§¾Í¶¨ÒåÒ»¸ö¶ÔÏóÊµÀý£¬ÓÃ²»Í¬µÄÃû×Ö
-	//                ·ñÔòÈç¹ûÒ»¸öÍ¬ÃûµÄÑ­»·ÌØÐ§±»²¥·Å¶à´Î£¬ÔÚÉ¾³ýµÄÊ±ºò»á³öÎÊÌâ¡£·ÇÑ­»·ÌØÐ§Ôò¿ÉÒÔÓÃÒ»¸öÊµÀý¶à´Î²¥·Å
-	// ²ÎÊý fTime£º·ÇÑ­»·ÌØÐ§£ºÉúÃüÊ±³¤£»Ñ­»·ÌØÐ§£ºÑ­»·Ê±³¤
+
+	// æž„é€ å‡½æ•°
+	// å‚æ•° szCloneNameï¼šåœ°å›¾é‡Œæ‘†æ”¾å¥½çš„ç‰¹æ•ˆåå­—
+	// å‚æ•° szMyNameï¼šæ–°çš„ç‰¹æ•ˆåå­—ã€‚æ³¨æ„ï¼šå¦‚æžœæ˜¯å¾ªçŽ¯ç‰¹æ•ˆï¼Œé‚£ä¹ˆå¿…é¡»ä¸€ä¸ªå¾ªçŽ¯ç‰¹æ•ˆå°±å®šä¹‰ä¸€ä¸ªå¯¹è±¡å®žä¾‹ï¼Œç”¨ä¸åŒçš„åå­—
+	//                å¦åˆ™å¦‚æžœä¸€ä¸ªåŒåçš„å¾ªçŽ¯ç‰¹æ•ˆè¢«æ’­æ”¾å¤šæ¬¡ï¼Œåœ¨åˆ é™¤çš„æ—¶å€™ä¼šå‡ºé—®é¢˜ã€‚éžå¾ªçŽ¯ç‰¹æ•ˆåˆ™å¯ä»¥ç”¨ä¸€ä¸ªå®žä¾‹å¤šæ¬¡æ’­æ”¾
+	// å‚æ•° fTimeï¼šéžå¾ªçŽ¯ç‰¹æ•ˆï¼šç”Ÿå‘½æ—¶é•¿ï¼›å¾ªçŽ¯ç‰¹æ•ˆï¼šå¾ªçŽ¯æ—¶é•¿
 	//
 	CEffect( const char *szCloneName, const char *szMyName, const float fTime );
 	~CEffect();
 
-	// GetCloneName£º»ñÈ¡ÓÃ×ö¿ËÂ¡µÄÌØÐ§Ãû×Ö
-	// 
+	// GetCloneNameï¼šèŽ·å–ç”¨åšå…‹éš†çš„ç‰¹æ•ˆåå­—
+	//
 	const char*	GetCloneName();
 
-	// GetTime£º·µ»ØÌØÐ§Ñ­»·Ê±³¤»òÕßÉúÃüÊ±³¤
+	// GetTimeï¼šè¿”å›žç‰¹æ•ˆå¾ªçŽ¯æ—¶é•¿æˆ–è€…ç”Ÿå‘½æ—¶é•¿
 	//
 	float		GetTime();
 
-	// PlayEffect£º²¥·ÅÒ»¸ö²»Ñ­»·µÄÌØÐ§£¬²¥·ÅÍê±ÏÖ®ºó¸ÃÌØÐ§×Ô¶¯É¾³ý
-	// ²¥·Å·ÇÑ­»·ÌØÐ§µÄÊ±ºò£¬¿ÉÒÔÊ¹ÓÃÒ»¸öCEffectµÄ¶ÔÏóÊµÀý£¬²¥·Å¶à¸öÌØÐ§
-	// ²ÎÊý fPosX£º²¥·ÅµÄX×ø±ê
-	// ²ÎÊý fPosY£º²¥·ÅµÄY×ø±ê
-	// ²ÎÊý fRotation£º²¥·ÅµÄ½Ç¶È³¯Ïò
+	// PlayEffectï¼šæ’­æ”¾ä¸€ä¸ªä¸å¾ªçŽ¯çš„ç‰¹æ•ˆï¼Œæ’­æ”¾å®Œæ¯•ä¹‹åŽè¯¥ç‰¹æ•ˆè‡ªåŠ¨åˆ é™¤
+	// æ’­æ”¾éžå¾ªçŽ¯ç‰¹æ•ˆçš„æ—¶å€™ï¼Œå¯ä»¥ä½¿ç”¨ä¸€ä¸ªCEffectçš„å¯¹è±¡å®žä¾‹ï¼Œæ’­æ”¾å¤šä¸ªç‰¹æ•ˆ
+	// å‚æ•° fPosXï¼šæ’­æ”¾çš„Xåæ ‡
+	// å‚æ•° fPosYï¼šæ’­æ”¾çš„Yåæ ‡
+	// å‚æ•° fRotationï¼šæ’­æ”¾çš„è§’åº¦æœå‘
 	//
 	void		PlayEffect( const float fPosX, const float fPosY, const float fRotation);
 
-	// PlayLoopEffect£º²¥·ÅÒ»¸öÑ­»·ÌØÐ§£¬²»ÐèÒª¸ÃÌØÐ§µÄÊ±ºò£¬ÐèÒª×Ô¼ºµ÷ÓÃAPI½øÐÐÉ¾³ý
-	// ²ÎÊý fPosX£º²¥·ÅµÄX×ø±ê
-	// ²ÎÊý fPosY£º²¥·ÅµÄY×ø±ê
-	// ²ÎÊý fRotation£º²¥·ÅµÄ½Ç¶È³¯Ïò
+	// PlayLoopEffectï¼šæ’­æ”¾ä¸€ä¸ªå¾ªçŽ¯ç‰¹æ•ˆï¼Œä¸éœ€è¦è¯¥ç‰¹æ•ˆçš„æ—¶å€™ï¼Œéœ€è¦è‡ªå·±è°ƒç”¨APIè¿›è¡Œåˆ é™¤
+	// å‚æ•° fPosXï¼šæ’­æ”¾çš„Xåæ ‡
+	// å‚æ•° fPosYï¼šæ’­æ”¾çš„Yåæ ‡
+	// å‚æ•° fRotationï¼šæ’­æ”¾çš„è§’åº¦æœå‘
 	//
 	void		PlayLoopEffect( const float fPosX, const float fPosY, const float fRotation);
 
-	// DeleteEffect£ºÉ¾³ýÒ»¸öÕýÔÚ²¥·ÅµÄÌØÐ§£¬Ö»ÓÐÑ­»·ÌØÐ§²ÅÐèÒªÊÖ¶¯É¾³ý
+	// DeleteEffectï¼šåˆ é™¤ä¸€ä¸ªæ­£åœ¨æ’­æ”¾çš„ç‰¹æ•ˆï¼Œåªæœ‰å¾ªçŽ¯ç‰¹æ•ˆæ‰éœ€è¦æ‰‹åŠ¨åˆ é™¤
 	//
-	void		DeleteEffect(); 
+	void		DeleteEffect();
 };
 /////////////////////////////////////////////////////////////////////////////
 //
-// Àà£ºCSound
-// ²¥·ÅÉùÒôµÄÀà£¬¶¨ÒåÒ»¸ö¶ÔÏóÊµÀý£¬µ÷ÓÃ²¥·Åº¯Êý¼´¿ÉÊµÏÖÉùÒôµÄ²¥·Å
-// 
+// ç±»ï¼šCSound
+// æ’­æ”¾å£°éŸ³çš„ç±»ï¼Œå®šä¹‰ä¸€ä¸ªå¯¹è±¡å®žä¾‹ï¼Œè°ƒç”¨æ’­æ”¾å‡½æ•°å³å¯å®žçŽ°å£°éŸ³çš„æ’­æ”¾
+//
 class CSound
 {
 private:
-	char		m_szName[MAX_NAME_LEN];	// ÉùÒôÃû
-	int			m_iSoundId;				// ÒýÇæ²¥·ÅÉùÒôµÄÊ±ºò£¬·µ»ØµÄID
-	bool		m_bLoop;				// bLoop : ÊÇ·ñÑ­»·²¥·Å¡£Èç¹ûÎªÑ­»·ÒôÐ§£¬ÔòÔÚCSoundÊµÀýÎö¹¹µÄÊ±ºò£¬×Ô¶¯µ÷ÓÃStopSoundÍ£Ö¹´ËÉùÒôµÄ²¥·Å
-	float		m_fVolume;				// ÒôÁ¿´óÐ¡£¬0-1¡£1ÎªÉùÒôÎÄ¼þµÄÔ­Éù´óÐ¡
+	char		m_szName[MAX_NAME_LEN];	// å£°éŸ³å
+	int			m_iSoundId;				// å¼•æ“Žæ’­æ”¾å£°éŸ³çš„æ—¶å€™ï¼Œè¿”å›žçš„ID
+	bool		m_bLoop;				// bLoop : æ˜¯å¦å¾ªçŽ¯æ’­æ”¾ã€‚å¦‚æžœä¸ºå¾ªçŽ¯éŸ³æ•ˆï¼Œåˆ™åœ¨CSoundå®žä¾‹æžæž„çš„æ—¶å€™ï¼Œè‡ªåŠ¨è°ƒç”¨StopSoundåœæ­¢æ­¤å£°éŸ³çš„æ’­æ”¾
+	float		m_fVolume;				// éŸ³é‡å¤§å°ï¼Œ0-1ã€‚1ä¸ºå£°éŸ³æ–‡ä»¶çš„åŽŸå£°å¤§å°
 
 public:
 
-	// ¹¹Ôìº¯Êý
-	// ²ÎÊý szName£ºÉùÒôµÄÂ·¾¶¼°Ãû³Æ£¬¾ßÌåÖµÇëÔÚ±à¼­Æ÷µÄ×ÊÔ´ -> Ìí¼ÓÉùÒôÄÇÀï²é¿´±¾ÏîÄ¿ÀïµÄÉùÒô×ÊÔ´£¬ÍêÕû°´ÕÕÄÇ¸öÂ·¾¶ÖµÌîÐ´¼´¿É
-	// ²ÎÊý bLoop£ºÊÇ·ñÑ­»·²¥·Å¡£Èç¹ûÊÇÑ­»·²¥·ÅµÄÉùÒô£¬ÐèÒªÊÖ¶¯µ÷ÓÃAPIÍ£Ö¹²¥·Å
-	// ²ÎÊý fVolume£ºÒôÁ¿´óÐ¡£¬0-1¡£1ÎªÉùÒôÎÄ¼þµÄÔ­Éù´óÐ¡
+	// æž„é€ å‡½æ•°
+	// å‚æ•° szNameï¼šå£°éŸ³çš„è·¯å¾„åŠåç§°ï¼Œå…·ä½“å€¼è¯·åœ¨ç¼–è¾‘å™¨çš„èµ„æº -> æ·»åŠ å£°éŸ³é‚£é‡ŒæŸ¥çœ‹æœ¬é¡¹ç›®é‡Œçš„å£°éŸ³èµ„æºï¼Œå®Œæ•´æŒ‰ç…§é‚£ä¸ªè·¯å¾„å€¼å¡«å†™å³å¯
+	// å‚æ•° bLoopï¼šæ˜¯å¦å¾ªçŽ¯æ’­æ”¾ã€‚å¦‚æžœæ˜¯å¾ªçŽ¯æ’­æ”¾çš„å£°éŸ³ï¼Œéœ€è¦æ‰‹åŠ¨è°ƒç”¨APIåœæ­¢æ’­æ”¾
+	// å‚æ•° fVolumeï¼šéŸ³é‡å¤§å°ï¼Œ0-1ã€‚1ä¸ºå£°éŸ³æ–‡ä»¶çš„åŽŸå£°å¤§å°
 	//
 	CSound( const char *szName, const bool bLoop, const float fVolume );
 	~CSound();
 
-	// GetName£º»ñÈ¡ÉùÒôÃû×Ö
+	// GetNameï¼šèŽ·å–å£°éŸ³åå­—
 	//
 	const char*	GetName();
 
-	// PlaySound£º²¥·Å¸ÃÉùÒô
+	// PlaySoundï¼šæ’­æ”¾è¯¥å£°éŸ³
 	//
 	void		PlaySound();
 
-	// StopSound£ºÍ£Ö¹¸ÃÉùÒôµÄ²¥·Å
-	// ·ÇÑ­»·µÄ²¥·ÅÍêÖ®ºó½«×Ô¶¯Í£Ö¹£¬ËùÒÔÒ»°ã²»ÐèÒªµ÷ÓÃ´Ëº¯Êý¡£Ö»ÓÐÑ­»·µÄÉùÒô²ÅÐèÒªµ÷ÓÃ¡£¶ÔÓÚÑ­»·ÒôÐ§£¬ÔÚÎö¹¹º¯ÊýÀïÒ²»á×Ô¶¯µ÷ÓÃ´Ëº¯Êý
+	// StopSoundï¼šåœæ­¢è¯¥å£°éŸ³çš„æ’­æ”¾
+	// éžå¾ªçŽ¯çš„æ’­æ”¾å®Œä¹‹åŽå°†è‡ªåŠ¨åœæ­¢ï¼Œæ‰€ä»¥ä¸€èˆ¬ä¸éœ€è¦è°ƒç”¨æ­¤å‡½æ•°ã€‚åªæœ‰å¾ªçŽ¯çš„å£°éŸ³æ‰éœ€è¦è°ƒç”¨ã€‚å¯¹äºŽå¾ªçŽ¯éŸ³æ•ˆï¼Œåœ¨æžæž„å‡½æ•°é‡Œä¹Ÿä¼šè‡ªåŠ¨è°ƒç”¨æ­¤å‡½æ•°
 	//
 	void		StopSound();
-	
-	// StopAllSound£ºÍ£Ö¹²¥·ÅËùÓÐÉùÒô
-	// ¾²Ì¬º¯Êý£¬¿ÉÒÔÒÔ´ËÖÖ·½Ê½µ÷ÓÃ£ºCSound::StopAllSound£¬ÒÔÍ£Ö¹ÓÎÏ·ÖÐËùÓÐÕýÔÚ²¥·ÅµÄÉùÒô
+
+	// StopAllSoundï¼šåœæ­¢æ’­æ”¾æ‰€æœ‰å£°éŸ³
+	// é™æ€å‡½æ•°ï¼Œå¯ä»¥ä»¥æ­¤ç§æ–¹å¼è°ƒç”¨ï¼šCSound::StopAllSoundï¼Œä»¥åœæ­¢æ¸¸æˆä¸­æ‰€æœ‰æ­£åœ¨æ’­æ”¾çš„å£°éŸ³
 	//
 	static void	StopAllSound();
 };
 
 ////////////////////////////////////////////////////////////////////////////////
 //
-// Àà£ºCSystem
-// ÏµÍ³Ïà¹Ø¹¦ÄÜµÄÀà. º¯Êýµ÷ÓÃ·½·¨ CSystem::º¯ÊýÃû();
+// ç±»ï¼šCSystem
+// ç³»ç»Ÿç›¸å…³åŠŸèƒ½çš„ç±». å‡½æ•°è°ƒç”¨æ–¹æ³• CSystem::å‡½æ•°å();
 //
 class CSystem
 {
@@ -995,216 +995,216 @@ public:
 	CSystem();
 	~CSystem();
 
-	// OnMouseMove£ºÊó±êÒÆ¶¯ºó½«±»µ÷ÓÃµÄº¯Êý£¬¿ÉÔÚ´Ëº¯ÊýÌåÀï(Main.cpp)Ôö¼Ó×Ô¼ºµÄÏìÓ¦´úÂë
-	// ²ÎÊý fMouseX, fMouseY£ºÎªÊó±êµ±Ç°×ø±ê
+	// OnMouseMoveï¼šé¼ æ ‡ç§»åŠ¨åŽå°†è¢«è°ƒç”¨çš„å‡½æ•°ï¼Œå¯åœ¨æ­¤å‡½æ•°ä½“é‡Œ(Main.cpp)å¢žåŠ è‡ªå·±çš„å“åº”ä»£ç 
+	// å‚æ•° fMouseX, fMouseYï¼šä¸ºé¼ æ ‡å½“å‰åæ ‡
 	//
 	static void		OnMouseMove( const float fMouseX, const float fMouseY );
 
-	// OnMouseClick£ºÊó±ê°´ÏÂºó½«±»µ÷ÓÃµÄº¯Êý£¬¿ÉÔÚ´Ëº¯ÊýÌåÀï(Main.cpp)Ôö¼Ó×Ô¼ºµÄÏìÓ¦´úÂë
-	// ²ÎÊý iMouseType£ºÊó±ê°´¼üÖµ£¬¼û enum MouseTypes ¶¨Òå
-	// ²ÎÊý fMouseX, fMouseY£ºÎªÊó±êµ±Ç°×ø±ê
+	// OnMouseClickï¼šé¼ æ ‡æŒ‰ä¸‹åŽå°†è¢«è°ƒç”¨çš„å‡½æ•°ï¼Œå¯åœ¨æ­¤å‡½æ•°ä½“é‡Œ(Main.cpp)å¢žåŠ è‡ªå·±çš„å“åº”ä»£ç 
+	// å‚æ•° iMouseTypeï¼šé¼ æ ‡æŒ‰é”®å€¼ï¼Œè§ enum MouseTypes å®šä¹‰
+	// å‚æ•° fMouseX, fMouseYï¼šä¸ºé¼ æ ‡å½“å‰åæ ‡
 	//
 	static void		OnMouseClick( const int iMouseType, const float fMouseX, const float fMouseY );
 
-	// OnMouseUp£ºÊó±ê°´ÏÂºó½«±»µ÷ÓÃµÄº¯Êý£¬¿ÉÔÚ´Ëº¯ÊýÌåÀï(Main.cpp)Ôö¼Ó×Ô¼ºµÄÏìÓ¦´úÂë
-	// ²ÎÊý iMouseType£ºÊó±ê°´¼üÖµ£¬¼û enum MouseTypes ¶¨Òå
-	// ²ÎÊý fMouseX, fMouseY£ºÎªÊó±êµ±Ç°×ø±ê
+	// OnMouseUpï¼šé¼ æ ‡æŒ‰ä¸‹åŽå°†è¢«è°ƒç”¨çš„å‡½æ•°ï¼Œå¯åœ¨æ­¤å‡½æ•°ä½“é‡Œ(Main.cpp)å¢žåŠ è‡ªå·±çš„å“åº”ä»£ç 
+	// å‚æ•° iMouseTypeï¼šé¼ æ ‡æŒ‰é”®å€¼ï¼Œè§ enum MouseTypes å®šä¹‰
+	// å‚æ•° fMouseX, fMouseYï¼šä¸ºé¼ æ ‡å½“å‰åæ ‡
 	//
 	static void		OnMouseUp( const int iMouseType, const float fMouseX, const float fMouseY );
 
-	// OnKeyDown£º¼üÅÌ±»°´ÏÂºó½«±»µ÷ÓÃµÄº¯Êý£¬¿ÉÔÚ´Ëº¯ÊýÌåÀï(Main.cpp)Ôö¼Ó×Ô¼ºµÄÏìÓ¦´úÂë
-	// ²ÎÊý iKey£º±»°´ÏÂµÄ¼ü£¬Öµ¼û enum KeyCodes ºê¶¨Òå
-	// ²ÎÊý bAltPress, bShiftPress£¬bCtrlPress£º¼üÅÌÉÏµÄ¹¦ÄÜ¼üAlt£¬Ctrl£¬Shiftµ±Ç°ÊÇ·ñÒ²´¦ÓÚ°´ÏÂ×´Ì¬
+	// OnKeyDownï¼šé”®ç›˜è¢«æŒ‰ä¸‹åŽå°†è¢«è°ƒç”¨çš„å‡½æ•°ï¼Œå¯åœ¨æ­¤å‡½æ•°ä½“é‡Œ(Main.cpp)å¢žåŠ è‡ªå·±çš„å“åº”ä»£ç 
+	// å‚æ•° iKeyï¼šè¢«æŒ‰ä¸‹çš„é”®ï¼Œå€¼è§ enum KeyCodes å®å®šä¹‰
+	// å‚æ•° bAltPress, bShiftPressï¼ŒbCtrlPressï¼šé”®ç›˜ä¸Šçš„åŠŸèƒ½é”®Altï¼ŒCtrlï¼ŒShiftå½“å‰æ˜¯å¦ä¹Ÿå¤„äºŽæŒ‰ä¸‹çŠ¶æ€
 	//
 	static void		OnKeyDown( const int iKey, const bool bAltPress, const bool bShiftPress, const bool bCtrlPress );
 
-	// OnKeyUp£º¼üÅÌ°´¼üµ¯Æðºó½«±»µ÷ÓÃµÄº¯Êý£¬¿ÉÔÚ´Ëº¯ÊýÌåÀï(Main.cpp)Ôö¼Ó×Ô¼ºµÄÏìÓ¦´úÂë
-	// ²ÎÊý iKey£ºµ¯ÆðµÄ¼ü£¬Öµ¼û enum KeyCodes ºê¶¨Òå
+	// OnKeyUpï¼šé”®ç›˜æŒ‰é”®å¼¹èµ·åŽå°†è¢«è°ƒç”¨çš„å‡½æ•°ï¼Œå¯åœ¨æ­¤å‡½æ•°ä½“é‡Œ(Main.cpp)å¢žåŠ è‡ªå·±çš„å“åº”ä»£ç 
+	// å‚æ•° iKeyï¼šå¼¹èµ·çš„é”®ï¼Œå€¼è§ enum KeyCodes å®å®šä¹‰
 	//
 	static void		OnKeyUp( const int iKey );
 
-	// OnSpriteColSprite£º¾«ÁéÓë¾«ÁéÅö×²ºó½«±»µ÷ÓÃµÄº¯Êý£¬¿ÉÔÚ´Ëº¯ÊýÌåÀï(Main.cpp)Ôö¼Ó×Ô¼ºµÄÏìÓ¦´úÂë
-	// ¾«ÁéÖ®¼äÒª²úÉúÅö×²£¬±ØÐëÔÚ±à¼­Æ÷»òÕß´úÂëÀïÉèÖÃ¾«Áé·¢ËÍ¼°½ÓÊÜÅö×²
-	// ²ÎÊý szSrcName£º·¢ÆðÅö×²µÄ¾«ÁéÃû×Ö
-	// ²ÎÊý szTarName£º±»Åö×²µÄ¾«ÁéÃû×Ö
+	// OnSpriteColSpriteï¼šç²¾çµä¸Žç²¾çµç¢°æ’žåŽå°†è¢«è°ƒç”¨çš„å‡½æ•°ï¼Œå¯åœ¨æ­¤å‡½æ•°ä½“é‡Œ(Main.cpp)å¢žåŠ è‡ªå·±çš„å“åº”ä»£ç 
+	// ç²¾çµä¹‹é—´è¦äº§ç”Ÿç¢°æ’žï¼Œå¿…é¡»åœ¨ç¼–è¾‘å™¨æˆ–è€…ä»£ç é‡Œè®¾ç½®ç²¾çµå‘é€åŠæŽ¥å—ç¢°æ’ž
+	// å‚æ•° szSrcNameï¼šå‘èµ·ç¢°æ’žçš„ç²¾çµåå­—
+	// å‚æ•° szTarNameï¼šè¢«ç¢°æ’žçš„ç²¾çµåå­—
 	//
 	static void		OnSpriteColSprite( const char *szSrcName, const char *szTarName );
 
-	// OnSpriteColWorldLimit£º¾«ÁéÓëÊÀ½ç±ß½çÅö×²ºó½«±»µ÷ÓÃµÄº¯Êý£¬¿ÉÔÚ´Ëº¯ÊýÌåÀï(Main.cpp)Ôö¼Ó×Ô¼ºµÄÏìÓ¦´úÂë
-	// ¾«ÁéÖ®¼äÒª²úÉúÅö×²£¬±ØÐëÔÚ±à¼­Æ÷»òÕß´úÂëÀïÉèÖÃ¾«ÁéµÄÊÀ½ç±ß½çÏÞÖÆ
-	// ²ÎÊý szName£ºÅö×²µ½±ß½çµÄ¾«ÁéÃû×Ö
-	// ²ÎÊý iColSide£ºÅö×²µ½µÄ±ß½ç 0 ×ó±ß£¬1 ÓÒ±ß£¬2 ÉÏ±ß£¬3 ÏÂ±ß
+	// OnSpriteColWorldLimitï¼šç²¾çµä¸Žä¸–ç•Œè¾¹ç•Œç¢°æ’žåŽå°†è¢«è°ƒç”¨çš„å‡½æ•°ï¼Œå¯åœ¨æ­¤å‡½æ•°ä½“é‡Œ(Main.cpp)å¢žåŠ è‡ªå·±çš„å“åº”ä»£ç 
+	// ç²¾çµä¹‹é—´è¦äº§ç”Ÿç¢°æ’žï¼Œå¿…é¡»åœ¨ç¼–è¾‘å™¨æˆ–è€…ä»£ç é‡Œè®¾ç½®ç²¾çµçš„ä¸–ç•Œè¾¹ç•Œé™åˆ¶
+	// å‚æ•° szNameï¼šç¢°æ’žåˆ°è¾¹ç•Œçš„ç²¾çµåå­—
+	// å‚æ•° iColSideï¼šç¢°æ’žåˆ°çš„è¾¹ç•Œ 0 å·¦è¾¹ï¼Œ1 å³è¾¹ï¼Œ2 ä¸Šè¾¹ï¼Œ3 ä¸‹è¾¹
 	//
 	static void		OnSpriteColWorldLimit( const char *szName, const int iColSide );
 
-	// MakeSpriteName: ½«Ç°ÃæµÄ×Ö·û´®ÓëºóÃæµÄÊý×ÖÕûºÏ³ÉÒ»¸ö×Ö·û´®¡£
-	// ²ÎÊý szPrev£ºÒ»¸ö·Ç¿Õ×Ö·û´®£¬×î³¤²»ÄÜ³¬¹ý20¸öÓ¢ÎÄ×Ö·û¡£Ãû×ÖÇ°ÃæµÄ×Ö·û¡£
-	// ²ÎÊý iId£ºÒ»¸öÊý×Ö
-	// ·µ»ØÖµ£º·µ»ØÒ»¸ö×Ö·û´®£¬±ÈÈç´«Èë("xxx", 2),Ôò·µ»Ø"xxx2"
+	// MakeSpriteName: å°†å‰é¢çš„å­—ç¬¦ä¸²ä¸ŽåŽé¢çš„æ•°å­—æ•´åˆæˆä¸€ä¸ªå­—ç¬¦ä¸²ã€‚
+	// å‚æ•° szPrevï¼šä¸€ä¸ªéžç©ºå­—ç¬¦ä¸²ï¼Œæœ€é•¿ä¸èƒ½è¶…è¿‡20ä¸ªè‹±æ–‡å­—ç¬¦ã€‚åå­—å‰é¢çš„å­—ç¬¦ã€‚
+	// å‚æ•° iIdï¼šä¸€ä¸ªæ•°å­—
+	// è¿”å›žå€¼ï¼šè¿”å›žä¸€ä¸ªå­—ç¬¦ä¸²ï¼Œæ¯”å¦‚ä¼ å…¥("xxx", 2),åˆ™è¿”å›ž"xxx2"
 	//
 	static char* MakeSpriteName(const char *szPrev, const int iId);
 
-	// CursorOff£º¹Ø±ÕÊó±ê²»ÏÔÊ¾¡£´ËAPIÒþ²ØµÄÊÇÕû¸öWindowsµÄÊó±ê£¬³ý·Çµ÷ÓÃ¿ªÆôÊó±êµÄAPI dCursorOn£¬·ñÔòÊó±ê½«Ò»Ö±²»ÏÔÊ¾
+	// CursorOffï¼šå…³é—­é¼ æ ‡ä¸æ˜¾ç¤ºã€‚æ­¤APIéšè—çš„æ˜¯æ•´ä¸ªWindowsçš„é¼ æ ‡ï¼Œé™¤éžè°ƒç”¨å¼€å¯é¼ æ ‡çš„API dCursorOnï¼Œå¦åˆ™é¼ æ ‡å°†ä¸€ç›´ä¸æ˜¾ç¤º
 	//
 	static void		CursorOff();
 
-	// CursorOn£º¿ªÆôÊó±êÏÔÊ¾¡£½«API dCursorOff¹Ø±ÕµÄÊó±êÖØÐÂ¿ªÆôÏÔÊ¾
+	// CursorOnï¼šå¼€å¯é¼ æ ‡æ˜¾ç¤ºã€‚å°†API dCursorOffå…³é—­çš„é¼ æ ‡é‡æ–°å¼€å¯æ˜¾ç¤º
 	//
 	static void		CursorOn();
 
-	// IsCursorOn£ºµ±Ç°Êó±êÊÇ¿ªÆô»¹ÊÇ¹Ø±Õ¡£¶ÔÓ¦µÄÊÇÓÃAPI dCursorOffºÍdCursorOn¿ªÆô»òÕß¹Ø±ÕµÄ²Ù×÷
-	// ·µ»ØÖµ£ºtrueÎª¿ªÆô×´Ì¬£¬falseÎª¹Ø±Õ×´Ì¬
+	// IsCursorOnï¼šå½“å‰é¼ æ ‡æ˜¯å¼€å¯è¿˜æ˜¯å…³é—­ã€‚å¯¹åº”çš„æ˜¯ç”¨API dCursorOffå’ŒdCursorOnå¼€å¯æˆ–è€…å…³é—­çš„æ“ä½œ
+	// è¿”å›žå€¼ï¼štrueä¸ºå¼€å¯çŠ¶æ€ï¼Œfalseä¸ºå…³é—­çŠ¶æ€
 	//
 	static bool		IsCursorOn();
 
-	// ShowCursor£ºÒþ²Ø/ÏÔÊ¾Êó±ê¡£´ËAPIÖ»ÊÇÒþ²Ø±¾³ÌÐò´°¿ÚÄÚµÄÊó±ê£¬ÒÆ¶¯µ½´°¿ÚÍâµÄÊ±ºò£¬Êó±ê»¹ÊÇ»áÏÔÊ¾
-	// ²ÎÊý bShow£ºtrue ÎªÏÔÊ¾£¬false ÎªÒþ²Ø
+	// ShowCursorï¼šéšè—/æ˜¾ç¤ºé¼ æ ‡ã€‚æ­¤APIåªæ˜¯éšè—æœ¬ç¨‹åºçª—å£å†…çš„é¼ æ ‡ï¼Œç§»åŠ¨åˆ°çª—å£å¤–çš„æ—¶å€™ï¼Œé¼ æ ‡è¿˜æ˜¯ä¼šæ˜¾ç¤º
+	// å‚æ•° bShowï¼štrue ä¸ºæ˜¾ç¤ºï¼Œfalse ä¸ºéšè—
 	//
 	static void		ShowCursor( const bool bShow );
 
-	// IsShowCursor£ºµ±Ç°Êó±êÊÇÏÔÊ¾»¹ÊÇÒþ²Ø¡£¶ÔÓ¦µÄÊÇÓÃAPI ShowCursorÒþ²Ø»òÕßÏÔÊ¾µÄ²Ù×÷
-	// ·µ»ØÖµ£ºtrueÎª¿ªÆô×´Ì¬£¬falseÎª¹Ø±Õ×´Ì¬
+	// IsShowCursorï¼šå½“å‰é¼ æ ‡æ˜¯æ˜¾ç¤ºè¿˜æ˜¯éšè—ã€‚å¯¹åº”çš„æ˜¯ç”¨API ShowCursoréšè—æˆ–è€…æ˜¾ç¤ºçš„æ“ä½œ
+	// è¿”å›žå€¼ï¼štrueä¸ºå¼€å¯çŠ¶æ€ï¼Œfalseä¸ºå…³é—­çŠ¶æ€
 	//
 	static bool		IsShowCursor();
 
-	// SetWindowTitle£ºÉèÖÃ´°¿ÚÃû×Ö/±êÌâ
-	// ²ÎÊý szTitle£º·Ç¿Õ×Ö·û´®
+	// SetWindowTitleï¼šè®¾ç½®çª—å£åå­—/æ ‡é¢˜
+	// å‚æ•° szTitleï¼šéžç©ºå­—ç¬¦ä¸²
 	//
 	static void		SetWindowTitle( const char *szTitle );
 
-	// ResizeWindow£º¸ü¸Ä´°¿Ú´óÐ¡
-	// ²ÎÊý iWidth£º¿í¶È£¬´óÓÚ0Ð¡ÓÚµÈÓÚ1920
-	// ²ÎÊý iHeight£º¸ß¶È£¬´óÓÚ0Ð¡ÓÚµÈÓÚ1080
+	// ResizeWindowï¼šæ›´æ”¹çª—å£å¤§å°
+	// å‚æ•° iWidthï¼šå®½åº¦ï¼Œå¤§äºŽ0å°äºŽç­‰äºŽ1920
+	// å‚æ•° iHeightï¼šé«˜åº¦ï¼Œå¤§äºŽ0å°äºŽç­‰äºŽ1080
 	//
 	static void		ResizeWindow(int iWidth, int iHeight);
 
-	// GetHwnd£º»ñÈ¡´°¿Ú¾ä±ú
-	// ·µ»ØÖµ£º´°¿Ú¾ä±ú
+	// GetHwndï¼šèŽ·å–çª—å£å¥æŸ„
+	// è¿”å›žå€¼ï¼šçª—å£å¥æŸ„
 	//
 	static void		*GetHwnd();
 
-	// Random£º»ñÈ¡Ò»¸ö´óÓÚµÈÓÚ0µÄËæ»úÊý
-	// ·µ»ØÖµ£ºint£¬·¶Î§0 - 2147483648
+	// Randomï¼šèŽ·å–ä¸€ä¸ªå¤§äºŽç­‰äºŽ0çš„éšæœºæ•°
+	// è¿”å›žå€¼ï¼šintï¼ŒèŒƒå›´0 - 2147483648
 	//
 	static int		Random();
 
-	// RandomRange£º»ñÈ¡Ò»¸öÎ»ÓÚ²ÎÊý1µ½²ÎÊý2Ö®¼äµÄËæ»úÊý
-	// ·µ»ØÖµ£ºint£¬·¶Î§iMin - iMax
-	// ²ÎÊý iMin£ºÐ¡ÓÚiMaxµÄÕûÊý
-	// ²ÎÊý iMax£º´óÓÚiMinµÄÕûÊý
+	// RandomRangeï¼šèŽ·å–ä¸€ä¸ªä½äºŽå‚æ•°1åˆ°å‚æ•°2ä¹‹é—´çš„éšæœºæ•°
+	// è¿”å›žå€¼ï¼šintï¼ŒèŒƒå›´iMin - iMax
+	// å‚æ•° iMinï¼šå°äºŽiMaxçš„æ•´æ•°
+	// å‚æ•° iMaxï¼šå¤§äºŽiMinçš„æ•´æ•°
 	//
 	static int		RandomRange( const int iMin, const int iMax );
 
-	// CalLineRotation£º¼ÆËãÁ½µãÁ¬ÏßµÄÖ±ÏßµÄÐý×ª½Ç¶È
-	// ·µ»ØÖµ£º½Ç¶È£¬·¶Î§0 - 360
-	// ²ÎÊý fStartX£ºÆðÊ¼×ø±êX
-	// ²ÎÊý fStartY£ºÆðÊ¼×ø±êY
-	// ²ÎÊý fEndX£ºÖÕµã×ø±êX
-	// ²ÎÊý fEndY£ºÖÕµã×ø±êY
+	// CalLineRotationï¼šè®¡ç®—ä¸¤ç‚¹è¿žçº¿çš„ç›´çº¿çš„æ—‹è½¬è§’åº¦
+	// è¿”å›žå€¼ï¼šè§’åº¦ï¼ŒèŒƒå›´0 - 360
+	// å‚æ•° fStartXï¼šèµ·å§‹åæ ‡X
+	// å‚æ•° fStartYï¼šèµ·å§‹åæ ‡Y
+	// å‚æ•° fEndXï¼šç»ˆç‚¹åæ ‡X
+	// å‚æ•° fEndYï¼šç»ˆç‚¹åæ ‡Y
 	//
 	static float	CalLineRotation( const float fStartX, const float fStartY, const float fEndX, const float fEndY );
 
-	// RotationToVectorX£º¼ÆËãÄ³¸ö½Ç¶È¶ÔÓ¦µÄÖ±ÏßÏòÁ¿µÄX·½Ïò
-	// ²ÎÊý fRotation£º½Ç¶È£¬·¶Î§0 - 360
-	// ·µ»ØÖµ £º¸ÃÖ±ÏßÏòÁ¿µÄXÖµ
+	// RotationToVectorXï¼šè®¡ç®—æŸä¸ªè§’åº¦å¯¹åº”çš„ç›´çº¿å‘é‡çš„Xæ–¹å‘
+	// å‚æ•° fRotationï¼šè§’åº¦ï¼ŒèŒƒå›´0 - 360
+	// è¿”å›žå€¼ ï¼šè¯¥ç›´çº¿å‘é‡çš„Xå€¼
 	//
 	static float	RotationToVectorX( const float fRotation );
 
-	// RotationToVectorY£º¼ÆËãÄ³¸ö½Ç¶È¶ÔÓ¦µÄÖ±ÏßÏòÁ¿µÄY·½Ïò
-	// ²ÎÊý fRotation£º½Ç¶È£¬·¶Î§0 - 360
-	// ·µ»ØÖµ £º¸ÃÖ±ÏßÏòÁ¿µÄYÖµ
+	// RotationToVectorYï¼šè®¡ç®—æŸä¸ªè§’åº¦å¯¹åº”çš„ç›´çº¿å‘é‡çš„Yæ–¹å‘
+	// å‚æ•° fRotationï¼šè§’åº¦ï¼ŒèŒƒå›´0 - 360
+	// è¿”å›žå€¼ ï¼šè¯¥ç›´çº¿å‘é‡çš„Yå€¼
 	//
 	static float	RotationToVectorY( const float fRotation );
 
-	// DrawLine£ºÔÚÁ½µãÖ®¼ä»­Ò»ÌõÏß
-	// ²ÎÊý fStartX£ºÆðÊ¼×ø±êX
-	// ²ÎÊý fStartY£ºÆðÊ¼×ø±êY
-	// ²ÎÊý fEndX£ºÖÕµã×ø±êX
-	// ²ÎÊý fEndY£ºÖÕµã×ø±êY
-	// ²ÎÊý fLineWidth£ºÏßµÄ´ÖÏ¸£¬´óÓÚµÈÓÚ1
-	// ²ÎÊý iLayer£º¸ÄÏßËùÔÚµÄ²ã£¬Óë±à¼­Æ÷ÀïÉèÖÃµÄ¾«ÁéµÄ²ã¼¶ÊÇÍ¬Ò»¸ö¸ÅÄî¡£·¶Î§0 - 31¡£
-	// ²ÎÊý iRed, iGreen, iBlue : ºìÂÌÀ¶ÈýÔ­É«µÄÑÕÉ«Öµ£¬·¶Î§ 0 - 255
-	// ²ÎÊý iAlpha£ºÏßµÄÍ¸Ã÷¶È£¬·¶Î§0-255. 0ÎªÈ«Í¸Ã÷£¬255Îª²»Í¸Ã÷
+	// DrawLineï¼šåœ¨ä¸¤ç‚¹ä¹‹é—´ç”»ä¸€æ¡çº¿
+	// å‚æ•° fStartXï¼šèµ·å§‹åæ ‡X
+	// å‚æ•° fStartYï¼šèµ·å§‹åæ ‡Y
+	// å‚æ•° fEndXï¼šç»ˆç‚¹åæ ‡X
+	// å‚æ•° fEndYï¼šç»ˆç‚¹åæ ‡Y
+	// å‚æ•° fLineWidthï¼šçº¿çš„ç²—ç»†ï¼Œå¤§äºŽç­‰äºŽ1
+	// å‚æ•° iLayerï¼šæ”¹çº¿æ‰€åœ¨çš„å±‚ï¼Œä¸Žç¼–è¾‘å™¨é‡Œè®¾ç½®çš„ç²¾çµçš„å±‚çº§æ˜¯åŒä¸€ä¸ªæ¦‚å¿µã€‚èŒƒå›´0 - 31ã€‚
+	// å‚æ•° iRed, iGreen, iBlue : çº¢ç»¿è“ä¸‰åŽŸè‰²çš„é¢œè‰²å€¼ï¼ŒèŒƒå›´ 0 - 255
+	// å‚æ•° iAlphaï¼šçº¿çš„é€æ˜Žåº¦ï¼ŒèŒƒå›´0-255. 0ä¸ºå…¨é€æ˜Žï¼Œ255ä¸ºä¸é€æ˜Ž
 	//
 	static void		DrawLine( const float fStartX, const float fStartY, const float fEndX, const float fEndY, const float fLineWidth, const int iLayer, const int iRed, const int iGreen, const int iBlue, const int iAlpha );
 
-	// DrawTriangle£º»­Ò»¸öÈý½ÇÐÎ
-	// ²ÎÊý fX1,fX2,fX3£ºÈý½ÇÐÎÉÏÈý¸öµãµÄX×ø±ê
-	// ²ÎÊý fY1,fY2,fY3£ºÈý½ÇÐÎÉÏÈý¸öµãµÄY×ø±ê
-	// ²ÎÊý fLineWidth£ºÏßµÄ´ÖÏ¸£¬´óÓÚµÈÓÚ1
-	// ²ÎÊý iLayer£º¸ÃÈý½ÇÐÎËùÔÚµÄ²ã£¬Óë±à¼­Æ÷ÀïÉèÖÃµÄ¾«ÁéµÄ²ã¼¶ÊÇÍ¬Ò»¸ö¸ÅÄî¡£·¶Î§0 - 31¡£
-	// ²ÎÊý iRed, iGreen, iBlue : ºìÂÌÀ¶ÈýÔ­É«µÄÑÕÉ«Öµ£¬·¶Î§ 0 - 255
-	// ²ÎÊý iAlpha£ºÈý½ÇÐÎµÄÍ¸Ã÷¶È£¬·¶Î§0-255. 0ÎªÈ«Í¸Ã÷£¬255Îª²»Í¸Ã÷
+	// DrawTriangleï¼šç”»ä¸€ä¸ªä¸‰è§’å½¢
+	// å‚æ•° fX1,fX2,fX3ï¼šä¸‰è§’å½¢ä¸Šä¸‰ä¸ªç‚¹çš„Xåæ ‡
+	// å‚æ•° fY1,fY2,fY3ï¼šä¸‰è§’å½¢ä¸Šä¸‰ä¸ªç‚¹çš„Yåæ ‡
+	// å‚æ•° fLineWidthï¼šçº¿çš„ç²—ç»†ï¼Œå¤§äºŽç­‰äºŽ1
+	// å‚æ•° iLayerï¼šè¯¥ä¸‰è§’å½¢æ‰€åœ¨çš„å±‚ï¼Œä¸Žç¼–è¾‘å™¨é‡Œè®¾ç½®çš„ç²¾çµçš„å±‚çº§æ˜¯åŒä¸€ä¸ªæ¦‚å¿µã€‚èŒƒå›´0 - 31ã€‚
+	// å‚æ•° iRed, iGreen, iBlue : çº¢ç»¿è“ä¸‰åŽŸè‰²çš„é¢œè‰²å€¼ï¼ŒèŒƒå›´ 0 - 255
+	// å‚æ•° iAlphaï¼šä¸‰è§’å½¢çš„é€æ˜Žåº¦ï¼ŒèŒƒå›´0-255. 0ä¸ºå…¨é€æ˜Žï¼Œ255ä¸ºä¸é€æ˜Ž
 	//
 	static void		DrawTriangle( const float fX1, const float fY1, const float fX2, const float fY2, const float fX3, const float fY3, const float fLineWidth, const int iLayer, const int iRed, const int iGreen, const int iBlue, const int iAlpha );
 
-	// DrawRect£º»­Ò»¸ö¾ØÐÎ
-	// ²ÎÊý fUpperX£º×óÉÏ½Ç×ø±êX
-	// ²ÎÊý fUpperY£º×óÉÏ½Ç×ø±êY
-	// ²ÎÊý fLowerX£ºÓÒÏÂ½Ç×ø±êX
-	// ²ÎÊý fLowerY£ºÓÒÏÂ½Ç×ø±êY
-	// ²ÎÊý fLineWidth£ºÏßµÄ´ÖÏ¸£¬´óÓÚµÈÓÚ1
-	// ²ÎÊý iLayer£º¸Ã¾ØÐÎËùÔÚµÄ²ã£¬Óë±à¼­Æ÷ÀïÉèÖÃµÄ¾«ÁéµÄ²ã¼¶ÊÇÍ¬Ò»¸ö¸ÅÄî¡£·¶Î§0 - 31¡£
-	// ²ÎÊý iRed, iGreen, iBlue : ºìÂÌÀ¶ÈýÔ­É«µÄÑÕÉ«Öµ£¬·¶Î§ 0 - 255
-	// ²ÎÊý iAlpha£º¾ØÐÎµÄÍ¸Ã÷¶È£¬·¶Î§0-255. 0ÎªÈ«Í¸Ã÷£¬255Îª²»Í¸Ã÷
+	// DrawRectï¼šç”»ä¸€ä¸ªçŸ©å½¢
+	// å‚æ•° fUpperXï¼šå·¦ä¸Šè§’åæ ‡X
+	// å‚æ•° fUpperYï¼šå·¦ä¸Šè§’åæ ‡Y
+	// å‚æ•° fLowerXï¼šå³ä¸‹è§’åæ ‡X
+	// å‚æ•° fLowerYï¼šå³ä¸‹è§’åæ ‡Y
+	// å‚æ•° fLineWidthï¼šçº¿çš„ç²—ç»†ï¼Œå¤§äºŽç­‰äºŽ1
+	// å‚æ•° iLayerï¼šè¯¥çŸ©å½¢æ‰€åœ¨çš„å±‚ï¼Œä¸Žç¼–è¾‘å™¨é‡Œè®¾ç½®çš„ç²¾çµçš„å±‚çº§æ˜¯åŒä¸€ä¸ªæ¦‚å¿µã€‚èŒƒå›´0 - 31ã€‚
+	// å‚æ•° iRed, iGreen, iBlue : çº¢ç»¿è“ä¸‰åŽŸè‰²çš„é¢œè‰²å€¼ï¼ŒèŒƒå›´ 0 - 255
+	// å‚æ•° iAlphaï¼šçŸ©å½¢çš„é€æ˜Žåº¦ï¼ŒèŒƒå›´0-255. 0ä¸ºå…¨é€æ˜Žï¼Œ255ä¸ºä¸é€æ˜Ž
 	//
 	static void		DrawRect( const float fUpperX, const float fUpperY, const float fLowerX, const float fLowerY, const float fLineWidth, const int iLayer, const int iRed, const int iGreen, const int iBlue, const int iAlpha );
 
-	// DrawCircle£º»­Ò»¸öÔ²
-	// ²ÎÊý fCenterX£ºÔ²ÐÄ×ø±êX
-	// ²ÎÊý fCenterY£ºÔ²ÐÄ×ø±êY
-	// ²ÎÊý fRadius£ºÔ²µÄ°ë¾¶
-	// ²ÎÊý iSegment£ºÔ²»¡¶ÎÊý£¬·¶Î§4-72. ±ÈÈç´«Èë6£¬½«µÃµ½Ò»¸ö6±ßÐÎ£¬¶ÎÊýÔ½´óÔ½Ô²»¬£¬µ«ÊÇ»­Í¼Ð§ÂÊÔ½µÍ
-	// ²ÎÊý fLineWidth£ºÏßµÄ´ÖÏ¸£¬´óÓÚµÈÓÚ1
-	// ²ÎÊý iLayer£º¸ÃÔ²ËùÔÚµÄ²ã£¬Óë±à¼­Æ÷ÀïÉèÖÃµÄ¾«ÁéµÄ²ã¼¶ÊÇÍ¬Ò»¸ö¸ÅÄî¡£·¶Î§0 - 31¡£
-	// ²ÎÊý iRed, iGreen, iBlue : ºìÂÌÀ¶ÈýÔ­É«µÄÑÕÉ«Öµ£¬·¶Î§ 0 - 255
-	// ²ÎÊý iAlpha£ºÔ²µÄÍ¸Ã÷¶È£¬·¶Î§0-255. 0ÎªÈ«Í¸Ã÷£¬255Îª²»Í¸Ã÷
+	// DrawCircleï¼šç”»ä¸€ä¸ªåœ†
+	// å‚æ•° fCenterXï¼šåœ†å¿ƒåæ ‡X
+	// å‚æ•° fCenterYï¼šåœ†å¿ƒåæ ‡Y
+	// å‚æ•° fRadiusï¼šåœ†çš„åŠå¾„
+	// å‚æ•° iSegmentï¼šåœ†å¼§æ®µæ•°ï¼ŒèŒƒå›´4-72. æ¯”å¦‚ä¼ å…¥6ï¼Œå°†å¾—åˆ°ä¸€ä¸ª6è¾¹å½¢ï¼Œæ®µæ•°è¶Šå¤§è¶Šåœ†æ»‘ï¼Œä½†æ˜¯ç”»å›¾æ•ˆçŽ‡è¶Šä½Ž
+	// å‚æ•° fLineWidthï¼šçº¿çš„ç²—ç»†ï¼Œå¤§äºŽç­‰äºŽ1
+	// å‚æ•° iLayerï¼šè¯¥åœ†æ‰€åœ¨çš„å±‚ï¼Œä¸Žç¼–è¾‘å™¨é‡Œè®¾ç½®çš„ç²¾çµçš„å±‚çº§æ˜¯åŒä¸€ä¸ªæ¦‚å¿µã€‚èŒƒå›´0 - 31ã€‚
+	// å‚æ•° iRed, iGreen, iBlue : çº¢ç»¿è“ä¸‰åŽŸè‰²çš„é¢œè‰²å€¼ï¼ŒèŒƒå›´ 0 - 255
+	// å‚æ•° iAlphaï¼šåœ†çš„é€æ˜Žåº¦ï¼ŒèŒƒå›´0-255. 0ä¸ºå…¨é€æ˜Žï¼Œ255ä¸ºä¸é€æ˜Ž
 	//
 	static void		DrawCircle( const float fCenterX, const float fCenterY, const float fRadius, const int iSegment, const float fLineWidth, const int iLayer, const int iRed, const int iGreen, const int iBlue, const int iAlpha );
 
-	// GetScreenLeft£º»ñÈ¡ÊÀ½ç±ß½çÖ®×ó±ßX×ø±ê
-	// ·µ»ØÖµ£º×ó±ß½çX×ø±ê
+	// GetScreenLeftï¼šèŽ·å–ä¸–ç•Œè¾¹ç•Œä¹‹å·¦è¾¹Xåæ ‡
+	// è¿”å›žå€¼ï¼šå·¦è¾¹ç•ŒXåæ ‡
 	//
 	static float	GetScreenLeft();
 
-	// GetScreenTop£º»ñÈ¡ÊÀ½ç±ß½çÖ®ÉÏ±ßY×ø±ê
-	// ·µ»ØÖµ£ºÉÏ±ß½çY×ø±ê
+	// GetScreenTopï¼šèŽ·å–ä¸–ç•Œè¾¹ç•Œä¹‹ä¸Šè¾¹Yåæ ‡
+	// è¿”å›žå€¼ï¼šä¸Šè¾¹ç•ŒYåæ ‡
 	//
 	static float	GetScreenTop();
 
-	// GetScreenRight£º»ñÈ¡ÊÀ½ç±ß½çÖ®ÓÒ±ßX×ø±ê
-	// ·µ»ØÖµ£ºÓÒ±ß½çX×ø±ê
+	// GetScreenRightï¼šèŽ·å–ä¸–ç•Œè¾¹ç•Œä¹‹å³è¾¹Xåæ ‡
+	// è¿”å›žå€¼ï¼šå³è¾¹ç•ŒXåæ ‡
 	//
 	static float	GetScreenRight();
 
-	// GetScreenBottom£º»ñÈ¡ÊÀ½ç±ß½çÖ®ÏÂ±ßY×ø±ê
-	// ·µ»ØÖµ£ºÏÂ±ß½çY×ø±ê
+	// GetScreenBottomï¼šèŽ·å–ä¸–ç•Œè¾¹ç•Œä¹‹ä¸‹è¾¹Yåæ ‡
+	// è¿”å›žå€¼ï¼šä¸‹è¾¹ç•ŒYåæ ‡
 	//
 	static float	GetScreenBottom();
 
-	// LoadMap£ºÔØÈëÐÂ³¡¾°¡£×¢Òâ£¬ÔØÈëÐÂ³¡¾°µÄÊ±ºò£¬¾É³¡¾°µÄËùÓÐ¾«Áé¶¼½«±»ÒýÇæÉ¾³ýµô£¬ËùÒÔËùÓÐÔÚ³ÌÐòÖÐ´´½¨¡¢¸´ÖÆ³öÀ´µÄ¾«Áé¶¼±ØÐëÔÚµ÷ÓÃ±¾APIÖ®Ç°ÏÈÉ¾³ýµô
-	// ²ÎÊý szName£º³¡¾°Ãû×Ö¡£¼´ÐÂ½¨³¡¾°±£´æµÄÊ±ºòÈ¡µÄÃû×Ö£¬±ØÐë´øÐ¡Ð´µÄºó×º -- xxx.t2d¡£²»ÓÃ´øÂ·¾¶
+	// LoadMapï¼šè½½å…¥æ–°åœºæ™¯ã€‚æ³¨æ„ï¼Œè½½å…¥æ–°åœºæ™¯çš„æ—¶å€™ï¼Œæ—§åœºæ™¯çš„æ‰€æœ‰ç²¾çµéƒ½å°†è¢«å¼•æ“Žåˆ é™¤æŽ‰ï¼Œæ‰€ä»¥æ‰€æœ‰åœ¨ç¨‹åºä¸­åˆ›å»ºã€å¤åˆ¶å‡ºæ¥çš„ç²¾çµéƒ½å¿…é¡»åœ¨è°ƒç”¨æœ¬APIä¹‹å‰å…ˆåˆ é™¤æŽ‰
+	// å‚æ•° szNameï¼šåœºæ™¯åå­—ã€‚å³æ–°å»ºåœºæ™¯ä¿å­˜çš„æ—¶å€™å–çš„åå­—ï¼Œå¿…é¡»å¸¦å°å†™çš„åŽç¼€ -- xxx.t2dã€‚ä¸ç”¨å¸¦è·¯å¾„
 	//
 	static void		LoadMap( const char *szName );
 
 	//////////////////////////////////////////////////////////////////////////////////////////
 	//
-	// ÒÔÏÂAPIÎªÏµÍ³API£¬ÇëÎð×Ô¼ºµ÷ÓÃ
+	// ä»¥ä¸‹APIä¸ºç³»ç»ŸAPIï¼Œè¯·å‹¿è‡ªå·±è°ƒç”¨
 	//
 	//////////////////////////////////////////////////////////////////////////////////////////
 
-	// GetTimeDelta£º»ñÈ¡Á½´Îµ÷ÓÃ±¾º¯ÊýÖ®¼äµÄÊ±¼ä²î
-	// ·µ»ØÖµ£ºfloat£¬µ¥Î» Ãë
+	// GetTimeDeltaï¼šèŽ·å–ä¸¤æ¬¡è°ƒç”¨æœ¬å‡½æ•°ä¹‹é—´çš„æ—¶é—´å·®
+	// è¿”å›žå€¼ï¼šfloatï¼Œå•ä½ ç§’
 	//
 	static float	GetTimeDelta();
-	// EngineMainLoop£ºÒýÇæÖ÷Ñ­»·º¯Êý¡£ÇëÎð×Ô¼ºµ÷ÓÃ
+	// EngineMainLoopï¼šå¼•æ“Žä¸»å¾ªçŽ¯å‡½æ•°ã€‚è¯·å‹¿è‡ªå·±è°ƒç”¨
 	//
 	static bool		EngineMainLoop();
-	// InitGameEngine£º³õÊ¼»¯ÒýÇæ£¬ÇëÎð×Ô¼ºµ÷ÓÃ
+	// InitGameEngineï¼šåˆå§‹åŒ–å¼•æ“Žï¼Œè¯·å‹¿è‡ªå·±è°ƒç”¨
 	//
 	static bool		InitGameEngine( HINSTANCE hInstance, LPSTR lpCmdLine );
 	static bool		InitGameEngineEx( HINSTANCE hInstance, LPSTR lpCmdLine );
-	// ShutdownGameEngine£º¹Ø±ÕÒýÇæ£¬ÇëÎð×Ô¼ºµ÷ÓÃ
+	// ShutdownGameEngineï¼šå…³é—­å¼•æ“Žï¼Œè¯·å‹¿è‡ªå·±è°ƒç”¨
 	//
 	static void		ShutdownGameEngine();
 };

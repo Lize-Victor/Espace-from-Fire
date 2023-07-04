@@ -1,4 +1,4 @@
-//-----------------------------------------------------------------------------
+ï»¿//-----------------------------------------------------------------------------
 //
 //-----------------------------------------------------------------------------
 #include "CommonClass.h"
@@ -6,113 +6,112 @@
 
 ///////////////////////////////////////////////////////////////////////////////////////////
 //
-// Ö÷º¯ÊıÈë¿Ú
+// ä¸»å‡½æ•°å…¥å£
 //
 //////////////////////////////////////////////////////////////////////////////////////////
 int PASCAL WinMain(HINSTANCE hInstance,
-                   HINSTANCE hPrevInstance,
-                   LPSTR     lpCmdLine,
-                   int       nCmdShow)
+				   HINSTANCE hPrevInstance,
+				   LPSTR lpCmdLine,
+				   int nCmdShow)
 {
-	// ³õÊ¼»¯ÓÎÏ·ÒıÇæ
-	if( !CSystem::InitGameEngine( hInstance, lpCmdLine ) )
+	// åˆå§‹åŒ–æ¸¸æˆå¼•æ“
+	if (!CSystem::InitGameEngine(hInstance, lpCmdLine))
 		return 0;
 
-	// To do : ÔÚ´ËÊ¹ÓÃAPI¸ü¸Ä´°¿Ú±êÌâ
+	// To do : åœ¨æ­¤ä½¿ç”¨APIæ›´æ”¹çª—å£æ ‡é¢˜
 	CSystem::SetWindowTitle("LessonX");
 
-	// ÒıÇæÖ÷Ñ­»·£¬´¦ÀíÆÁÄ»Í¼ÏñË¢ĞÂµÈ¹¤×÷
-	while( CSystem::EngineMainLoop() )
+	// å¼•æ“ä¸»å¾ªç¯ï¼Œå¤„ç†å±å¹•å›¾åƒåˆ·æ–°ç­‰å·¥ä½œ
+	while (CSystem::EngineMainLoop())
 	{
-		// »ñÈ¡Á½´Îµ÷ÓÃÖ®¼äµÄÊ±¼ä²î£¬´«µİ¸øÓÎÏ·Âß¼­´¦Àí
-		float	fTimeDelta	=	CSystem::GetTimeDelta();
+		// è·å–ä¸¤æ¬¡è°ƒç”¨ä¹‹é—´çš„æ—¶é—´å·®ï¼Œä¼ é€’ç»™æ¸¸æˆé€»è¾‘å¤„ç†
+		float fTimeDelta = CSystem::GetTimeDelta();
 
-		// Ö´ĞĞÓÎÏ·Ö÷Ñ­»·
-		g_GameMain.GameMainLoop( fTimeDelta );
+		// æ‰§è¡Œæ¸¸æˆä¸»å¾ªç¯
+		g_GameMain.GameMainLoop(fTimeDelta);
 	};
 
-	// ¹Ø±ÕÓÎÏ·ÒıÇæ
+	// å…³é—­æ¸¸æˆå¼•æ“
 	CSystem::ShutdownGameEngine();
 	return 0;
 }
 
 //==========================================================================
 //
-// ÒıÇæ²¶×½Êó±êÒÆ¶¯ÏûÏ¢ºó£¬½«µ÷ÓÃµ½±¾º¯Êı
-// ²ÎÊı fMouseX, fMouseY£ºÎªÊó±êµ±Ç°×ø±ê
+// å¼•æ“æ•æ‰é¼ æ ‡ç§»åŠ¨æ¶ˆæ¯åï¼Œå°†è°ƒç”¨åˆ°æœ¬å‡½æ•°
+// å‚æ•° fMouseX, fMouseYï¼šä¸ºé¼ æ ‡å½“å‰åæ ‡
 //
-void CSystem::OnMouseMove( const float fMouseX, const float fMouseY )
+void CSystem::OnMouseMove(const float fMouseX, const float fMouseY)
 {
-	// ¿ÉÒÔÔÚ´ËÌí¼ÓÓÎÏ·ĞèÒªµÄÏìÓ¦º¯Êı
+	// å¯ä»¥åœ¨æ­¤æ·»åŠ æ¸¸æˆéœ€è¦çš„å“åº”å‡½æ•°
 	g_GameMain.OnMouseMove(fMouseX, fMouseY);
 }
 //==========================================================================
 //
-// ÒıÇæ²¶×½Êó±êµã»÷ÏûÏ¢ºó£¬½«µ÷ÓÃµ½±¾º¯Êı
-// ²ÎÊı iMouseType£ºÊó±ê°´¼üÖµ£¬¼û enum MouseTypes ¶¨Òå
-// ²ÎÊı fMouseX, fMouseY£ºÎªÊó±êµ±Ç°×ø±ê
+// å¼•æ“æ•æ‰é¼ æ ‡ç‚¹å‡»æ¶ˆæ¯åï¼Œå°†è°ƒç”¨åˆ°æœ¬å‡½æ•°
+// å‚æ•° iMouseTypeï¼šé¼ æ ‡æŒ‰é”®å€¼ï¼Œè§ enum MouseTypes å®šä¹‰
+// å‚æ•° fMouseX, fMouseYï¼šä¸ºé¼ æ ‡å½“å‰åæ ‡
 //
-void CSystem::OnMouseClick( const int iMouseType, const float fMouseX, const float fMouseY )
+void CSystem::OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY)
 {
-	// ¿ÉÒÔÔÚ´ËÌí¼ÓÓÎÏ·ĞèÒªµÄÏìÓ¦º¯Êı
+	// å¯ä»¥åœ¨æ­¤æ·»åŠ æ¸¸æˆéœ€è¦çš„å“åº”å‡½æ•°
 	g_GameMain.OnMouseClick(iMouseType, fMouseX, fMouseY);
 }
 //==========================================================================
 //
-// ÒıÇæ²¶×½Êó±êµ¯ÆğÏûÏ¢ºó£¬½«µ÷ÓÃµ½±¾º¯Êı
-// ²ÎÊı iMouseType£ºÊó±ê°´¼üÖµ£¬¼û enum MouseTypes ¶¨Òå
-// ²ÎÊı fMouseX, fMouseY£ºÎªÊó±êµ±Ç°×ø±ê
+// å¼•æ“æ•æ‰é¼ æ ‡å¼¹èµ·æ¶ˆæ¯åï¼Œå°†è°ƒç”¨åˆ°æœ¬å‡½æ•°
+// å‚æ•° iMouseTypeï¼šé¼ æ ‡æŒ‰é”®å€¼ï¼Œè§ enum MouseTypes å®šä¹‰
+// å‚æ•° fMouseX, fMouseYï¼šä¸ºé¼ æ ‡å½“å‰åæ ‡
 //
-void CSystem::OnMouseUp( const int iMouseType, const float fMouseX, const float fMouseY )
+void CSystem::OnMouseUp(const int iMouseType, const float fMouseX, const float fMouseY)
 {
-	// ¿ÉÒÔÔÚ´ËÌí¼ÓÓÎÏ·ĞèÒªµÄÏìÓ¦º¯Êı
+	// å¯ä»¥åœ¨æ­¤æ·»åŠ æ¸¸æˆéœ€è¦çš„å“åº”å‡½æ•°
 	g_GameMain.OnMouseUp(iMouseType, fMouseX, fMouseY);
 }
 //==========================================================================
 //
-// ÒıÇæ²¶×½¼üÅÌ°´ÏÂÏûÏ¢ºó£¬½«µ÷ÓÃµ½±¾º¯Êı
-// ²ÎÊı iKey£º±»°´ÏÂµÄ¼ü£¬Öµ¼û enum KeyCodes ºê¶¨Òå
-// ²ÎÊı iAltPress, iShiftPress£¬iCtrlPress£º¼üÅÌÉÏµÄ¹¦ÄÜ¼üAlt£¬Ctrl£¬Shiftµ±Ç°ÊÇ·ñÒ²´¦ÓÚ°´ÏÂ×´Ì¬(0Î´°´ÏÂ£¬1°´ÏÂ)
+// å¼•æ“æ•æ‰é”®ç›˜æŒ‰ä¸‹æ¶ˆæ¯åï¼Œå°†è°ƒç”¨åˆ°æœ¬å‡½æ•°
+// å‚æ•° iKeyï¼šè¢«æŒ‰ä¸‹çš„é”®ï¼Œå€¼è§ enum KeyCodes å®å®šä¹‰
+// å‚æ•° iAltPress, iShiftPressï¼ŒiCtrlPressï¼šé”®ç›˜ä¸Šçš„åŠŸèƒ½é”®Altï¼ŒCtrlï¼ŒShiftå½“å‰æ˜¯å¦ä¹Ÿå¤„äºæŒ‰ä¸‹çŠ¶æ€(0æœªæŒ‰ä¸‹ï¼Œ1æŒ‰ä¸‹)
 //
-void CSystem::OnKeyDown( const int iKey, const bool bAltPress, const bool bShiftPress, const bool bCtrlPress )
+void CSystem::OnKeyDown(const int iKey, const bool bAltPress, const bool bShiftPress, const bool bCtrlPress)
 {
-	// ¿ÉÒÔÔÚ´ËÌí¼ÓÓÎÏ·ĞèÒªµÄÏìÓ¦º¯Êı
+	// å¯ä»¥åœ¨æ­¤æ·»åŠ æ¸¸æˆéœ€è¦çš„å“åº”å‡½æ•°
 	g_GameMain.OnKeyDown(iKey, bAltPress, bShiftPress, bCtrlPress);
 }
 //==========================================================================
 //
-// ÒıÇæ²¶×½¼üÅÌµ¯ÆğÏûÏ¢ºó£¬½«µ÷ÓÃµ½±¾º¯Êı
-// ²ÎÊı iKey£ºµ¯ÆğµÄ¼ü£¬Öµ¼û enum KeyCodes ºê¶¨Òå
+// å¼•æ“æ•æ‰é”®ç›˜å¼¹èµ·æ¶ˆæ¯åï¼Œå°†è°ƒç”¨åˆ°æœ¬å‡½æ•°
+// å‚æ•° iKeyï¼šå¼¹èµ·çš„é”®ï¼Œå€¼è§ enum KeyCodes å®å®šä¹‰
 //
-void CSystem::OnKeyUp( const int iKey )
+void CSystem::OnKeyUp(const int iKey)
 {
-	// ¿ÉÒÔÔÚ´ËÌí¼ÓÓÎÏ·ĞèÒªµÄÏìÓ¦º¯Êı
+	// å¯ä»¥åœ¨æ­¤æ·»åŠ æ¸¸æˆéœ€è¦çš„å“åº”å‡½æ•°
 	g_GameMain.OnKeyUp(iKey);
 }
 
 //===========================================================================
 //
-// ÒıÇæ²¶×½µ½¾«ÁéÓë¾«ÁéÅö×²Ö®ºó£¬µ÷ÓÃ´Ëº¯Êı
-// ¾«ÁéÖ®¼äÒª²úÉúÅö×²£¬±ØĞëÔÚ±à¼­Æ÷»òÕß´úÂëÀïÉèÖÃ¾«Áé·¢ËÍ¼°½ÓÊÜÅö×²
-// ²ÎÊı szSrcName£º·¢ÆğÅö×²µÄ¾«ÁéÃû×Ö
-// ²ÎÊı szTarName£º±»Åö×²µÄ¾«ÁéÃû×Ö
+// å¼•æ“æ•æ‰åˆ°ç²¾çµä¸ç²¾çµç¢°æ’ä¹‹åï¼Œè°ƒç”¨æ­¤å‡½æ•°
+// ç²¾çµä¹‹é—´è¦äº§ç”Ÿç¢°æ’ï¼Œå¿…é¡»åœ¨ç¼–è¾‘å™¨æˆ–è€…ä»£ç é‡Œè®¾ç½®ç²¾çµå‘é€åŠæ¥å—ç¢°æ’
+// å‚æ•° szSrcNameï¼šå‘èµ·ç¢°æ’çš„ç²¾çµåå­—
+// å‚æ•° szTarNameï¼šè¢«ç¢°æ’çš„ç²¾çµåå­—
 //
-void CSystem::OnSpriteColSprite( const char *szSrcName, const char *szTarName )
+void CSystem::OnSpriteColSprite(const char *szSrcName, const char *szTarName)
 {
-	// ¿ÉÒÔÔÚ´ËÌí¼ÓÓÎÏ·ĞèÒªµÄÏìÓ¦º¯Êı
+	// å¯ä»¥åœ¨æ­¤æ·»åŠ æ¸¸æˆéœ€è¦çš„å“åº”å‡½æ•°
 	g_GameMain.OnSpriteColSprite(szSrcName, szTarName);
 }
 
 //===========================================================================
 //
-// ÒıÇæ²¶×½µ½¾«ÁéÓëÊÀ½ç±ß½çÅö×²Ö®ºó£¬µ÷ÓÃ´Ëº¯Êı.
-// ¾«ÁéÖ®¼äÒª²úÉúÅö×²£¬±ØĞëÔÚ±à¼­Æ÷»òÕß´úÂëÀïÉèÖÃ¾«ÁéµÄÊÀ½ç±ß½çÏŞÖÆ
-// ²ÎÊı szName£ºÅö×²µ½±ß½çµÄ¾«ÁéÃû×Ö
-// ²ÎÊı iColSide£ºÅö×²µ½µÄ±ß½ç 0 ×ó±ß£¬1 ÓÒ±ß£¬2 ÉÏ±ß£¬3 ÏÂ±ß
+// å¼•æ“æ•æ‰åˆ°ç²¾çµä¸ä¸–ç•Œè¾¹ç•Œç¢°æ’ä¹‹åï¼Œè°ƒç”¨æ­¤å‡½æ•°.
+// ç²¾çµä¹‹é—´è¦äº§ç”Ÿç¢°æ’ï¼Œå¿…é¡»åœ¨ç¼–è¾‘å™¨æˆ–è€…ä»£ç é‡Œè®¾ç½®ç²¾çµçš„ä¸–ç•Œè¾¹ç•Œé™åˆ¶
+// å‚æ•° szNameï¼šç¢°æ’åˆ°è¾¹ç•Œçš„ç²¾çµåå­—
+// å‚æ•° iColSideï¼šç¢°æ’åˆ°çš„è¾¹ç•Œ 0 å·¦è¾¹ï¼Œ1 å³è¾¹ï¼Œ2 ä¸Šè¾¹ï¼Œ3 ä¸‹è¾¹
 //
-void CSystem::OnSpriteColWorldLimit( const char *szName, const int iColSide )
+void CSystem::OnSpriteColWorldLimit(const char *szName, const int iColSide)
 {
-	// ¿ÉÒÔÔÚ´ËÌí¼ÓÓÎÏ·ĞèÒªµÄÏìÓ¦º¯Êı
+	// å¯ä»¥åœ¨æ­¤æ·»åŠ æ¸¸æˆéœ€è¦çš„å“åº”å‡½æ•°
 	g_GameMain.OnSpriteColWorldLimit(szName, iColSide);
 }
-
