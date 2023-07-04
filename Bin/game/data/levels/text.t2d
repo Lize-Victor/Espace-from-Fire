@@ -34,18 +34,31 @@
    layerSortMode30 = "Normal";
    layerSortMode31 = "Normal";
    DebugRendering = "0";
-      cameraPosition = "50.000000 -40.000000";
-      cameraSize = "100.000000 80.000000";
+      cameraPosition = "0.000000 0.000000";
+      cameraSize = "100.000000 75.000000";
 
    new t2dStaticSprite() {
-      imageMap = "xiaohuiImageMap";
+      imageMap = "floor1ImageMap";
       frame = "0";
       useSourceRect = "0";
       sourceRect = "0 0 0 0";
       canSaveDynamicFields = "1";
-      Position = "6.600 7.326";
+      Position = "-0.000 -0.229";
+      size = "100.000 74.234";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "2";
+   };
+   new t2dStaticSprite() {
+      imageMap = "fire";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
+      canSaveDynamicFields = "1";
+      Position = "-43.049 -12.683";
+      size = "29.500 88.500";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "3";
    };
 };
