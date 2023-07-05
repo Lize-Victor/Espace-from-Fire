@@ -1,17 +1,27 @@
-﻿生成启动时间为 2023/7/5 11:08:29。
+﻿生成启动时间为 2023/7/5 21:44:26。
 项目“E:\FunCode_CppProject\FunCode_Project\SourceCode\VCProject2012\VCProject2012\VCProject2012.vcxproj”在节点 2 上(build 个目标)。
 InitializeBuildStatus:
   正在创建“Debug\VCProject2012.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
 ClCompile:
   F:\VS2010\VC\bin\CL.exe /c /I../../Header /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Src\NewClass.cpp
   NewClass.cpp
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(40): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(75): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(97): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(131): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(131): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(142): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(142): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(54): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(66): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          f:\vs2010\vc\include\string.h(110) : 参见“strcat”的声明
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(76): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          f:\vs2010\vc\include\string.h(110) : 参见“strcat”的声明
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(94): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
+          f:\vs2010\vc\include\string.h(110) : 参见“strcat”的声明
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(108): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(169): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(202): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(202): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(213): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(213): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(218): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(218): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(230): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(230): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
 ResourceCompile:
   所有输出均为最新。
 Link:
@@ -33,4 +43,4 @@ FinalizeBuildStatus:
 
 生成成功。
 
-已用时间 00:00:02.78
+已用时间 00:00:01.65

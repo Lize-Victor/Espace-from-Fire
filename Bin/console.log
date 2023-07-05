@@ -1,7 +1,7 @@
-//-------------------------- 7/5/2023 -- 11:08:34 -----
+//-------------------------- 7/5/2023 -- 21:44:30 -----
 Processor Init:
-   Intel Pentium III, ~2.70 Ghz
-     (timed at roughly 2.69 Ghz)
+   Intel Pentium III, ~2.67 Ghz
+     (timed at roughly 2.68 Ghz)
    FPU detected
    MMX detected
    SSE detected
@@ -143,23 +143,11 @@ t2dSceneGraph::addToScene() - Object '1349' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1350' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1351' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1352' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1353' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1354' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1355' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1356' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1357' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1358' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
@@ -233,11 +221,23 @@ t2dSceneGraph::addToScene() - Object '1381' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1382' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1383' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1384' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1385' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1386' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1387' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1388' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1389' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1390' is already in a SceneGraph!.
@@ -248,41 +248,17 @@ t2dSceneGraph::addToScene() - Object '1394' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1395' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1396' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1397' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1398' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1399' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1400' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1401' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1402' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1403' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1404' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1405' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1406' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1407' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1408' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1409' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
@@ -338,74 +314,62 @@ t2dSceneGraph::addToScene() - Object '1426' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1427' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1428' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1429' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1430' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1431' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1432' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1433' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1434' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1435' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1436' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1437' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1438' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1439' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1440' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1441' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1442' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1443' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1444' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1445' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1446' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1447' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1448' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1449' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1450' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1451' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1452' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1453' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1454' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1455' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1456' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1457' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1458' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1459' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1460' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
@@ -443,20 +407,50 @@ t2dSceneGraph::addToScene() - Object '1471' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1472' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1473' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1474' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1475' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1476' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1477' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1478' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1479' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1480' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1481' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1482' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1483' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1484' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1485' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1486' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1487' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
@@ -467,68 +461,26 @@ t2dSceneGraph::addToScene() - Object '1489' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1490' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1491' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1492' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1493' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1494' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1495' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1496' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1497' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1498' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1499' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1500' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1501' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1502' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1503' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1504' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1505' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1506' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1507' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1508' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1509' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1510' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1511' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
@@ -548,20 +500,50 @@ t2dSceneGraph::addToScene() - Object '1516' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1517' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1518' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1519' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1520' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1521' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1522' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1523' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1524' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1525' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1526' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1527' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1528' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1529' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1530' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1531' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1532' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
@@ -590,83 +572,71 @@ t2dSceneGraph::addToScene() - Object '1540' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1541' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1542' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1543' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1544' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1545' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1546' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1547' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1548' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1549' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1550' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1551' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1552' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1553' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1554' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1555' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1556' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1557' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1558' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1559' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1560' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1561' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1562' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
-t2dSceneGraph::addToScene() - Object '1562' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1563' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1564' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1565' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1566' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1567' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1568' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1569' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1570' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1571' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1572' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1573' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1574' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1575' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1576' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1577' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
@@ -713,50 +683,20 @@ t2dSceneGraph::addToScene() - Object '1591' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1592' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1593' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1594' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1595' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1596' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1597' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1598' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1599' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1600' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1601' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1602' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1603' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1604' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1605' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1606' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1607' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1608' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1609' is already in a SceneGraph!.
@@ -764,14 +704,32 @@ t2dSceneGraph::addToScene() - Object '1610' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1611' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1612' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1613' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1614' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1615' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1616' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1617' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1618' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1619' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1620' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1621' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1622' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
@@ -836,32 +794,14 @@ t2dSceneGraph::addToScene() - Object '1642' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1643' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1644' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1645' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1646' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1647' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1648' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1649' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1650' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1651' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1652' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1653' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1654' is already in a SceneGraph!.
@@ -875,8 +815,14 @@ t2dSceneGraph::addToScene() - Object '1661' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1662' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1663' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1664' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1665' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1666' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1667' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
@@ -959,14 +905,8 @@ t2dSceneGraph::addToScene() - Object '1693' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1694' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1695' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1696' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1697' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1698' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1699' is already in a SceneGraph!.
@@ -983,14 +923,8 @@ t2dSceneGraph::addToScene() - Object '1709' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1710' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1711' is already in a SceneGraph!.
 t2dSceneGraph::addToScene() - Object '1712' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1713' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1714' is already in a SceneGraph!.
-Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
-Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1715' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
@@ -1073,6 +1007,126 @@ t2dSceneGraph::addToScene() - Object '1741' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1742' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1743' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1744' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1745' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1746' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1747' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1748' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1749' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1750' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1751' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1752' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1753' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1754' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1755' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1756' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1757' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1758' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1759' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1760' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1761' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1762' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1763' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1764' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1765' is already in a SceneGraph!.
+t2dSceneGraph::addToScene() - Object '1766' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1767' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1768' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1769' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1770' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1771' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1772' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1773' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1774' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1775' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1776' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1777' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1778' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1779' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1780' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1781' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1782' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1783' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1784' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1785' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1786' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1787' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1788' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1789' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1790' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1791' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1792' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1793' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1794' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1795' is already in a SceneGraph!.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
+t2dSceneGraph::addToScene() - Object '1796' is already in a SceneGraph!.
 DirectInput deactivated.
 Activating DirectInput...
 DirectInput deactivated.

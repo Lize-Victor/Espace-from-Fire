@@ -2,10 +2,10 @@
 
 void FloorMove(float deltaY, vector<Floor *> &l_floor)
 {
-    for (int i = 0; i < 9; i++)
+    for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
     {
-        float tmpX = l_floor[i]->GetFloor()->GetSpritePositionX();
-        float tmpY = l_floor[i]->GetFloor()->GetSpritePositionY();
+        float tmpX = l_floor[i]->GetFloorPoiX();
+        float tmpY = l_floor[i]->GetFloorPoiY();
         l_floor[i]->SetFloorPosition(tmpX,tmpY + deltaY);
         l_floor[i]->FloorUpdate();
     }

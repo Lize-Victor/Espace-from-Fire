@@ -12,7 +12,7 @@
 #define FLOOR_CELL_X 9.9
 #define FLOOR_CELL_Y 8.109
 #define FLOOR_START_X 75.000
-#define FLOOR_START_Y -12.000
+#define FLOOR_START_Y -20.000
 #define ELEVATOR_CELL_NUMBER 7 // 范围 7 8
 #define STAIRS_CELL_NUMBER 15 // 范围 1~10
 
@@ -20,20 +20,20 @@
 #define FIRE_X 9.711
 #define FIRE_Y 8.109
 #define FIRE_START_X 6.396
-#define FIRE_START_Y -4.054
+#define FIRE_START_Y -12.054
 #define FIRE_HURT_COEFFICIENT
 #define FIRE_DIFFUSION_X_TIME 3.f
-#define FIRE_DIFFUSION_Y_TIME 2.f
+#define FIRE_DIFFUSION_Y_TIME 3.f
 
 #define SMOG_API_NAME "Smog"
 #define SMOG_X 9.711
-#define SMOG_Y 7.076
+#define SMOG_Y 17.076
 #define SMOG_START_X 6.363
 #define SMOG_START_Y -12.538
 
 #define SMOG_HURT_COEFFICIENT
-#define SMOG_DIFFUSION_X_TIME 2.F
-#define SMOG_DIFFUSION_Y_TIME 3.F
+#define SMOG_DIFFUSION_X_TIME 3.f
+#define SMOG_DIFFUSION_Y_TIME 3.f
 
 #define FIRE_PRODUCE_SMOG_TIME 3.f
 
@@ -83,12 +83,18 @@ private:
     int m_iFloorNum;   // 楼层编号 , 范围 1~12
 
     CAnimateSprite *m_pFire[ONE_FLOOR_CELL_X_NUMBER]; // 火焰
-    bool m_bFireState[ONE_FLOOR_CELL_X_NUMBER];       // 单层火焰状态记录
-    bool m_bFireState[][];
+    bool m_bFireState[ONE_FLOOR_CELL_X_NUMBER];
+    float CurTime_Fire_X;
+    float CurTime_Fire_Y;
+    CAnimateSprite *m_pFireY[2][3];     // 单层火焰状态记录
+    bool m_bFireStateY[2][3]; // 记录火焰的纵向状态数据
 
     CAnimateSprite *m_pSmog[ONE_FLOOR_CELL_Y_NUMBER-1][ONE_FLOOR_CELL_X_NUMBER]; // 烟雾元
+    float CurTime_Smog_X;
     bool m_bSmogState[ONE_FLOOR_CELL_Y_NUMBER-1][ONE_FLOOR_CELL_X_NUMBER];       // 单层烟雾状态记录
 
+
+    float CurTime_Smog_Produce;
     CAnimateSprite *m_pDoor;
     bool m_bDoorState;
 
@@ -100,6 +106,18 @@ public:
     CSprite *GetFloor()
     {
         return m_pFloor;
+    }
+    int GetFloorNum()
+    {
+        return m_iFloorNum;
+    }
+    float GetFloorPoiX()
+    {
+        return m_PFloorPoi.X;
+    }
+    float GetFloorPoiY()
+    {
+        return m_PFloorPoi.Y;
     }
 
     // SET

@@ -3,9 +3,11 @@
 #include <cmath>
 #include <ctime>
 #include <vector>
+#include <cstring>
 
 using std::vector;
 
+extern vector<Floor *> l_Floor;
 Floor::Floor()
 {
     m_pFloor = nullptr;
@@ -18,13 +20,25 @@ Floor::Floor()
         m_pFire[i] = nullptr;
         m_bFireState[i] = 0;
     }
-
+    CurTime_Fire_X = FIRE_DIFFUSION_X_TIME;
+    CurTime_Fire_Y = FIRE_DIFFUSION_Y_TIME;
+    CurTime_Smog_X = SMOG_DIFFUSION_X_TIME;
+    CurTime_Smog_Produce = FIRE_PRODUCE_SMOG_TIME;
     for (int j = 0; j < ONE_FLOOR_CELL_Y_NUMBER - 1; j++)
     {
         for (int i = 0; i < ONE_FLOOR_CELL_X_NUMBER; i++)
         {
             m_pSmog[j][i] = nullptr;
             m_bSmogState[j][i] = 0;
+        }
+    }
+
+    for (int j = 0; j < 2; j++)
+    {
+        for (int i = 0; i < 4; i++)
+        {
+            m_pFireY[j][i] = nullptr;
+            m_bFireStateY[j][i] = 0;
         }
     }
 
@@ -45,17 +59,29 @@ void Floor::FloorInit(int iFloorNum)
 
 void Floor::FireInit()
 {
+    // 初始化横向火焰
     for (int i = 0; i < ONE_FLOOR_CELL_X_NUMBER; i++)
     {
-        char *destName = CSystem::MakeSpriteName("Fire", i);
+        char *destNameF = CSystem::MakeSpriteName("Floor", m_iFloorNum);
+        destNameF = strcat(destNameF, "-FireX");
+        char *destName = CSystem::MakeSpriteName(destNameF, i);
         m_pFire[i] = new CAnimateSprite(destName);
         m_pFire[i]->CloneSprite(FIRE_API_NAME);
     }
-    for (int j = 0; j < ; j++)
+
+    // 初始化纵向火焰
+    for (int j = 0; j < 2; j++)
     {
-
+        char *destNameF = CSystem::MakeSpriteName("Floor", m_iFloorNum);
+        destNameF = strcat(destNameF, "-FireY");
+        char *destName = CSystem::MakeSpriteName(destNameF, j);
+        for (int i = 0; i < 3; i++)
+        {
+            char *destName1 = CSystem::MakeSpriteName(destName, i);
+            m_pFireY[j][i] = new CAnimateSprite(destName1);
+            m_pFireY[j][i]->CloneSprite(FIRE_API_NAME);
+        }
     }
-
 }
 
 void Floor::SmogInit()
@@ -64,8 +90,10 @@ void Floor::SmogInit()
     {
         for (int i = 0; i < ONE_FLOOR_CELL_X_NUMBER; i++)
         {
-            char *destName1 = CSystem::MakeSpriteName("Smog", j + 1);
-            char *destName = CSystem::MakeSpriteName(destName1, i);
+            char *destName = CSystem::MakeSpriteName("Floor", m_iFloorNum);
+            destName = strcat(destName, "-Smog");
+            destName = CSystem::MakeSpriteName(destName, j);
+            destName = CSystem::MakeSpriteName(destName, i);
             m_pSmog[j][i] = new CAnimateSprite(destName);
             m_pSmog[j][i]->CloneSprite(SMOG_API_NAME);
         }
@@ -82,30 +110,58 @@ void Floor::DoorInit()
 }
 void Floor::FireDiffusionY(float fTimeDelta)
 {
-    float CurTime = FIRE_DIFFUSION_Y_TIME;
-    CurTime -= fTimeDelta;
-    if (CurTime < 1e-6)
+    CurTime_Fire_Y -= fTimeDelta;
+    if (CurTime_Fire_Y < 1e-6)
     {
-        CurTime = FIRE_DIFFUSION_Y_TIME;
+        CurTime_Fire_Y = FIRE_DIFFUSION_Y_TIME;
 
-        if (m_bFireState[ELEVATOR_CELL_NUMBER - 1])
+        // 向上层传播
+        for (int i = 0; i < 3; i++)
         {
-        }
-        else if (m_bFireState[ELEVATOR_CELL_NUMBER - 2])
-        {
-        }
-        if (m_bFireState[STAIRS_CELL_NUMBER - 1])
-        {
+            if (GetFloorNum() < 9)
+            {
+                if (m_bFireStateY[1][i] == 1 && i < 2)
+                {
+                    l_Floor[this->GetFloorNum()]->m_bFireState[ELEVATOR_CELL_NUMBER - 1 + i] = 1; // warning::: must using continuous address
+                }
+                if (m_bFireStateY[1][i] == 1 && i == 2)
+                {
+                    l_Floor[this->GetFloorNum()]->m_bFireState[STAIRS_CELL_NUMBER - 1] = 1;
+                }
+            }
         }
 
-        // if (m_bFireState[ELEVATOR_CELL_NUMBER - 1] == 1) //电梯房左侧
-        // {
-        //     (this + 1)->m_bFireState[ELEVATOR_CELL_NUMBER - 1] = 1; // warning::: must using continuous address
-        // }
-        // if (m_bFireState[STAIRS_CELL_NUMBER - 1] == 1)
-        // {
-        //     (this + 1)->m_bFireState[STAIRS_CELL_NUMBER - 1] = 1;
-        // }
+        // j = 1
+        if (m_bFireStateY[0][0])
+        {
+            m_bFireStateY[1][0] = 1;
+        }
+        if (m_bFireStateY[0][1])
+        {
+            m_bFireStateY[1][1] = 1;
+        }
+        if (m_bFireStateY[0][2])
+        {
+            m_bFireStateY[1][2] = 1;
+        }
+
+        // j = 0
+        if (m_bFireState[ELEVATOR_CELL_NUMBER - 1]) // i = 0
+        {
+            m_bFireStateY[0][0] = 1;
+        }
+        if (m_bFireState[ELEVATOR_CELL_NUMBER]) // i = 1
+        {
+            m_bFireStateY[0][1] = 1;
+        }
+        if (m_bFireState[STAIRS_CELL_NUMBER - 1]) // i = 2
+        {
+            m_bFireStateY[0][2] = 1;
+        }
+
+        // 向下层传播
+
+        FloorUpdate();
     }
 }
 void Floor::FireBoom()
@@ -120,11 +176,10 @@ void Floor::FireBoom()
 }
 void Floor::FireProduceSmog(float fTimeDelta)
 {
-    static float CurTime = FIRE_PRODUCE_SMOG_TIME;
-    CurTime -= fTimeDelta;
-    if (CurTime < 1e-6)
+    CurTime_Smog_Produce -= fTimeDelta;
+    if (CurTime_Smog_Produce < 1e-6)
     {
-        CurTime = FIRE_PRODUCE_SMOG_TIME;
+        CurTime_Smog_Produce = FIRE_PRODUCE_SMOG_TIME;
         for (int i = 0; i < ONE_FLOOR_CELL_X_NUMBER; i++)
         {
             if (m_bFireState[i] == 1)
@@ -139,12 +194,29 @@ void Floor::FloorUpdate()
 {
     m_pFloor->SetSpritePosition(m_PFloorPoi.X, m_PFloorPoi.Y);
 
-    // 更新火焰
+    // 更新横向火焰
     for (int i = 0; i < ONE_FLOOR_CELL_X_NUMBER; i++)
     {
         if (m_bFireState[i] == 1)
         {
             m_pFire[i]->SetSpritePosition(m_PFloorPoi.X - fabs(FIRE_START_X - FLOOR_START_X) + i * FLOOR_CELL_X, m_PFloorPoi.Y + fabs(FIRE_START_Y - FLOOR_START_Y));
+        }
+    }
+    // 更新竖向传播的火焰
+    for (int j = 0; j < 2; j++)
+    {
+        for (int i = 0; i < 3; i++)
+        {
+            if (m_bFireStateY[j][i] && i < 2)
+            {
+                m_pSmog[j][ELEVATOR_CELL_NUMBER - 1 + i]->SetSpriteVisible(false);
+                m_pFireY[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + (i + ELEVATOR_CELL_NUMBER - 1) * FLOOR_CELL_X, m_PFloorPoi.Y - (j + 1) * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y) +0.8);
+            }
+            if (m_bFireStateY[j][i] && i == 2)
+            {
+                m_pSmog[j][STAIRS_CELL_NUMBER - 1]->SetSpriteVisible(false);
+                m_pFireY[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + (STAIRS_CELL_NUMBER - 1) * FLOOR_CELL_X, m_PFloorPoi.Y - (j + 1) * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y) +0.8);
+            }
         }
     }
 
@@ -155,7 +227,7 @@ void Floor::FloorUpdate()
         {
             if (m_bSmogState[j][i] == 1)
             {
-                m_pSmog[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + i * FLOOR_CELL_X, m_PFloorPoi.Y - j * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y));
+                m_pSmog[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + i * FLOOR_CELL_X, m_PFloorPoi.Y - (j + 1) * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y) +0.8);
             }
         }
     }
@@ -163,13 +235,11 @@ void Floor::FloorUpdate()
 
 void Floor::FireDiffusionX(float fTimeDelta)
 {
-    static float CurTime = FIRE_DIFFUSION_X_TIME;
-    CurTime -= fTimeDelta;
-
-    if (CurTime < 1e-6)
+    CurTime_Fire_X -= fTimeDelta;
+    if (CurTime_Fire_X < 1e-6)
     {
         bool tmp_FireState[ONE_FLOOR_CELL_X_NUMBER] = {0}; // 记录这次火焰传播后的数据
-        CurTime = FIRE_DIFFUSION_X_TIME;
+        CurTime_Fire_X = FIRE_DIFFUSION_X_TIME;
         // 判断中间单元格的扩散，防越界
         for (int i = 1; i < ONE_FLOOR_CELL_X_NUMBER - 1; i++)
         {
@@ -202,13 +272,11 @@ void Floor::FireDiffusionX(float fTimeDelta)
 
 void Floor::SmogDiffusionX(float fTimeDelta)
 {
-    static float CurTime = SMOG_DIFFUSION_X_TIME;
-    CurTime -= fTimeDelta;
-
-    if (CurTime < 1e-6)
+    CurTime_Smog_X -= fTimeDelta;
+    if (CurTime_Smog_X < 1e-6)
     {
         bool tmp_SmogState[ONE_FLOOR_CELL_Y_NUMBER - 1][ONE_FLOOR_CELL_X_NUMBER] = {};
-        CurTime = SMOG_DIFFUSION_X_TIME;
+        CurTime_Smog_X = SMOG_DIFFUSION_X_TIME;
 
         for (int j = 0; j < ONE_FLOOR_CELL_Y_NUMBER - 1; j++) // 纵向
         {

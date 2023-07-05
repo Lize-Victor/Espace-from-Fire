@@ -95,7 +95,7 @@ void CGameMain::GameInit()
 	srand(time(nullptr));
 	int l_FloorNumStart = rand() % FLOOR_HEIGHT_NUM + 1; // 范围 1~9
 
-	FloorMove(l_FloorNumStart * FLOOR_Y, l_Floor);
+	FloorMove(4 * FLOOR_Y, l_Floor);
 
 	// 火焰和烟雾的初始化
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
@@ -104,22 +104,30 @@ void CGameMain::GameInit()
 		l_Floor[i]->SmogInit();
 	}
 
-	int l_FireFloorNum = rand() % FLOOR_HEIGHT_NUM + 1;
+	int l_FireFloorNum = rand() % FLOOR_HEIGHT_NUM;
 
 	l_Floor[l_FireFloorNum]->FireBoom();
 
-
 	m_iGameState = 1;
-
 }
 //=============================================================================
 //
 // 每局游戏进行中
 void CGameMain::GameRun(float fDeltaTime)
 {
-	l_Floor[0]->FireDiffusionX(fDeltaTime);
-	l_Floor[0]->FireProduceSmog(fDeltaTime);
-	l_Floor[0]->SmogDiffusionX(fDeltaTime);
+
+	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
+	{
+	l_Floor[i]->FireProduceSmog(fDeltaTime);
+	l_Floor[i]->FireDiffusionY(fDeltaTime);
+	l_Floor[i]->FireDiffusionX(fDeltaTime);
+
+	l_Floor[i]->SmogDiffusionX(fDeltaTime);
+	}
+
+	//l_Floor[1]->FireDiffusionX(fDeltaTime);
+
+
 }
 //=============================================================================
 //
