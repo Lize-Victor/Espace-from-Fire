@@ -3,30 +3,39 @@
 
 #include <CommonClass.h>
 
-#define FLOOR_API_NAME ""
-#define ONE_FLOOR_CELL_X_NUMBER 10 // 范围 1~10
-#define ONE_FLOOR_CELL_Y_NUMBER 10 // 范围 1~
-#define FLOOR_X 10
-#define FLOOR_Y 10
-#define FLOOR_CELL_X 10
-#define FLOOR_CELL_Y 10
-#define FLOOR_START_X 10
-#define FLOOR_START_Y 10
-#define ELEVATOR_CELL_NUMBER 10 // 范围 1~10
-#define STAIRS_CELL_NUMBER 10 // 范围 1~10
+#define FLOOR_API_NAME "floor"
+#define FLOOR_HEIGHT_NUM 9
+#define ONE_FLOOR_CELL_X_NUMBER 15 // 范围 1~10
+#define ONE_FLOOR_CELL_Y_NUMBER 3 // 范围 1~
+#define FLOOR_X 150
+#define FLOOR_Y 24
+#define FLOOR_CELL_X 9.9
+#define FLOOR_CELL_Y 8.109
+#define FLOOR_START_X 75.000
+#define FLOOR_START_Y -12.000
+#define ELEVATOR_CELL_NUMBER 7 // 范围 7 8
+#define STAIRS_CELL_NUMBER 15 // 范围 1~10
 
-#define FIRE_API_NAME "FIRE"
-#define FIRE_X 10
-#define FIRE_Y 10
+#define FIRE_API_NAME "fire"
+#define FIRE_X 9.711
+#define FIRE_Y 8.109
+#define FIRE_START_X 6.396
+#define FIRE_START_Y -4.054
 #define FIRE_HURT_COEFFICIENT
-#define FIRE_DIFFUSION_X_TIME 10.f
-#define FIRE_DIFFUSION_Y_TIME 10.f
+#define FIRE_DIFFUSION_X_TIME 3.f
+#define FIRE_DIFFUSION_Y_TIME 2.f
 
-#define SMOG_API_NAME ""
+#define SMOG_API_NAME "Smog"
+#define SMOG_X 9.711
+#define SMOG_Y 7.076
+#define SMOG_START_X 6.363
+#define SMOG_START_Y -12.538
+
 #define SMOG_HURT_COEFFICIENT
-#define SMOG_DIFFUSION_TIME 10.F
+#define SMOG_DIFFUSION_X_TIME 2.F
+#define SMOG_DIFFUSION_Y_TIME 1.F
 
-#define FIRE_PRODUCE_SMOG_TIME 10.f
+#define FIRE_PRODUCE_SMOG_TIME 1.f
 
 #define DOOR_API_NAME ""
 
@@ -119,6 +128,9 @@ public:
     // 参数 fTimeDelta: 两次调用的时间间隔
     // 参数 thisFloor: 着火源楼层
     void FireDiffusionY(float fTimeDelta);
+
+    // FireBoom: 火焰爆发
+    void FireBoom();
 
     // SmogDiffusionX: 烟雾横向扩散
     // 参数 fTimeDelta: 两次调用的时间间隔

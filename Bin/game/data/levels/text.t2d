@@ -34,35 +34,36 @@
    layerSortMode30 = "Normal";
    layerSortMode31 = "Normal";
    DebugRendering = "0";
-      cameraPosition = "65 -40";
-      cameraSize = "130 80";
+      cameraPosition = "75 -40";
+      cameraSize = "150 80";
 
-   new t2dStaticSprite(floor) {
-      imageMap = "floor2ImageMap";
-      frame = "0";
-      useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
+   new t2dAnimatedSprite(Smog) {
+      animationName = "SmogAnimation";
       canSaveDynamicFields = "1";
-      Position = "65.000 -20.236";
-      size = "130.000 25.000";
+      Position = "6.363 -12.538";
+      size = "9.973 7.076";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "2";
    };
    new t2dAnimatedSprite(fire) {
-      animationName = "fireAnimation";
+      animationName = "FireAnimation";
       canSaveDynamicFields = "1";
-      Position = "5.144 5.834";
-      size = "9.711 8.332";
+      Position = "6.396 -4.054";
+      size = "9.711 8.109";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "3";
    };
-   new t2dAnimatedSprite(Smog) {
-      animationName = "SmogAnimation";
+   new t2dStaticSprite(floor) {
+      imageMap = "floor3ImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 0 0";
       canSaveDynamicFields = "1";
-      Position = "16.817 5.834";
-      size = "9.711 8.332";
+      Position = "75.000 -12.000";
+      size = "150.000 24.000";
+      Layer = "10";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "4";

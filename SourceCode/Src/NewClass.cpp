@@ -37,7 +37,7 @@ void Floor::FloorInit(int iFloorNum)
     m_pFloor = new CSprite(destName);
     m_pFloor->CloneSprite(FLOOR_API_NAME);
     m_PFloorPoi.X = FLOOR_START_X;
-    m_PFloorPoi.Y = FLOOR_START_Y - iFloorNum * FLOOR_Y;
+    m_PFloorPoi.Y = FLOOR_START_Y - (iFloorNum - 1) * FLOOR_Y;
     m_iFloorNum = iFloorNum;
 
     FloorUpdate();
@@ -65,6 +65,7 @@ void Floor::SmogInit()
         }
     }
 }
+
 void Floor::DoorInit()
 {
     char *destName = CSystem::MakeSpriteName("Door", m_iFloorNum);
@@ -90,6 +91,16 @@ void Floor::FireDiffusionY(float fTimeDelta)
         }
     }
 }
+void Floor::FireBoom()
+{
+    srand(time(nullptr));
+    for (int i = 0; i < 2; i++)
+    {
+        int FireCellNum = rand() % ONE_FLOOR_CELL_X_NUMBER + 1; // 随机出现着火位置
+        m_bFireState[FireCellNum] = 1;
+    }
+    FloorUpdate();
+}
 void Floor::FireProduceSmog(float fTimeDelta)
 {
     float CurTime = FIRE_PRODUCE_SMOG_TIME;
@@ -101,9 +112,10 @@ void Floor::FireProduceSmog(float fTimeDelta)
         {
             if (m_bFireState[i] == 1)
             {
-                m_bSmogState[1][i] = 1;
+                m_bSmogState[0][i] = true;
             }
         }
+        FloorUpdate();
     }
 }
 void Floor::FloorUpdate()
@@ -115,7 +127,7 @@ void Floor::FloorUpdate()
     {
         if (m_bFireState[i] == 1)
         {
-            m_pFire[i]->SetSpritePosition(m_PFloorPoi.X + i * FLOOR_CELL_X, m_PFloorPoi.Y);
+            m_pFire[i]->SetSpritePosition(m_PFloorPoi.X - fabs(FIRE_START_X - FLOOR_START_X) + i * FLOOR_CELL_X, m_PFloorPoi.Y + fabs(FIRE_START_Y - FLOOR_START_Y));
         }
     }
 
@@ -126,7 +138,7 @@ void Floor::FloorUpdate()
         {
             if (m_bSmogState[j][i] == 1)
             {
-                m_pSmog[j][i]->SetSpritePosition(m_PFloorPoi.X + i * FLOOR_CELL_X, m_PFloorPoi.Y - FIRE_Y - j * FLOOR_CELL_Y);
+                m_pSmog[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + i * FLOOR_CELL_X, m_PFloorPoi.Y - FIRE_Y - j * FLOOR_CELL_Y+ fabs(SMOG_START_Y - FLOOR_START_Y));
             }
         }
     }
@@ -139,12 +151,12 @@ void Floor::FireDiffusionX(float fTimeDelta)
 
     if (CurTime < 1e-6)
     {
-        bool tmp_FireState[ONE_FLOOR_CELL_X_NUMBER] = {}; // 记录这次火焰传播后的数据
+        bool tmp_FireState[ONE_FLOOR_CELL_X_NUMBER] = {0}; // 记录这次火焰传播后的数据
         CurTime = FIRE_DIFFUSION_X_TIME;
         // 判断中间单元格的扩散，防越界
         for (int i = 1; i < ONE_FLOOR_CELL_X_NUMBER - 1; i++)
         {
-            if (m_bFireState[i] = true)
+            if (m_bFireState[i] == true)
             {
                 tmp_FireState[i - 1] = 1;
                 tmp_FireState[i + 1] = 1;
@@ -173,19 +185,19 @@ void Floor::FireDiffusionX(float fTimeDelta)
 
 void Floor::SmogDiffusionX(float fTimeDelta)
 {
-    static float CurTime = SMOG_DIFFUSION_TIME;
+    static float CurTime = SMOG_DIFFUSION_X_TIME;
     CurTime -= fTimeDelta;
 
     if (CurTime < 1e-6)
     {
         bool tmp_SmogState[ONE_FLOOR_CELL_Y_NUMBER - 1][ONE_FLOOR_CELL_X_NUMBER] = {};
-        CurTime = SMOG_DIFFUSION_TIME;
+        CurTime = SMOG_DIFFUSION_X_TIME;
 
         for (int j = 0; j < ONE_FLOOR_CELL_Y_NUMBER - 1; j++) // 纵向
         {
             for (int i = 1; i < ONE_FLOOR_CELL_X_NUMBER - 1; i++) // 横向 中间
             {
-                if (m_bSmogState[j][i] = true)
+                if (m_bSmogState[j][i] == true)
                 {
                     tmp_SmogState[j][i - 1] = 1;
                     tmp_SmogState[j][i + 1] = 1;

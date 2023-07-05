@@ -14,12 +14,12 @@
 #include <vector>
 using std::vector;
 
-
 ////////////////////////////////////////////////////////////////////////////////
 //
 //
 CGameMain g_GameMain;
 
+vector<Floor *> l_Floor;
 //==============================================================================
 //
 // 大体的程序流程为：GameMainLoop函数为主循环函数，在引擎每帧刷新屏幕图像之后，都会被调用一次。
@@ -29,7 +29,7 @@ CGameMain g_GameMain;
 // 构造函数
 CGameMain::CGameMain()
 {
-	m_iGameState = 0;
+	m_iGameState = 1;
 }
 //==============================================================================
 //
@@ -82,8 +82,8 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 // 每局开始前进行初始化，清空上一局相关数据
 void CGameMain::GameInit()
 {
-	vector<Floor *> l_Floor;
-	for (int i = 0; i < 9; i++)
+
+	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
 		Floor *tmp_Floor;
 		tmp_Floor = new Floor;
@@ -91,16 +91,35 @@ void CGameMain::GameInit()
 		l_Floor.push_back(tmp_Floor);
 	}
 
+	// 寻找中心点
 	srand(time(nullptr));
-	int l_FloorNumStart = rand() % 9 + 1; // 范围 1~9
+	int l_FloorNumStart = rand() % FLOOR_HEIGHT_NUM + 1; // 范围 1~9
 
-	FloorMove(l_FloorNumStart * FLOOR_Y, l_Floor);
+	//FloorMove(l_FloorNumStart * FLOOR_Y, l_Floor);
+
+	// 火焰和烟雾的初始化
+	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
+	{
+		l_Floor[i]->FireInit();
+		l_Floor[i]->SmogInit();
+	}
+
+	int l_FireFloorNum = rand() % FLOOR_HEIGHT_NUM + 1;
+
+	l_Floor[0]->FireBoom();
+
+
+	m_iGameState = 1;
+
 }
 //=============================================================================
 //
 // 每局游戏进行中
 void CGameMain::GameRun(float fDeltaTime)
 {
+	l_Floor[0]->FireDiffusionX(fDeltaTime);
+	l_Floor[0]->FireProduceSmog(fDeltaTime);
+	l_Floor[0]->SmogDiffusionX(fDeltaTime);
 }
 //=============================================================================
 //
@@ -162,5 +181,3 @@ void CGameMain::OnSpriteColSprite(const char *szSrcName, const char *szTarName)
 void CGameMain::OnSpriteColWorldLimit(const char *szName, const int iColSide)
 {
 }
-
-

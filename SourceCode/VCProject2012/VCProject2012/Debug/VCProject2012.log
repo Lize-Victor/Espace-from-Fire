@@ -1,12 +1,19 @@
-﻿生成启动时间为 2023/7/4 18:09:49。
+﻿生成启动时间为 2023/7/5 10:20:51。
 项目“E:\FunCode_CppProject\FunCode_Project\SourceCode\VCProject2012\VCProject2012\VCProject2012.vcxproj”在节点 2 上(build 个目标)。
 InitializeBuildStatus:
-  正在对“Debug\VCProject2012.unsuccessfulbuild”执行 Touch 任务。
+  正在创建“Debug\VCProject2012.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
 ClCompile:
-  F:\VS2010\VC\bin\CL.exe /c /I../../Header /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Src\CustomFunction.cpp
-  CustomFunction.cpp
+  F:\VS2010\VC\bin\CL.exe /c /I../../Header /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Src\NewClass.cpp
+  NewClass.cpp
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(40): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(74): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(96): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(130): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(130): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(141): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(141): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
 ResourceCompile:
-  C:\Program Files (x86)\Microsoft SDKs\Windows\v7.0A\bin\rc.exe /l"0x0409" /nologo /fo"Debug\VCTemplate.res" VCTemplate.rc 
+  所有输出均为最新。
 Link:
   F:\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\..\Bin\Game.exe" /INCREMENTAL:NO /NOLOGO Winmm.lib ..\..\Src\CommonClass_2010.Lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST:NO /DEBUG /PDB:"Debug\Game.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\..\Bin\Game.lib" /MACHINE:X86 Debug\VCTemplate.res
   Debug\CustomFunction.obj
@@ -26,4 +33,4 @@ FinalizeBuildStatus:
 
 生成成功。
 
-已用时间 00:00:02.18
+已用时间 00:00:02.34
