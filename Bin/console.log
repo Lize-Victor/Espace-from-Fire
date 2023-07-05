@@ -1,7 +1,7 @@
-//-------------------------- 7/5/2023 -- 10:22:59 -----
+//-------------------------- 7/5/2023 -- 11:08:34 -----
 Processor Init:
-   Intel Pentium III, ~2.65 Ghz
-     (timed at roughly 2.65 Ghz)
+   Intel Pentium III, ~2.70 Ghz
+     (timed at roughly 2.69 Ghz)
    FPU detected
    MMX detected
    SSE detected
@@ -1073,3 +1073,11 @@ t2dSceneGraph::addToScene() - Object '1741' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1742' is already in a SceneGraph!.
+DirectInput deactivated.
+Activating DirectInput...
+DirectInput deactivated.
+Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
+Shutting down the OpenGL display device...
+Making the GL rendering context not current...
+Deleting the GL rendering context...
+Releasing the device context...

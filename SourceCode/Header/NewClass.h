@@ -33,9 +33,9 @@
 
 #define SMOG_HURT_COEFFICIENT
 #define SMOG_DIFFUSION_X_TIME 2.F
-#define SMOG_DIFFUSION_Y_TIME 1.F
+#define SMOG_DIFFUSION_Y_TIME 3.F
 
-#define FIRE_PRODUCE_SMOG_TIME 1.f
+#define FIRE_PRODUCE_SMOG_TIME 3.f
 
 #define DOOR_API_NAME ""
 
@@ -82,8 +82,9 @@ private:
     Point m_PFloorPoi; // 楼层坐标
     int m_iFloorNum;   // 楼层编号 , 范围 1~12
 
-    CAnimateSprite *m_pFire[ONE_FLOOR_CELL_X_NUMBER]; // 火焰元
+    CAnimateSprite *m_pFire[ONE_FLOOR_CELL_X_NUMBER]; // 火焰
     bool m_bFireState[ONE_FLOOR_CELL_X_NUMBER];       // 单层火焰状态记录
+    bool m_bFireState[][];
 
     CAnimateSprite *m_pSmog[ONE_FLOOR_CELL_Y_NUMBER-1][ONE_FLOOR_CELL_X_NUMBER]; // 烟雾元
     bool m_bSmogState[ONE_FLOOR_CELL_Y_NUMBER-1][ONE_FLOOR_CELL_X_NUMBER];       // 单层烟雾状态记录

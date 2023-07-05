@@ -59,7 +59,7 @@
       imageMap = "floor3ImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "0 0 0 0";
+      sourceRect = "0 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "75.000 -12.000";
       size = "150.000 24.000";
