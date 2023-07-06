@@ -2,7 +2,7 @@
 <TorqueGameConfiguration>
    <Company>Independent</Company>
    <GameName>UntitledGame</GameName>
-   <Resolution>1000 800 32</Resolution>
+   <Resolution>800 600 32</Resolution>
    <FullScreen>false</FullScreen>
    <CommonVer>114</CommonVer>
    <ScreenShotKey>ctrl p</ScreenShotKey>

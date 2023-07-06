@@ -115,51 +115,104 @@ void Floor::FireDiffusionY(float fTimeDelta)
     {
         CurTime_Fire_Y = FIRE_DIFFUSION_Y_TIME;
 
+        bool tmp_FireStateY[2][3] = {};
+        bool tmp_FireState[ONE_FLOOR_CELL_X_NUMBER] = {};
+
+        for (int i = 0; i < ONE_FLOOR_CELL_X_NUMBER; i++)
+        {
+            tmp_FireState[i] = m_bFireState[i];
+        }
+        for (int j = 0; j < 2; j++)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                tmp_FireStateY[j][i] = m_bFireStateY[j][i];
+            }
+        }
+
         // 向上层传播
         for (int i = 0; i < 3; i++)
         {
             if (GetFloorNum() < 9)
             {
-                if (m_bFireStateY[1][i] == 1 && i < 2)
+                if (tmp_FireStateY[1][i] == 1 && i < 2)
                 {
                     l_Floor[this->GetFloorNum()]->m_bFireState[ELEVATOR_CELL_NUMBER - 1 + i] = 1; // warning::: must using continuous address
                 }
-                if (m_bFireStateY[1][i] == 1 && i == 2)
+                if (tmp_FireStateY[1][i] == 1 && i == 2)
                 {
                     l_Floor[this->GetFloorNum()]->m_bFireState[STAIRS_CELL_NUMBER - 1] = 1;
                 }
+                l_Floor[this->GetFloorNum()]->FloorUpdate();
             }
         }
 
         // j = 1
-        if (m_bFireStateY[0][0])
+        if (tmp_FireStateY[0][0])
         {
             m_bFireStateY[1][0] = 1;
         }
-        if (m_bFireStateY[0][1])
+        if (tmp_FireStateY[0][1])
         {
             m_bFireStateY[1][1] = 1;
         }
-        if (m_bFireStateY[0][2])
+        if (tmp_FireStateY[0][2])
         {
             m_bFireStateY[1][2] = 1;
         }
 
         // j = 0
-        if (m_bFireState[ELEVATOR_CELL_NUMBER - 1]) // i = 0
+        if (tmp_FireState[ELEVATOR_CELL_NUMBER - 1]) // i = 0
         {
             m_bFireStateY[0][0] = 1;
         }
-        if (m_bFireState[ELEVATOR_CELL_NUMBER]) // i = 1
+        if (tmp_FireState[ELEVATOR_CELL_NUMBER]) // i = 1
         {
             m_bFireStateY[0][1] = 1;
         }
-        if (m_bFireState[STAIRS_CELL_NUMBER - 1]) // i = 2
+        if (tmp_FireState[STAIRS_CELL_NUMBER - 1]) // i = 2
         {
             m_bFireStateY[0][2] = 1;
         }
 
         // 向下层传播
+        for (int i = 0; i < 3; i++)
+        {
+            if (tmp_FireStateY[1][i] == 1)
+            {
+                m_bFireStateY[0][i] = 1;
+            }
+        }
+
+        if (tmp_FireStateY[0][0])
+        {
+            m_bFireState[ELEVATOR_CELL_NUMBER - 1] = 1;
+        }
+        if (tmp_FireStateY[0][1])
+        {
+            m_bFireState[ELEVATOR_CELL_NUMBER] = 1;
+        }
+        if (tmp_FireStateY[0][2])
+        {
+            m_bFireState[STAIRS_CELL_NUMBER - 1] = 1;
+        }
+
+        if (GetFloorNum() > 1)
+        {
+            if (tmp_FireState[ELEVATOR_CELL_NUMBER - 1]) // i = 0
+            {
+                l_Floor[this->GetFloorNum() - 2]->m_bFireStateY[1][0] = 1;
+            }
+            if (tmp_FireState[ELEVATOR_CELL_NUMBER]) // i = 1
+            {
+                l_Floor[this->GetFloorNum() - 2]->m_bFireStateY[1][1] = 1;
+            }
+            if (tmp_FireState[STAIRS_CELL_NUMBER - 1]) // i = 2
+            {
+                l_Floor[this->GetFloorNum() - 2]->m_bFireStateY[1][2] = 1;
+            }
+            l_Floor[this->GetFloorNum()-2]->FloorUpdate();
+        }
 
         FloorUpdate();
     }
@@ -210,12 +263,12 @@ void Floor::FloorUpdate()
             if (m_bFireStateY[j][i] && i < 2)
             {
                 m_pSmog[j][ELEVATOR_CELL_NUMBER - 1 + i]->SetSpriteVisible(false);
-                m_pFireY[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + (i + ELEVATOR_CELL_NUMBER - 1) * FLOOR_CELL_X, m_PFloorPoi.Y - (j + 1) * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y) +0.8);
+                m_pFireY[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + (i + ELEVATOR_CELL_NUMBER - 1) * FLOOR_CELL_X, m_PFloorPoi.Y - (j + 1) * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y) + 0.8);
             }
             if (m_bFireStateY[j][i] && i == 2)
             {
                 m_pSmog[j][STAIRS_CELL_NUMBER - 1]->SetSpriteVisible(false);
-                m_pFireY[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + (STAIRS_CELL_NUMBER - 1) * FLOOR_CELL_X, m_PFloorPoi.Y - (j + 1) * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y) +0.8);
+                m_pFireY[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + (STAIRS_CELL_NUMBER - 1) * FLOOR_CELL_X, m_PFloorPoi.Y - (j + 1) * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y) + 0.8);
             }
         }
     }
@@ -227,7 +280,7 @@ void Floor::FloorUpdate()
         {
             if (m_bSmogState[j][i] == 1)
             {
-                m_pSmog[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + i * FLOOR_CELL_X, m_PFloorPoi.Y - (j + 1) * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y) +0.8);
+                m_pSmog[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + i * FLOOR_CELL_X, m_PFloorPoi.Y - (j + 1) * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y) + 0.8);
             }
         }
     }

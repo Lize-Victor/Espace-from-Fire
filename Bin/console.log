@@ -1,6 +1,6 @@
-//-------------------------- 7/5/2023 -- 21:44:30 -----
+//-------------------------- 7/6/2023 -- 09:01:55 -----
 Processor Init:
-   Intel Pentium III, ~2.67 Ghz
+   Intel Pentium III, ~2.70 Ghz
      (timed at roughly 2.68 Ghz)
    FPU detected
    MMX detected
@@ -74,7 +74,7 @@ OpenGL Init: Disabled Extensions
   3DFX_texture_compression_FXT1
 
 Max Texture Size reported as: 32768
-Setting screen mode to 1000x800x32 (w)...
+Setting screen mode to 800x600x32 (w)...
 OpenAL Driver Init:
    Failed to initialize driver.
 Loading compiled script E:/FunCode_CppProject/FunCode_Project/Bin/common/gui/profiles.cs.
@@ -1127,8 +1127,6 @@ t2dSceneGraph::addToScene() - Object '1795' is already in a SceneGraph!.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Error: cannot change namespace parent linkage of Smog from t2dImageMapDatablock to t2dAnimatedSprite.
 t2dSceneGraph::addToScene() - Object '1796' is already in a SceneGraph!.
-DirectInput deactivated.
-Activating DirectInput...
 DirectInput deactivated.
 Namespace::unlinkClass - cannot unlink namespace parent linkage for Smog for t2dImageMapDatablock.
 Shutting down the OpenGL display device...
