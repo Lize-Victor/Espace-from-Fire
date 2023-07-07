@@ -54,6 +54,18 @@ void Floor::FloorInit(int iFloorNum)
     m_PFloorPoi.Y = FLOOR_START_Y - (iFloorNum - 1) * FLOOR_Y;
     m_iFloorNum = iFloorNum;
 
+    // 初始化门
+    char *destNameDoor = CSystem::MakeSpriteName("floor", iFloorNum);
+    destNameDoor = strcat(destNameDoor, "-Door");
+    m_pDoor = new CSprite(destNameDoor);
+    m_pDoor->CloneSprite(DOOR_API_NAME);
+
+    m_pDoor->SetSpritePosition(DOOR_START_X, DOOR_START_Y - (iFloorNum - 1) * FLOOR_Y);
+
+    srand(time(nullptr));
+    m_bDoorState = rand() % 2;
+    m_pDoor->SetSpriteVisible(m_bDoorState);
+
     FloorUpdate();
 }
 
@@ -96,17 +108,10 @@ void Floor::SmogInit()
             destName = CSystem::MakeSpriteName(destName, i);
             m_pSmog[j][i] = new CAnimateSprite(destName);
             m_pSmog[j][i]->CloneSprite(SMOG_API_NAME);
+
+            m_pSmog[j][i]->SetSpriteCollisionSend(true);
         }
     }
-}
-
-void Floor::DoorInit()
-{
-    char *destName = CSystem::MakeSpriteName("Door", m_iFloorNum);
-    m_pDoor = new CAnimateSprite(destName);
-    m_pDoor->CloneSprite(DOOR_API_NAME);
-    srand(time(nullptr));
-    int m_bDoorState = rand() % 2;
 }
 void Floor::FireDiffusionY(float fTimeDelta)
 {
@@ -211,7 +216,7 @@ void Floor::FireDiffusionY(float fTimeDelta)
             {
                 l_Floor[this->GetFloorNum() - 2]->m_bFireStateY[1][2] = 1;
             }
-            l_Floor[this->GetFloorNum()-2]->FloorUpdate();
+            l_Floor[this->GetFloorNum() - 2]->FloorUpdate();
         }
 
         FloorUpdate();
@@ -242,6 +247,22 @@ void Floor::FireProduceSmog(float fTimeDelta)
         }
         FloorUpdate();
     }
+}
+void Floor::SmogWarningInit()
+{
+    char *destName = CSystem::MakeSpriteName("Floor", m_iFloorNum);
+    destName = strcat(destName, "-SmogWarning");
+    m_pSmogWarning = new CAnimateSprite(destName);
+    m_pSmogWarning->CloneSprite(SMOGWARNING_API_NAME);
+
+    m_pSmogWarning->SetSpritePosition(SMOGWARNING_START_X, SMOGWARNING_START_Y - (m_iFloorNum - 1) * FLOOR_Y);
+    m_pSmogWarning->AnimateSpritePlayAnimation("SmogWarningAnimation1", 1);
+    m_pSmogWarning->SetSpriteCollisionReceive(true);
+}
+void Floor::SmogWarningBing()
+{
+    m_pSmog[1][FLOOR_HEIGHT_NUM - 2]->SetSpriteVisible(false);
+    m_pSmogWarning->AnimateSpritePlayAnimation("SmogWarningAnimation4", 1);
 }
 void Floor::FloorUpdate()
 {
@@ -285,7 +306,6 @@ void Floor::FloorUpdate()
         }
     }
 }
-
 void Floor::FireDiffusionX(float fTimeDelta)
 {
     CurTime_Fire_X -= fTimeDelta;
@@ -322,7 +342,6 @@ void Floor::FireDiffusionX(float fTimeDelta)
         FloorUpdate();
     }
 }
-
 void Floor::SmogDiffusionX(float fTimeDelta)
 {
     CurTime_Smog_X -= fTimeDelta;

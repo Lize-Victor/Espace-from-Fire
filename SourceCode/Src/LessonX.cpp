@@ -108,6 +108,11 @@ void CGameMain::GameInit()
 
 	l_Floor[1]->FireBoom();
 
+	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
+	{
+		l_Floor[i]->SmogWarningInit();
+	}
+
 	m_iGameState = 1;
 }
 //=============================================================================
@@ -179,6 +184,14 @@ void CGameMain::OnKeyUp(const int iKey)
 // 参数 szTarName：被碰撞的精灵名字
 void CGameMain::OnSpriteColSprite(const char *szSrcName, const char *szTarName)
 {
+	if(strstr(szSrcName,"Smog") != 0 && strstr(szTarName,"SmogWarning"))
+	{
+		for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
+		{
+			l_Floor[i]->SmogWarningBing();
+		}
+
+	}
 }
 //===========================================================================
 //

@@ -1,27 +1,11 @@
-﻿生成启动时间为 2023/7/6 9:01:50。
+﻿生成启动时间为 2023/7/7 10:22:26。
 项目“E:\FunCode_CppProject\FunCode_Project\SourceCode\VCProject2012\VCProject2012\VCProject2012.vcxproj”在节点 2 上(build 个目标)。
 InitializeBuildStatus:
-  正在创建“Debug\VCProject2012.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
+  正在对“Debug\VCProject2012.unsuccessfulbuild”执行 Touch 任务。
 ClCompile:
-  F:\VS2010\VC\bin\CL.exe /c /I../../Header /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Src\NewClass.cpp
-  NewClass.cpp
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(54): warning C4244: “=”: 从“double”转换到“float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(66): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-          f:\vs2010\vc\include\string.h(110) : 参见“strcat”的声明
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(76): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-          f:\vs2010\vc\include\string.h(110) : 参见“strcat”的声明
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(94): warning C4996: 'strcat': This function or variable may be unsafe. Consider using strcat_s instead. To disable deprecation, use _CRT_SECURE_NO_WARNINGS. See online help for details.
-          f:\vs2010\vc\include\string.h(110) : 参见“strcat”的声明
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(108): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(222): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(255): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(255): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(266): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(266): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(271): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(271): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(283): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\newclass.cpp(283): warning C4244: “参数”: 从“double”转换到“const float”，可能丢失数据
+  F:\VS2010\VC\bin\CL.exe /c /I../../Header /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Src\Prop.cpp
+  Prop.cpp
+e:\funcode_cppproject\funcode_project\sourcecode\header\prop.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
 ResourceCompile:
   所有输出均为最新。
 Link:
@@ -30,6 +14,8 @@ Link:
   Debug\LessonX.obj
   Debug\Main.obj
   Debug\NewClass.obj
+  Debug\Prop.obj
+  Debug\View.obj
 CustomFunction.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/INCREMENTAL:NO”规范)
 LINK : warning LNK4098: 默认库“LIBCMT”与其他库的使用冲突；请使用 /NODEFAULTLIB:library
 CommonClass_2010.Lib(CommonClass.obj) : warning LNK4204: “E:\FunCode_CppProject\FunCode_Project\SourceCode\VCProject2012\VCProject2012\Debug\vc100.pdb”缺少引用模块的调试信息；正在链接对象，如同没有调试信息一样
@@ -43,4 +29,4 @@ FinalizeBuildStatus:
 
 生成成功。
 
-已用时间 00:00:02.54
+已用时间 00:00:03.19

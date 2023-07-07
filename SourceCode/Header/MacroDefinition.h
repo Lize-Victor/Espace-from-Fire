@@ -1,0 +1,53 @@
+#define FLOOR_API_NAME "floor"
+#define FLOOR_HEIGHT_NUM 9
+#define ONE_FLOOR_CELL_X_NUMBER 15 // 范围 1~10
+#define ONE_FLOOR_CELL_Y_NUMBER 3  // 范围 1~
+#define FLOOR_X 150
+#define FLOOR_Y 24
+#define FLOOR_CELL_X 9.9
+#define FLOOR_CELL_Y 8.109
+#define FLOOR_START_X 75.000
+#define FLOOR_START_Y -20.000
+#define ELEVATOR_CELL_NUMBER 7 // 范围 7 8
+#define STAIRS_CELL_NUMBER 15  // 范围 1~10
+
+#define FIRE_API_NAME "fire"
+#define FIRE_X 9.711
+#define FIRE_Y 8.109
+#define FIRE_START_X 6.396
+#define FIRE_START_Y -12.054
+#define FIRE_HURT_COEFFICIENT
+#define FIRE_DIFFUSION_X_TIME 3.f
+#define FIRE_DIFFUSION_Y_TIME 3.f
+
+#define SMOG_API_NAME "Smog"
+#define SMOG_X 9.711
+#define SMOG_Y 17.076
+#define SMOG_START_X 6.363
+#define SMOG_START_Y -12.538
+
+#define SMOG_HURT_COEFFICIENT
+#define SMOG_DIFFUSION_X_TIME 3.f
+#define SMOG_DIFFUSION_Y_TIME 3.f
+
+#define FIRE_PRODUCE_SMOG_TIME 3.f
+
+#define DOOR_API_NAME "door"
+#define DOOR_START_X 135.594
+#define DOOR_START_Y -15.436
+
+
+#define PERSON_NORMAL_SPEED
+#define PERSON_FULL_BLOOD 100
+
+#define SMOGWARNING_API_NAME "smogwarning"
+#define SMOGWARNING_START_X 134.077
+#define SMOGWARNING_START_Y -27.101
+
+#define PILLOW_API_NAME ""
+
+
+#define PLIERS_API_NAME ""
+
+
+#define CURTAIN_API_NAME ""

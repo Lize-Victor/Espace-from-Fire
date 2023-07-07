@@ -3,44 +3,8 @@
 
 #include <CommonClass.h>
 
-#define FLOOR_API_NAME "floor"
-#define FLOOR_HEIGHT_NUM 9
-#define ONE_FLOOR_CELL_X_NUMBER 15 // 范围 1~10
-#define ONE_FLOOR_CELL_Y_NUMBER 3 // 范围 1~
-#define FLOOR_X 150
-#define FLOOR_Y 24
-#define FLOOR_CELL_X 9.9
-#define FLOOR_CELL_Y 8.109
-#define FLOOR_START_X 75.000
-#define FLOOR_START_Y -20.000
-#define ELEVATOR_CELL_NUMBER 7 // 范围 7 8
-#define STAIRS_CELL_NUMBER 15 // 范围 1~10
+#include "MacroDefinition.h"
 
-#define FIRE_API_NAME "fire"
-#define FIRE_X 9.711
-#define FIRE_Y 8.109
-#define FIRE_START_X 6.396
-#define FIRE_START_Y -12.054
-#define FIRE_HURT_COEFFICIENT
-#define FIRE_DIFFUSION_X_TIME 3.f
-#define FIRE_DIFFUSION_Y_TIME 3.f
-
-#define SMOG_API_NAME "Smog"
-#define SMOG_X 9.711
-#define SMOG_Y 17.076
-#define SMOG_START_X 6.363
-#define SMOG_START_Y -12.538
-
-#define SMOG_HURT_COEFFICIENT
-#define SMOG_DIFFUSION_X_TIME 3.f
-#define SMOG_DIFFUSION_Y_TIME 3.f
-
-#define FIRE_PRODUCE_SMOG_TIME 3.f
-
-#define DOOR_API_NAME ""
-
-#define PERSON_NORMAL_SPEED
-#define PERSON_FULL_BLOOD 100
 
 struct Point
 {
@@ -86,18 +50,19 @@ private:
     bool m_bFireState[ONE_FLOOR_CELL_X_NUMBER];
     float CurTime_Fire_X;
     float CurTime_Fire_Y;
-    CAnimateSprite *m_pFireY[2][3];     // 单层火焰状态记录
-    bool m_bFireStateY[2][3]; // 记录火焰的纵向状态数据
+    CAnimateSprite *m_pFireY[2][3]; // 单层火焰状态记录
+    bool m_bFireStateY[2][3];       // 记录火焰的纵向状态数据
 
-    CAnimateSprite *m_pSmog[ONE_FLOOR_CELL_Y_NUMBER-1][ONE_FLOOR_CELL_X_NUMBER]; // 烟雾元
+    CAnimateSprite *m_pSmog[ONE_FLOOR_CELL_Y_NUMBER - 1][ONE_FLOOR_CELL_X_NUMBER]; // 烟雾元
     float CurTime_Smog_X;
-    bool m_bSmogState[ONE_FLOOR_CELL_Y_NUMBER-1][ONE_FLOOR_CELL_X_NUMBER];       // 单层烟雾状态记录
-
+    bool m_bSmogState[ONE_FLOOR_CELL_Y_NUMBER - 1][ONE_FLOOR_CELL_X_NUMBER]; // 单层烟雾状态记录
 
     float CurTime_Smog_Produce;
-    CAnimateSprite *m_pDoor;
-    bool m_bDoorState;
 
+    CAnimateSprite *m_pSmogWarning;
+
+    CSprite *m_pDoor;
+    bool m_bDoorState;
 public:
     Floor();
     ~Floor();
@@ -133,8 +98,6 @@ public:
     void FireInit();
     // SmogInit: 初始化烟雾
     void SmogInit();
-    // DoorInit: 初始化门
-    void DoorInit();
 
     // FloorUpdate: 更新楼层状态到引擎
     void FloorUpdate();
@@ -158,29 +121,12 @@ public:
     // FireProduceSmog: 由火焰生成烟雾
     // 参数 fTimeDelta: 两次调用的时间间隔
     void FireProduceSmog(float fTimeDelta);
-};
 
-// 道具类，管理道具的数据
-class prop
-{
-private:
-    CSprite *m_pProp;
 
-    Point m_PPropPoi;
+    // SmogWarningInit: 烟雾报警器初始化
+    void SmogWarningInit();
 
-public:
-    prop();
-    ~prop();
-
-    // PropInit: 初始化道具
-    void PropInit();
-
-    // PropUpdate: 更新道具的状态到引擎
-    void PropUpdate();
-
-    // IntoPropTable: 道具进入道具栏
-    void IntoPropTable();
-
-    //
+    // SmogWarningBing: 报警器响
+    void SmogWarningBing();
 };
 #endif
