@@ -6,17 +6,16 @@ class prop
 {
 private:
     CSprite *m_pProp;
+    char * m_pPropName;
 
+    CSprite *m_pPropInTable;
 
 public:
-    prop();
+    prop(const char *destName);
     ~prop();
 
     // PropInit: 初始化道具
-    void PropInit();
-
-    // PropUpdate: 更新道具的状态到引擎
-    void PropUpdate();
+    void PropInit(int i_floor);
 
     // IntoPropTable: 道具进入道具栏
     void IntoPropTable();
