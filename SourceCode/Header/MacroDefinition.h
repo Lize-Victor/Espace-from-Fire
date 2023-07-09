@@ -64,3 +64,5 @@
 #define EXTINGUISHER_START_Y -36.791
 
 #define FLOORNUM_API_NAME "FloorNum"
+
+#define WIN_API_NAME "window"

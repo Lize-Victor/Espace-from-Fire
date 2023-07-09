@@ -106,6 +106,7 @@
     <ClCompile Include="..\..\Src\Main.cpp" />
     <ClCompile Include="..\..\Src\Prop.cpp" />
     <ClCompile Include="..\..\Src\View.cpp" />
+    <ClCompile Include="..\..\Src\Win.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="VCTemplate.rc" />
@@ -118,6 +119,7 @@
     <ClInclude Include="..\..\Header\MacroDefinition.h" />
     <ClInclude Include="..\..\Header\Prop.h" />
     <ClInclude Include="..\..\Header\View.h" />
+    <ClInclude Include="..\..\Header\Win.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

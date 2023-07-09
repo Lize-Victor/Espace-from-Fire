@@ -42,6 +42,8 @@ private:
     static bool m_bDoorState; // 逃生通达门的状态
 
     int m_iPropNum; // 压力钳：1   枕头：2   窗帘：3   毛巾：4   灭火器：5
+
+    bool m_bWinstate;
 public:
     Floor();
     ~Floor();
@@ -66,6 +68,10 @@ public:
     int GetPropNum()
     {
         return m_iPropNum;
+    }
+    bool GetWinLockState()
+    {
+        return m_bWinstate;
     }
 
     // SET

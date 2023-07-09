@@ -11,6 +11,7 @@
 #include "CommonClass.h"
 #include "Floor.h"
 #include "Prop.h"
+#include "Win.h"
 #include <mmsystem.h>
 #pragma comment(lib, "Winmm.lib")
 
@@ -35,7 +36,15 @@ private:
 
 	int iPropNum;
 
-	prop *m_pProp;
+	prop *m_pProp;// 道具
+
+	float m_fTime; // 计时器
+	CTextSprite *m_pTime;  // 计时器
+
+	CSprite *m_pElevatorMap; // 电梯地图
+	CSprite *m_pElevatorPerson; // 电梯地图中的角色
+
+	Win *m_pWin; // 窗户
 
 public:
 	CGameMain();  // 构造函数

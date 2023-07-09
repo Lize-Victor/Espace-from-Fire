@@ -49,6 +49,8 @@ Floor::Floor()
     m_pFloorNum = nullptr;
 
     m_iPropNum = 0;
+
+    m_bWinstate = 0;
 }
 void Floor::SetDoorVisble(bool tmp_State)
 {
@@ -90,6 +92,9 @@ void Floor::FloorInit(int iFloorNum)
     // 随机刷出道具
     srand(time(nullptr));
     m_iPropNum = rand() % 5 + 1;
+
+    // 随机窗户上锁、
+    m_bWinstate = rand() % 2;
     FloorUpdate();
 }
 
