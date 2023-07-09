@@ -55,6 +55,12 @@
 #define CURTAIN_START_X 119.100
 #define CURTAIN_START_Y -44.000
 
+#define TOWEL_API_NAME "towel"
+#define TOWEL_START_X 94.997
+#define TOWEL_START_Y -34.756
+
 #define EXTINGUISHER_API_NAME "extinguisher"
 #define EXTINGUISHER_START_X 105.011
 #define EXTINGUISHER_START_Y -36.791
+
+#define FLOORNUM_API_NAME "FloorNum"

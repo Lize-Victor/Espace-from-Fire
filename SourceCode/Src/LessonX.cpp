@@ -9,7 +9,7 @@
 #include <ctime>
 #include "CommonClass.h"
 #include "LessonX.h"
-#include "NewClass.h"
+#include "Floor.h"
 #include "CustomFunction.h"
 #include <vector>
 using std::vector;
@@ -19,7 +19,8 @@ using std::vector;
 //
 CGameMain g_GameMain;
 
-vector<Floor *> l_Floor;
+vector<Floor *> g_Floor;
+
 //==============================================================================
 //
 // 大体的程序流程为：GameMainLoop函数为主循环函数，在引擎每帧刷新屏幕图像之后，都会被调用一次。
@@ -88,29 +89,32 @@ void CGameMain::GameInit()
 		Floor *tmp_Floor;
 		tmp_Floor = new Floor;
 		tmp_Floor->FloorInit(i + 1);
-		l_Floor.push_back(tmp_Floor);
+		g_Floor.push_back(tmp_Floor);
 	}
 
 	// 寻找中心点
 	srand(time(nullptr));
-	int l_FloorNumStart = rand() % FLOOR_HEIGHT_NUM + 1; // 范围 1~9
+	int l_FloorNumStart = rand() % FLOOR_HEIGHT_NUM-2; // 范围 -1~7
+	FloorMove(l_FloorNumStart, g_Floor);
 
-	FloorMove(0 * FLOOR_Y, l_Floor);
+	// 道具的初始化
+	m_pProp = new prop;
+	m_pProp->PropInit(g_Floor[l_FloorNumStart+1]->GetPropNum());
 
 	// 火焰和烟雾的初始化
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
-		l_Floor[i]->FireInit();
-		l_Floor[i]->SmogInit();
+		g_Floor[i]->FireInit();
+		g_Floor[i]->SmogInit();
 	}
 
 	int l_FireFloorNum = rand() % FLOOR_HEIGHT_NUM;
 
-	l_Floor[1]->FireBoom();
+	g_Floor[1]->FireBoom();
 
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
-		l_Floor[i]->SmogWarningInit();
+		g_Floor[i]->SmogWarningInit();
 	}
 
 	m_iGameState = 1;
@@ -123,13 +127,13 @@ void CGameMain::GameRun(float fDeltaTime)
 
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
-	l_Floor[i]->FireProduceSmog(fDeltaTime);
-	l_Floor[i]->FireDiffusionY(fDeltaTime);
-	l_Floor[i]->FireDiffusionX(fDeltaTime);
-	l_Floor[i]->SmogDiffusionX(fDeltaTime);
+	g_Floor[i]->FireProduceSmog(fDeltaTime);
+	g_Floor[i]->FireDiffusionY(fDeltaTime);
+	g_Floor[i]->FireDiffusionX(fDeltaTime);
+	g_Floor[i]->SmogDiffusionX(fDeltaTime);
 	}
 
-	//l_Floor[1]->FireDiffusionX(fDeltaTime);
+	//g_Floor[1]->FireDiffusionX(fDeltaTime);
 
 
 }
@@ -188,7 +192,7 @@ void CGameMain::OnSpriteColSprite(const char *szSrcName, const char *szTarName)
 	{
 		for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 		{
-			l_Floor[i]->SmogWarningBing();
+			g_Floor[i]->SmogWarningBing();
 		}
 
 	}

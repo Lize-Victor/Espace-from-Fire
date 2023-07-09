@@ -3,72 +3,50 @@
 
 #include "MacroDefinition.h"
 
-prop::prop(const char *destName)
+prop::prop()
 {
-    strcpy(m_pPropName, destName);
-    m_pProp = new CSprite(destName);
-    m_pPropInTable = new CSprite(CSystem::MakeSpriteName(destName, 1));
-    m_pPropInTable->SetSpriteVisible(false);
+    m_pProp = nullptr;
+    m_pPropInTable = nullptr;
+    m_iPropNum = 0;
 }
 
-// 0: 中间楼层 1: 底层 2: 顶层
-void prop::PropInit(int i_floor)
+void prop::PropInit(int tmp_PropNum)
 {
-    switch (i_floor)
+    switch (tmp_PropNum)
     {
-    case 0:
-        if (!strcmp(m_pPropName, CURTAIN_API_NAME))
-        {
-            m_pProp->SetSpritePosition(CURTAIN_START_X, CURTAIN_START_Y);
-        }
-        else if (!strcmp(m_pPropName, PILLOW_API_NAME))
-        {
-            m_pProp->SetSpritePosition(PILLOW_START_X, PILLOW_START_Y);
-        }
-        else if (!strcmp(m_pPropName, PLIERS_API_NAME))
-        {
-            m_pProp->SetSpritePosition(PLIERS_START_X, PLIERS_START_Y);
-        }
-        else if (!strcmp(m_pPropName, EXTINGUISHER_API_NAME))
-        {
-            m_pProp->SetSpritePosition(EXTINGUISHER_START_X, EXTINGUISHER_START_Y);
-        }
+    case 1: // 压力钳
+        m_iPropNum = 1;
+        m_pProp = new CSprite(PLIERS_API_NAME);
+        m_pProp->SetSpritePosition(PLIERS_START_X, PLIERS_START_Y);
+        m_pPropInTable = new CSprite(CSystem::MakeSpriteName(PLIERS_API_NAME, 1));
+        m_pPropInTable->SetSpriteVisible(false);
         break;
-    case 1:
-        if (!strcmp(m_pPropName, CURTAIN_API_NAME))
-        {
-            m_pProp->SetSpritePosition(CURTAIN_START_X, CURTAIN_START_Y + FLOOR_Y);
-        }
-        else if (!strcmp(m_pPropName, PILLOW_API_NAME))
-        {
-            m_pProp->SetSpritePosition(PILLOW_START_X, PILLOW_START_Y + FLOOR_Y);
-        }
-        else if (!strcmp(m_pPropName, PLIERS_API_NAME))
-        {
-            m_pProp->SetSpritePosition(PLIERS_START_X, PLIERS_START_Y + FLOOR_Y);
-        }
-        else if (!strcmp(m_pPropName, EXTINGUISHER_API_NAME))
-        {
-            m_pProp->SetSpritePosition(EXTINGUISHER_START_X, EXTINGUISHER_START_Y + FLOOR_Y);
-        }
+    case 2: // 枕头
+        m_iPropNum = 2;
+        m_pProp = new CSprite(PILLOW_API_NAME);
+        m_pPropInTable = new CSprite(CSystem::MakeSpriteName(PILLOW_API_NAME, 1));
+        m_pPropInTable->SetSpriteVisible(false);
         break;
-    case 2:
-        if (!strcmp(m_pPropName, CURTAIN_API_NAME))
-        {
-            m_pProp->SetSpritePosition(CURTAIN_START_X, CURTAIN_START_Y + FLOOR_Y);
-        }
-        else if (!strcmp(m_pPropName, PILLOW_API_NAME))
-        {
-            m_pProp->SetSpritePosition(PILLOW_START_X, PILLOW_START_Y + FLOOR_Y);
-        }
-        else if (!strcmp(m_pPropName, PLIERS_API_NAME))
-        {
-            m_pProp->SetSpritePosition(PLIERS_START_X, PLIERS_START_Y + FLOOR_Y);
-        }
-        else if (!strcmp(m_pPropName, EXTINGUISHER_API_NAME))
-        {
-            m_pProp->SetSpritePosition(EXTINGUISHER_START_X, EXTINGUISHER_START_Y + FLOOR_Y);
-        }
+    case 3: // 窗帘
+        m_iPropNum = 3;
+        m_pProp = new CSprite(CURTAIN_API_NAME);
+        m_pProp->SetSpritePosition(CURTAIN_START_X, CURTAIN_START_Y);
+        m_pPropInTable = new CSprite(CSystem::MakeSpriteName(CURTAIN_API_NAME, 1));
+        m_pPropInTable->SetSpriteVisible(false);
+        break;
+    case 4: // 毛巾
+        m_iPropNum = 4;
+        m_pProp = new CSprite(TOWEL_API_NAME);
+        m_pProp->SetSpritePosition(TOWEL_START_X, TOWEL_START_Y);
+        m_pPropInTable = new CSprite(CSystem::MakeSpriteName(TOWEL_API_NAME, 1));
+        m_pPropInTable->SetSpriteVisible(false);
+        break;
+    case 5: // 灭火器
+        m_iPropNum = 5;
+        m_pProp = new CSprite(EXTINGUISHER_API_NAME);
+        m_pProp->SetSpritePosition(EXTINGUISHER_START_X, EXTINGUISHER_START_Y);
+        m_pPropInTable = new CSprite(CSystem::MakeSpriteName(EXTINGUISHER_API_NAME, 1));
+        m_pPropInTable->SetSpriteVisible(false);
         break;
     }
 

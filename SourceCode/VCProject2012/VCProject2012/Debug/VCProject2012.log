@@ -1,19 +1,20 @@
-﻿生成启动时间为 2023/7/7 10:22:26。
+﻿生成启动时间为 2023/7/9 13:33:21。
 项目“E:\FunCode_CppProject\FunCode_Project\SourceCode\VCProject2012\VCProject2012\VCProject2012.vcxproj”在节点 2 上(build 个目标)。
 InitializeBuildStatus:
-  正在对“Debug\VCProject2012.unsuccessfulbuild”执行 Touch 任务。
+  正在创建“Debug\VCProject2012.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
 ClCompile:
-  F:\VS2010\VC\bin\CL.exe /c /I../../Header /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Src\Prop.cpp
-  Prop.cpp
+  F:\VS2010\VC\bin\CL.exe /c /I../../Header /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Src\LessonX.cpp
+  LessonX.cpp
 e:\funcode_cppproject\funcode_project\sourcecode\header\prop.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+e:\funcode_cppproject\funcode_project\sourcecode\src\lessonx.cpp(96): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
 ResourceCompile:
   所有输出均为最新。
 Link:
   F:\VS2010\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"..\..\..\Bin\Game.exe" /INCREMENTAL:NO /NOLOGO Winmm.lib ..\..\Src\CommonClass_2010.Lib kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /MANIFEST:NO /DEBUG /PDB:"Debug\Game.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"..\..\..\Bin\Game.lib" /MACHINE:X86 Debug\VCTemplate.res
   Debug\CustomFunction.obj
+  Debug\Floor.obj
   Debug\LessonX.obj
   Debug\Main.obj
-  Debug\NewClass.obj
   Debug\Prop.obj
   Debug\View.obj
 CustomFunction.obj : warning LNK4075: 忽略“/EDITANDCONTINUE”(由于“/INCREMENTAL:NO”规范)
@@ -29,4 +30,4 @@ FinalizeBuildStatus:
 
 生成成功。
 
-已用时间 00:00:03.19
+已用时间 00:00:01.22
