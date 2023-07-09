@@ -30,6 +30,14 @@ vector<Floor *> l_Floor;
 CGameMain::CGameMain()
 {
 	m_iGameState = 1;
+    Player1 = new CSprite("Player1");
+    iPosX=5;
+	iPosY=-15;
+	m_fScreenBottom = 0.f;
+	m_fScreenLeft = 0.f;
+	m_fScreenRight = 0.f;
+	m_fScreenTop = 0.f;
+	
 }
 //==============================================================================
 //
@@ -52,6 +60,7 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 	{
 		GameInit();
 		SetGameState(2); // 初始化之后，将游戏状态设置为进行中
+		PlaySound("D:\\Espace-from-Fire\\Music\\新建文件夹\\Music.wav",NULL,SND_ASYNC|SND_LOOP);
 	}
 	break;
 
@@ -114,6 +123,13 @@ void CGameMain::GameInit()
 	}
 
 	m_iGameState = 1;
+	m_fScreenLeft = CSystem::GetScreenLeft();
+	m_fScreenRight = CSystem::GetScreenRight();
+	m_fScreenTop = CSystem::GetScreenTop();
+	m_fScreenBottom = CSystem::GetScreenBottom();
+	Player1->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft,m_fScreenTop, m_fScreenRight, m_fScreenBottom);
+	Player1->SetSpriteLinearVelocity( 0, 0);
+	
 }
 //=============================================================================
 //
@@ -128,7 +144,7 @@ void CGameMain::GameRun(float fDeltaTime)
 	l_Floor[i]->FireDiffusionX(fDeltaTime);
 	l_Floor[i]->SmogDiffusionX(fDeltaTime);
 	}
-
+    Player1->SetSpriteConstantForceY(0);
 	//l_Floor[1]->FireDiffusionX(fDeltaTime);
 
 
@@ -169,6 +185,36 @@ void CGameMain::OnMouseUp(const int iMouseType, const float fMouseX, const float
 // 参数 iAltPress, iShiftPress，iCtrlPress：键盘上的功能键Alt，Ctrl，Shift当前是否也处于按下状态(0未按下，1按下)
 void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShiftPress, const bool bCtrlPress)
 {
+	float fSpeedUP = 0, fSpeedDOWN = 0, fSpeedLEFT = 0, fSpeedRIGHT = 0;
+	switch (iKey)
+	{
+	case KEY_W: // W向上
+	fSpeedUP = -10.f;
+	break;
+	case KEY_A: // A向左
+	fSpeedLEFT = -15.f;
+	break;
+	case KEY_S: // S向下
+	fSpeedDOWN = 10.f;
+	break;
+	case KEY_D: // D向右
+	fSpeedRIGHT = 15.f;
+	break;
+	}
+	if ((fSpeedLEFT + fSpeedRIGHT) > 0) // 如果向左则要转向
+	Player1->SetSpriteFlipX(false);
+	else if ((fSpeedLEFT + fSpeedRIGHT) < 0) // 如果向右则不转向
+	Player1->SetSpriteFlipX(true);
+	Player1->SetSpriteLinearVelocity(fSpeedLEFT + fSpeedRIGHT, fSpeedUP +fSpeedDOWN);
+	if (iKey == KEY_SPACE)
+	{ // 向上跳
+	if (m_jumpFlag == 0)
+	{ // 未在跳跃过程中
+			Player1->SetSpriteLinearVelocityY(-30);
+			Player1->SetSpriteImpulseForce(0, -5, false); // 防止跳不上去，给一个瞬时的推力
+			m_jumpFlag = 1;								  // jumping
+	}
+	}
 }
 //==========================================================================
 //
@@ -176,6 +222,8 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 // 参数 iKey：弹起的键，值见 enum KeyCodes 宏定义
 void CGameMain::OnKeyUp(const int iKey)
 {
+	if(iKey == KEY_W || iKey == KEY_A || iKey == KEY_S || iKey == KEY_D)
+    Player1->SetSpriteLinearVelocity(0,0);
 }
 //===========================================================================
 //
@@ -200,4 +248,8 @@ void CGameMain::OnSpriteColSprite(const char *szSrcName, const char *szTarName)
 // 参数 iColSide：碰撞到的边界 0 左边，1 右边，2 上边，3 下边
 void CGameMain::OnSpriteColWorldLimit(const char *szName, const int iColSide)
 {
+	if (strcmp(szName, "Player1") == 0)
+	{
+		Player1->SetSpriteLinearVelocity(0, 0);
+	}
 }
