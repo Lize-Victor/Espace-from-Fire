@@ -36,7 +36,6 @@
 #define DOOR_START_X 135.594
 #define DOOR_START_Y -15.436
 
-
 #define PERSON_NORMAL_SPEED
 #define PERSON_FULL_BLOOD 100
 
@@ -44,10 +43,26 @@
 #define SMOGWARNING_START_X 134.077
 #define SMOGWARNING_START_Y -27.101
 
-#define PILLOW_API_NAME ""
+#define PILLOW_API_NAME "pillow"
+#define PILLOW_START_X 47.384
+#define PILLOW_START_Y -46.711
 
+#define PLIERS_API_NAME "pliers"
+#define PLIERS_START_X 27.400
+#define PLIERS_START_Y -46.757
 
-#define PLIERS_API_NAME ""
+#define CURTAIN_API_NAME "curtain"
+#define CURTAIN_START_X 119.100
+#define CURTAIN_START_Y -44.000
 
+#define TOWEL_API_NAME "towel"
+#define TOWEL_START_X 94.997
+#define TOWEL_START_Y -34.756
 
-#define CURTAIN_API_NAME ""
+#define EXTINGUISHER_API_NAME "extinguisher"
+#define EXTINGUISHER_START_X 105.011
+#define EXTINGUISHER_START_Y -36.791
+
+#define FLOORNUM_API_NAME "FloorNum"
+
+#define WIN_API_NAME "window"

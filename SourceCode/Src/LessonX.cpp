@@ -9,7 +9,7 @@
 #include <ctime>
 #include "CommonClass.h"
 #include "LessonX.h"
-#include "NewClass.h"
+#include "Floor.h"
 #include "CustomFunction.h"
 #include <vector>
 using std::vector;
@@ -19,7 +19,8 @@ using std::vector;
 //
 CGameMain g_GameMain;
 
-vector<Floor *> l_Floor;
+vector<Floor *> g_Floor;
+
 //==============================================================================
 //
 // 大体的程序流程为：GameMainLoop函数为主循环函数，在引擎每帧刷新屏幕图像之后，都会被调用一次。
@@ -29,7 +30,7 @@ vector<Floor *> l_Floor;
 // 构造函数
 CGameMain::CGameMain()
 {
-	m_iGameState = 1;
+	m_iGameState = 0;
     Player1 = new CSprite("Player1");
     iPosX=5;
 	iPosY=-15;
@@ -80,10 +81,19 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 	}
 	break;
 
+		// 人物在电梯当中
+	case 3:
+	{
+		m_pElevatorMap->SetSpriteVisible(true);
+		m_pElevatorPerson->SetSpriteVisible(true);
+	}
+	break;
 		// 游戏结束/等待按空格键开始
 	case 0:
-	default:
-		break;
+	{
+		CSystem::LoadMap("elevator_map.t2d"); // 载入开始界面
+	}
+	break;
 	};
 }
 //=============================================================================
@@ -91,37 +101,54 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 // 每局开始前进行初始化，清空上一局相关数据
 void CGameMain::GameInit()
 {
+	// 计时器的初始化
+	m_fTime = 0.f;
+	m_pTime = new CTextSprite("time");
+
+	// 电梯地图的初始化
+	m_pElevatorMap = new CSprite("elevator_map");
+	m_pElevatorMap->SetSpriteVisible(false);
+	m_pElevatorPerson = new CSprite("elevator_person");
+	m_pElevatorPerson->SetSpriteVisible(false);
 
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
 		Floor *tmp_Floor;
 		tmp_Floor = new Floor;
 		tmp_Floor->FloorInit(i + 1);
-		l_Floor.push_back(tmp_Floor);
+		g_Floor.push_back(tmp_Floor);
 	}
 
 	// 寻找中心点
 	srand(time(nullptr));
-	int l_FloorNumStart = rand() % FLOOR_HEIGHT_NUM + 1; // 范围 1~9
+	int l_FloorNumStart = rand() % FLOOR_HEIGHT_NUM - 2; // 范围 -1~7
+	FloorMove(l_FloorNumStart, g_Floor);
 
-	FloorMove(0 * FLOOR_Y, l_Floor);
+	// 道具的初始化
+	m_pProp = new prop;
+	m_pProp->PropInit(g_Floor[l_FloorNumStart + 1]->GetPropNum());
+
+	// 窗户的初始化
+	m_pWin = new Win;
+	m_pWin->WindowInit(g_Floor[l_FloorNumStart + 1]->GetWinLockState());
 
 	// 火焰和烟雾的初始化
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
-		l_Floor[i]->FireInit();
-		l_Floor[i]->SmogInit();
+		g_Floor[i]->FireInit();
+		g_Floor[i]->SmogInit();
 	}
 
-	int l_FireFloorNum = rand() % FLOOR_HEIGHT_NUM;
-
-	l_Floor[1]->FireBoom();
-
+	// 烟雾报警初始化
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
-		l_Floor[i]->SmogWarningInit();
+		g_Floor[i]->SmogWarningInit();
 	}
 
+
+	// 火焰爆发 游戏开始
+	int l_FireFloorNum = rand() % FLOOR_HEIGHT_NUM;
+	g_Floor[1]->FireBoom();
 	m_iGameState = 1;
 	m_fScreenLeft = CSystem::GetScreenLeft();
 	m_fScreenRight = CSystem::GetScreenRight();
@@ -137,17 +164,18 @@ void CGameMain::GameInit()
 void CGameMain::GameRun(float fDeltaTime)
 {
 
+	m_fTime += fDeltaTime;
+	m_pTime->SetTextValue((int)m_fTime);
+
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
-	l_Floor[i]->FireProduceSmog(fDeltaTime);
-	l_Floor[i]->FireDiffusionY(fDeltaTime);
-	l_Floor[i]->FireDiffusionX(fDeltaTime);
-	l_Floor[i]->SmogDiffusionX(fDeltaTime);
+		g_Floor[i]->FireProduceSmog(fDeltaTime);
+		g_Floor[i]->FireDiffusionY(fDeltaTime);
+		g_Floor[i]->FireDiffusionX(fDeltaTime);
+		g_Floor[i]->SmogDiffusionX(fDeltaTime);
 	}
     Player1->SetSpriteConstantForceY(0);
-	//l_Floor[1]->FireDiffusionX(fDeltaTime);
-
-
+	// g_Floor[1]->FireDiffusionX(fDeltaTime);
 }
 //=============================================================================
 //
@@ -169,6 +197,11 @@ void CGameMain::OnMouseMove(const float fMouseX, const float fMouseY)
 // 参数 fMouseX, fMouseY：为鼠标当前坐标
 void CGameMain::OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY)
 {
+	if (m_iGameState == 0)
+	{
+		m_iGameState = 1;
+		CSystem::LoadMap("text.t2d");
+	}
 }
 //==========================================================================
 //
@@ -215,6 +248,78 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 			m_jumpFlag = 1;								  // jumping
 	}
 	}
+	// 实现电梯的楼层移动
+	if (m_iGameState == 3)
+	{
+		switch (iKey)
+		{
+		case KEY_1:
+			m_iGameState = 1;
+			FloorMove(-1, g_Floor);
+			m_pProp->PropUpdate(g_Floor[0]->GetPropNum());
+			m_pElevatorMap->SetSpriteVisible(false);
+			m_pElevatorPerson->SetSpriteVisible(false);
+			break;
+		case KEY_2:
+			m_iGameState = 1;
+			FloorMove(0, g_Floor);
+			m_pProp->PropUpdate(g_Floor[1]->GetPropNum());
+			m_pElevatorMap->SetSpriteVisible(false);
+			m_pElevatorPerson->SetSpriteVisible(false);
+			break;
+		case KEY_3:
+			m_iGameState = 1;
+			FloorMove(1, g_Floor);
+			m_pProp->PropUpdate(g_Floor[2]->GetPropNum());
+			m_pElevatorMap->SetSpriteVisible(false);
+			m_pElevatorPerson->SetSpriteVisible(false);
+			break;
+		case KEY_4:
+			m_iGameState = 1;
+			FloorMove(2, g_Floor);
+			m_pProp->PropUpdate(g_Floor[3]->GetPropNum());
+			m_pElevatorMap->SetSpriteVisible(false);
+			m_pElevatorPerson->SetSpriteVisible(false);
+			break;
+		case KEY_5:
+			m_iGameState = 1;
+			FloorMove(3, g_Floor);
+			m_pProp->PropUpdate(g_Floor[4]->GetPropNum());
+			m_pElevatorMap->SetSpriteVisible(false);
+			m_pElevatorPerson->SetSpriteVisible(false);
+			break;
+		case KEY_6:
+			m_iGameState = 1;
+			FloorMove(4, g_Floor);
+			m_pProp->PropUpdate(g_Floor[5]->GetPropNum());
+			m_pElevatorMap->SetSpriteVisible(false);
+			m_pElevatorPerson->SetSpriteVisible(false);
+			break;
+		case KEY_7:
+			m_iGameState = 1;
+			FloorMove(5, g_Floor);
+			m_pProp->PropUpdate(g_Floor[6]->GetPropNum());
+			m_pElevatorMap->SetSpriteVisible(false);
+			m_pElevatorPerson->SetSpriteVisible(false);
+			break;
+		case KEY_8:
+			m_iGameState = 1;
+			FloorMove(6, g_Floor);
+			m_pProp->PropUpdate(g_Floor[7]->GetPropNum());
+			m_pElevatorMap->SetSpriteVisible(false);
+			m_pElevatorPerson->SetSpriteVisible(false);
+			break;
+		case KEY_9:
+			m_iGameState = 1;
+			FloorMove(7, g_Floor);
+			m_pProp->PropUpdate(g_Floor[8]->GetPropNum());
+			m_pElevatorMap->SetSpriteVisible(false);
+			m_pElevatorPerson->SetSpriteVisible(false);
+			break;
+		default:
+			break;
+		}
+	}
 }
 //==========================================================================
 //
@@ -232,13 +337,12 @@ void CGameMain::OnKeyUp(const int iKey)
 // 参数 szTarName：被碰撞的精灵名字
 void CGameMain::OnSpriteColSprite(const char *szSrcName, const char *szTarName)
 {
-	if(strstr(szSrcName,"Smog") != 0 && strstr(szTarName,"SmogWarning"))
+	if (strstr(szSrcName, "Smog") != 0 && strstr(szTarName, "SmogWarning"))
 	{
 		for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 		{
-			l_Floor[i]->SmogWarningBing();
+			g_Floor[i]->SmogWarningBing();
 		}
-
 	}
 }
 //===========================================================================

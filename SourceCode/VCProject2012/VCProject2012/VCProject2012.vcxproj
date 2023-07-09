@@ -101,11 +101,12 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="..\..\Src\CustomFunction.cpp" />
+    <ClCompile Include="..\..\Src\Floor.cpp" />
     <ClCompile Include="..\..\Src\LessonX.cpp" />
     <ClCompile Include="..\..\Src\Main.cpp" />
-    <ClCompile Include="..\..\Src\NewClass.cpp" />
     <ClCompile Include="..\..\Src\Prop.cpp" />
     <ClCompile Include="..\..\Src\View.cpp" />
+    <ClCompile Include="..\..\Src\Win.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="VCTemplate.rc" />
@@ -113,11 +114,12 @@
   <ItemGroup>
     <ClInclude Include="..\..\Header\CommonClass.h" />
     <ClInclude Include="..\..\Header\CustomFunction.h" />
+    <ClInclude Include="..\..\Header\Floor.h" />
     <ClInclude Include="..\..\Header\LessonX.h" />
     <ClInclude Include="..\..\Header\MacroDefinition.h" />
-    <ClInclude Include="..\..\Header\NewClass.h" />
     <ClInclude Include="..\..\Header\Prop.h" />
     <ClInclude Include="..\..\Header\View.h" />
+    <ClInclude Include="..\..\Header\Win.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

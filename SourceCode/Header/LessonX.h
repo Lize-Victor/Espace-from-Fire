@@ -9,16 +9,19 @@
 //
 #include <Windows.h>
 #include "CommonClass.h"
-#include<mmsystem.h>
-#pragma comment(lib,"Winmm.lib") 
-
+#include "Floor.h"
+#include "Prop.h"
+#include "Win.h"
+#include <mmsystem.h>
+#pragma comment(lib, "Winmm.lib")
 
 /////////////////////////////////////////////////////////////////////////////////
 //
 // 游戏总管类。负责处理游戏主循环、游戏初始化、结束等工作
-class	CGameMain
+class CGameMain
 {
 private:
+<<<<<<< HEAD
 	int				m_iGameState;				// 游戏状态，0：结束或者等待开始；1：初始化；2：游戏进行中
 	int             m_jumpFlag;
     CSprite         *Player1;
@@ -35,32 +38,59 @@ private:
 	float           m_fScreenTop;	   // 屏幕上边界值
 	float           m_fScreenBottom; // 屏幕下边界值
 	
+=======
+	int m_iGameState; // 游戏状态，0：结束或者等待开始；1：初始化；2：游戏进行中
+
+	int m_jumpFlag;
+	CSprite *Player1;
+	CSprite *player2;
+	float Player1_x1;
+	float Player1_y1;
+	float player2_x2;
+	float player2_y2;
+	float stair_x;
+	float stair_y;
+	int iPosX, iPosY;
+
+	int iPropNum;
+
+	prop *m_pProp;// 道具
+
+	float m_fTime; // 计时器
+	CTextSprite *m_pTime;  // 计时器
+
+	CSprite *m_pElevatorMap; // 电梯地图
+	CSprite *m_pElevatorPerson; // 电梯地图中的角色
+
+	Win *m_pWin; // 窗户
+
+>>>>>>> 843515e9015a16a1e8c374c4433f5b47c29c5fa9
 public:
-	CGameMain();            //构造函数
-	~CGameMain();           //析构函数
+	CGameMain();  // 构造函数
+	~CGameMain(); // 析构函数
 
 	// Get方法
-	int				GetGameState()											{ return m_iGameState; }
+	int GetGameState() { return m_iGameState; }
 
 	// Set方法
-	void			SetGameState( const int iState )				{ m_iGameState	=	iState; }
+	void SetGameState(const int iState) { m_iGameState = iState; }
 
 	// 游戏主循环等
-	void			GameMainLoop( float	fDeltaTime );
-	void			GameInit();
-	void			GameRun( float fDeltaTime );
-	void			GameEnd();
-	void 			OnMouseMove( const float fMouseX, const float fMouseY );
-	void 			OnMouseClick( const int iMouseType, const float fMouseX, const float fMouseY );
-	void 			OnMouseUp( const int iMouseType, const float fMouseX, const float fMouseY );
-	void 			OnKeyDown( const int iKey, const bool bAltPress, const bool bShiftPress, const bool bCtrlPress );
-	void 			OnKeyUp( const int iKey );
-	void 			OnSpriteColSprite( const char *szSrcName, const char *szTarName );
-	void 			OnSpriteColWorldLimit( const char *szName, const int iColSide );
+	void GameMainLoop(float fDeltaTime);
+	void GameInit();
+	void GameRun(float fDeltaTime);
+	void GameEnd();
+	void OnMouseMove(const float fMouseX, const float fMouseY);
+	void OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY);
+	void OnMouseUp(const int iMouseType, const float fMouseX, const float fMouseY);
+	void OnKeyDown(const int iKey, const bool bAltPress, const bool bShiftPress, const bool bCtrlPress);
+	void OnKeyUp(const int iKey);
+	void OnSpriteColSprite(const char *szSrcName, const char *szTarName);
+	void OnSpriteColWorldLimit(const char *szName, const int iColSide);
 };
 
 /////////////////////////////////////////////////////////////////////////////////
 //
-extern CGameMain	g_GameMain;
+extern CGameMain g_GameMain;
 
 #endif // _LESSON_X_H_
