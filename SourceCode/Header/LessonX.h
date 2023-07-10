@@ -21,24 +21,6 @@
 class CGameMain
 {
 private:
-<<<<<<< HEAD
-	int				m_iGameState;				// 游戏状态，0：结束或者等待开始；1：初始化；2：游戏进行中
-	int             m_jumpFlag;
-    CSprite         *Player1;
-	CSprite         *Player2;
-	float           Player1_x1;
-    float           Player1_y1;
-	float           Player2_x2;
-	float           Player2_y2;
-	float           stair_x;
-	float           stair_y;
-	int             iPosX,iPosY;
-	float           m_fScreenLeft;   // 屏幕左边界值
-	float           m_fScreenRight;  // 屏幕右边界值
-	float           m_fScreenTop;	   // 屏幕上边界值
-	float           m_fScreenBottom; // 屏幕下边界值
-	
-=======
 	int m_iGameState; // 游戏状态，0：结束或者等待开始；1：初始化；2：游戏进行中
 
 	int m_jumpFlag;
@@ -46,25 +28,37 @@ private:
 	CSprite *player2;
 	float Player1_x1;
 	float Player1_y1;
+	int Player1_Blood;
+	CTextSprite *m_pP1Blood;
+	int m_iPropNumInTable;
+	int m_iPlayer1InFloorNum; // 人物所在楼层位置，范围1~9
+
 	float player2_x2;
 	float player2_y2;
 	float stair_x;
 	float stair_y;
 	int iPosX, iPosY;
+	float m_fScreenLeft;   // 屏幕左边界值
+	float m_fScreenRight;  // 屏幕右边界值
+	float m_fScreenTop;	   // 屏幕上边界值
+	float m_fScreenBottom; // 屏幕下边界值
 
+	float m_fSpeedUP;
+	float m_fSpeedDOWN;
+	float m_fSpeedLEFT;
+	float m_fSpeedRIGHT;
 	int iPropNum;
 
-	prop *m_pProp;// 道具
+	prop *m_pProp; // 道具
 
-	float m_fTime; // 计时器
-	CTextSprite *m_pTime;  // 计时器
+	float m_fTime;		  // 计时器
+	CTextSprite *m_pTime; // 计时器
 
-	CSprite *m_pElevatorMap; // 电梯地图
+	CSprite *m_pElevatorMap;	// 电梯地图
 	CSprite *m_pElevatorPerson; // 电梯地图中的角色
 
 	Win *m_pWin; // 窗户
 
->>>>>>> 843515e9015a16a1e8c374c4433f5b47c29c5fa9
 public:
 	CGameMain();  // 构造函数
 	~CGameMain(); // 析构函数

@@ -91,7 +91,8 @@ void Floor::FloorInit(int iFloorNum)
 
     // 随机刷出道具
     srand(time(nullptr));
-    m_iPropNum = rand() % 5 + 1;
+    // m_iPropNum = rand() % 5 + 1;
+    m_iPropNum = 5;
 
     // 随机窗户上锁、
     m_bWinstate = rand() % 2;
@@ -108,6 +109,8 @@ void Floor::FireInit()
         char *destName = CSystem::MakeSpriteName(destNameF, i);
         m_pFire[i] = new CAnimateSprite(destName);
         m_pFire[i]->CloneSprite(FIRE_API_NAME);
+
+        // m_pFire[i]->SetSpriteCollisionSend(true);
     }
 
     // 初始化纵向火焰
@@ -121,6 +124,8 @@ void Floor::FireInit()
             char *destName1 = CSystem::MakeSpriteName(destName, i);
             m_pFireY[j][i] = new CAnimateSprite(destName1);
             m_pFireY[j][i]->CloneSprite(FIRE_API_NAME);
+
+            // m_pFireY[j][i]->SetSpriteCollisionSend(true);
         }
     }
 }
@@ -138,7 +143,7 @@ void Floor::SmogInit()
             m_pSmog[j][i] = new CAnimateSprite(destName);
             m_pSmog[j][i]->CloneSprite(SMOG_API_NAME);
 
-            m_pSmog[j][i]->SetSpriteCollisionSend(true);
+            // m_pSmog[j][i]->SetSpriteCollisionSend(true);
         }
     }
 }
@@ -286,16 +291,16 @@ void Floor::SmogWarningInit()
 
     m_pSmogWarning->SetSpritePosition(SMOGWARNING_START_X, SMOGWARNING_START_Y - (m_iFloorNum - 1) * FLOOR_Y);
     m_pSmogWarning->AnimateSpritePlayAnimation("SmogWarningAnimation1", 1);
-    m_pSmogWarning->SetSpriteCollisionReceive(true);
+    // m_pSmogWarning->SetSpriteCollisionReceive(true);
 }
 void Floor::SmogWarningBing()
 {
     m_pSmog[1][FLOOR_HEIGHT_NUM - 2]->SetSpriteVisible(false);
     m_pSmogWarning->AnimateSpritePlayAnimation("SmogWarningAnimation4", 1);
 }
-void Floor::ExtinguisherOutFire(Floor *tmp_Floor)
+void Floor::ExtinguisherOutFire()
 {
-    for (int i = 0; i < FLOOR_CELL_X; i++)
+    for (int i = 0; i < ONE_FLOOR_CELL_X_NUMBER; i++)
     {
         m_bFireState[i] = 0;
     }
@@ -320,6 +325,10 @@ void Floor::FloorUpdate()
         {
             m_pFire[i]->SetSpritePosition(m_PFloorPoi.X - fabs(FIRE_START_X - FLOOR_START_X) + i * FLOOR_CELL_X, m_PFloorPoi.Y + fabs(FIRE_START_Y - FLOOR_START_Y));
         }
+        if (m_bFireState[i] == 0 && m_pFire[i] != nullptr)
+        {
+            m_pFire[i]->SetSpritePosition(1000, -1000);
+        }
     }
     // 更新竖向传播的火焰
     for (int j = 0; j < 2; j++)
@@ -335,6 +344,14 @@ void Floor::FloorUpdate()
             {
                 m_pSmog[j][STAIRS_CELL_NUMBER - 1]->SetSpriteVisible(false);
                 m_pFireY[j][i]->SetSpritePosition(m_PFloorPoi.X - fabs(SMOG_START_X - FLOOR_START_X) + (STAIRS_CELL_NUMBER - 1) * FLOOR_CELL_X, m_PFloorPoi.Y - (j + 1) * FLOOR_CELL_Y + fabs(SMOG_START_Y - FLOOR_START_Y) + 0.8);
+            }
+            if (m_bFireStateY[j][i] == 0 && i < 2 && m_pFireY[j][i] != nullptr)
+            {
+                m_pFireY[j][i]->SetSpritePosition(1000, -1000);
+            }
+            if (m_bFireStateY[j][i] == 0 && i == 2 && m_pFireY[j][i] != nullptr)
+            {
+                m_pFireY[j][i]->SetSpritePosition(1000, -1000);
             }
         }
     }

@@ -31,14 +31,13 @@ vector<Floor *> g_Floor;
 CGameMain::CGameMain()
 {
 	m_iGameState = 0;
-    Player1 = new CSprite("Player1");
-    iPosX=5;
-	iPosY=-15;
+	Player1 = new CSprite("Player1");
+	iPosX = 5;
+	iPosY = -15;
 	m_fScreenBottom = 0.f;
 	m_fScreenLeft = 0.f;
 	m_fScreenRight = 0.f;
 	m_fScreenTop = 0.f;
-	
 }
 //==============================================================================
 //
@@ -61,7 +60,7 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 	{
 		GameInit();
 		SetGameState(2); // 初始化之后，将游戏状态设置为进行中
-		PlaySound("D:\\Espace-from-Fire\\Music\\新建文件夹\\Music.wav",NULL,SND_ASYNC|SND_LOOP);
+						 // PlaySound("E:\\FunCode_CppProject\\FunCode_Project\\Music\\新建文件夹\\Music.wav", NULL, SND_ASYNC | SND_LOOP);
 	}
 	break;
 
@@ -105,6 +104,10 @@ void CGameMain::GameInit()
 	m_fTime = 0.f;
 	m_pTime = new CTextSprite("time");
 
+	// 血量的初始化
+	Player1_Blood = 100;
+	m_pP1Blood = new CTextSprite("blood");
+
 	// 电梯地图的初始化
 	m_pElevatorMap = new CSprite("elevator_map");
 	m_pElevatorMap->SetSpriteVisible(false);
@@ -121,16 +124,16 @@ void CGameMain::GameInit()
 
 	// 寻找中心点
 	srand(time(nullptr));
-	int l_FloorNumStart = rand() % FLOOR_HEIGHT_NUM - 2; // 范围 -1~7
-	FloorMove(l_FloorNumStart, g_Floor);
+	m_iPlayer1InFloorNum = rand() % FLOOR_HEIGHT_NUM + 1; // 范围 1~9
+	FloorMove(m_iPlayer1InFloorNum - 2, g_Floor);
 
 	// 道具的初始化
 	m_pProp = new prop;
-	m_pProp->PropInit(g_Floor[l_FloorNumStart + 1]->GetPropNum());
+	m_pProp->PropInit(g_Floor[m_iPlayer1InFloorNum - 1]->GetPropNum());
 
 	// 窗户的初始化
 	m_pWin = new Win;
-	m_pWin->WindowInit(g_Floor[l_FloorNumStart + 1]->GetWinLockState());
+	m_pWin->WindowInit(g_Floor[m_iPlayer1InFloorNum - 1]->GetWinLockState());
 
 	// 火焰和烟雾的初始化
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
@@ -145,27 +148,34 @@ void CGameMain::GameInit()
 		g_Floor[i]->SmogWarningInit();
 	}
 
-
 	// 火焰爆发 游戏开始
 	int l_FireFloorNum = rand() % FLOOR_HEIGHT_NUM;
 	g_Floor[1]->FireBoom();
 	m_iGameState = 1;
-	m_fScreenLeft = CSystem::GetScreenLeft();
-	m_fScreenRight = CSystem::GetScreenRight();
-	m_fScreenTop = CSystem::GetScreenTop();
-	m_fScreenBottom = CSystem::GetScreenBottom();
-	Player1->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft,m_fScreenTop, m_fScreenRight, m_fScreenBottom);
-	Player1->SetSpriteLinearVelocity( 0, 0);
-	
+
+	// 设置人物边界
+	m_fScreenLeft = 0.f;
+	m_fScreenRight = 150.f;
+	m_fScreenTop = -56.f;
+	m_fScreenBottom = -32.f;
+	Player1->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft, m_fScreenTop, m_fScreenRight, m_fScreenBottom);
+
+	// 人物属性的初始化
+	Player1->SetSpriteLinearVelocity(0, 0);
+	Player1->SetSpriteCollisionReceive(true);
+	Player1->SetSpriteCollisionSend(true);
 }
 //=============================================================================
 //
 // 每局游戏进行中
 void CGameMain::GameRun(float fDeltaTime)
 {
-
+	// 计时器更新
 	m_fTime += fDeltaTime;
 	m_pTime->SetTextValue((int)m_fTime);
+
+	// 血量更新
+	m_pP1Blood->SetTextValue(Player1_Blood);
 
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
@@ -174,7 +184,7 @@ void CGameMain::GameRun(float fDeltaTime)
 		g_Floor[i]->FireDiffusionX(fDeltaTime);
 		g_Floor[i]->SmogDiffusionX(fDeltaTime);
 	}
-    Player1->SetSpriteConstantForceY(0);
+
 	// g_Floor[1]->FireDiffusionX(fDeltaTime);
 }
 //=============================================================================
@@ -217,100 +227,120 @@ void CGameMain::OnMouseUp(const int iMouseType, const float fMouseX, const float
 // 参数 iKey：被按下的键，值见 enum KeyCodes 宏定义
 // 参数 iAltPress, iShiftPress，iCtrlPress：键盘上的功能键Alt，Ctrl，Shift当前是否也处于按下状态(0未按下，1按下)
 void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShiftPress, const bool bCtrlPress)
-{
-	float fSpeedUP = 0, fSpeedDOWN = 0, fSpeedLEFT = 0, fSpeedRIGHT = 0;
-	switch (iKey)
+{ // 游戏正常运行时
+	if (m_iGameState == 2)
 	{
-	case KEY_W: // W向上
-	fSpeedUP = -10.f;
-	break;
-	case KEY_A: // A向左
-	fSpeedLEFT = -15.f;
-	break;
-	case KEY_S: // S向下
-	fSpeedDOWN = 10.f;
-	break;
-	case KEY_D: // D向右
-	fSpeedRIGHT = 15.f;
-	break;
+
+		// 实现人物运动
+		switch (iKey)
+		{
+		case KEY_W: // W向上
+			m_fSpeedUP = -10.f;
+			break;
+		case KEY_A: // A向左
+			if (bShiftPress)
+			{
+				m_fSpeedLEFT = -30.f;
+			}
+			m_fSpeedLEFT = -15.f;
+			break;
+		case KEY_S: // S向下
+			m_fSpeedDOWN = 10.f;
+			break;
+		case KEY_D: // D向右
+			if (bShiftPress)
+			{
+				m_fScreenRight = 30.f;
+			}
+			m_fSpeedRIGHT = 15.f;
+			break;
+		}
+		if ((m_fSpeedLEFT + m_fSpeedRIGHT) > 0) // 如果向左则要转向
+			Player1->SetSpriteFlipX(false);
+		else if ((m_fSpeedLEFT + m_fSpeedRIGHT) < 0) // 如果向右则不转向
+			Player1->SetSpriteFlipX(true);
+		Player1->SetSpriteLinearVelocity(m_fSpeedLEFT + m_fSpeedRIGHT, m_fSpeedUP + m_fSpeedDOWN);
+		if (iKey == KEY_SPACE)
+		{ // 向上跳
+			if (m_jumpFlag == 0)
+			{ // 未在跳跃过程中
+				Player1->SetSpriteLinearVelocityY(-30);
+				Player1->SetSpriteImpulseForce(0, -5, false); // 防止跳不上去，给一个瞬时的推力
+				Player1->SetSpriteConstantForceY(20);
+				m_jumpFlag = 1; // jumping
+			}
+		}
+
+		// 响应灭火
+		if (m_iPropNumInTable == 5 && iKey == KEY_J)
+		{
+			g_Floor[m_iPlayer1InFloorNum - 1]->ExtinguisherOutFire();
+		}
 	}
-	if ((fSpeedLEFT + fSpeedRIGHT) > 0) // 如果向左则要转向
-	Player1->SetSpriteFlipX(false);
-	else if ((fSpeedLEFT + fSpeedRIGHT) < 0) // 如果向右则不转向
-	Player1->SetSpriteFlipX(true);
-	Player1->SetSpriteLinearVelocity(fSpeedLEFT + fSpeedRIGHT, fSpeedUP +fSpeedDOWN);
-	if (iKey == KEY_SPACE)
-	{ // 向上跳
-	if (m_jumpFlag == 0)
-	{ // 未在跳跃过程中
-			Player1->SetSpriteLinearVelocityY(-30);
-			Player1->SetSpriteImpulseForce(0, -5, false); // 防止跳不上去，给一个瞬时的推力
-			m_jumpFlag = 1;								  // jumping
-	}
-	}
+
 	// 实现电梯的楼层移动
 	if (m_iGameState == 3)
 	{
 		switch (iKey)
 		{
 		case KEY_1:
-			m_iGameState = 1;
+			m_iGameState = 2;
 			FloorMove(-1, g_Floor);
 			m_pProp->PropUpdate(g_Floor[0]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_2:
-			m_iGameState = 1;
+			m_iGameState = 2;
 			FloorMove(0, g_Floor);
 			m_pProp->PropUpdate(g_Floor[1]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_3:
-			m_iGameState = 1;
+			m_iGameState = 2;
 			FloorMove(1, g_Floor);
 			m_pProp->PropUpdate(g_Floor[2]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_4:
-			m_iGameState = 1;
+			m_iGameState = 2;
 			FloorMove(2, g_Floor);
 			m_pProp->PropUpdate(g_Floor[3]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_5:
-			m_iGameState = 1;
+			m_iGameState = 2;
 			FloorMove(3, g_Floor);
 			m_pProp->PropUpdate(g_Floor[4]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_6:
-			m_iGameState = 1;
+			m_iGameState = 2;
 			FloorMove(4, g_Floor);
 			m_pProp->PropUpdate(g_Floor[5]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_7:
-			m_iGameState = 1;
+			m_iGameState = 2;
 			FloorMove(5, g_Floor);
 			m_pProp->PropUpdate(g_Floor[6]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_8:
-			m_iGameState = 1;
+			m_iGameState = 2;
 			FloorMove(6, g_Floor);
 			m_pProp->PropUpdate(g_Floor[7]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_9:
-			m_iGameState = 1;
+			m_iGameState = 2;
 			FloorMove(7, g_Floor);
 			m_pProp->PropUpdate(g_Floor[8]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
@@ -327,8 +357,37 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 // 参数 iKey：弹起的键，值见 enum KeyCodes 宏定义
 void CGameMain::OnKeyUp(const int iKey)
 {
-	if(iKey == KEY_W || iKey == KEY_A || iKey == KEY_S || iKey == KEY_D)
-    Player1->SetSpriteLinearVelocity(0,0);
+	if (m_iGameState == 2)
+	{
+		switch (iKey)
+		{
+		case KEY_W: // W向上
+			m_fSpeedUP = 0.f;
+			break;
+		case KEY_A: // A向左
+			m_fSpeedLEFT = 0.f;
+			break;
+		case KEY_S: // S向下
+			m_fSpeedDOWN = 0.f;
+			break;
+		case KEY_D: // D向右
+			m_fSpeedRIGHT = 0.f;
+			break;
+		}
+		if ((m_fSpeedLEFT + m_fSpeedRIGHT) > 0) // 如果向左则要转向
+			Player1->SetSpriteFlipX(false);
+		else if ((m_fSpeedLEFT + m_fSpeedRIGHT) < 0) // 如果向右则不转向
+			Player1->SetSpriteFlipX(true);
+		Player1->SetSpriteLinearVelocity(m_fSpeedLEFT + m_fSpeedRIGHT, m_fSpeedUP + m_fSpeedDOWN);
+
+		if (iKey == KEY_SPACE)
+		{
+			if (m_jumpFlag == 1)
+			{
+				m_jumpFlag = 0;
+			}
+		}
+	}
 }
 //===========================================================================
 //
@@ -344,6 +403,23 @@ void CGameMain::OnSpriteColSprite(const char *szSrcName, const char *szTarName)
 			g_Floor[i]->SmogWarningBing();
 		}
 	}
+
+	if (strcmp(szTarName, "Player1") == 0 && strstr(szSrcName, "Fire"))
+	{
+		FireHurt(Player1_Blood);
+	}
+
+	if (strcmp(szTarName, "Player1") == 0 && strstr(szSrcName, "Smog"))
+	{
+		SmogHurt(Player1_Blood, m_iPropNumInTable);
+	}
+
+	// 人物碰到道具的响应
+	if (m_pProp->GetPropNumByName(szTarName) && !strcmp(szSrcName, "Player1"))
+	{
+		m_pProp->IntoPropTable();
+		m_iPropNumInTable = m_pProp->GetPropNumByName(szTarName);
+	}
 }
 //===========================================================================
 //
@@ -354,6 +430,9 @@ void CGameMain::OnSpriteColWorldLimit(const char *szName, const int iColSide)
 {
 	if (strcmp(szName, "Player1") == 0)
 	{
-		Player1->SetSpriteLinearVelocity(0, 0);
+		m_fSpeedDOWN = 0;
+		m_fScreenBottom = 0;
+		Player1->SetSpriteLinearVelocity(m_fSpeedLEFT + m_fSpeedRIGHT, 0);
+		Player1->SetSpriteConstantForceY(0);
 	}
 }

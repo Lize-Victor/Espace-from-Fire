@@ -127,6 +127,6 @@ public:
     void SmogWarningBing();
 
     // ExtinguisherOutFire： 灭火器灭火  灭整层的火
-    void ExtinguisherOutFire(Floor *tmp_Floor);
+    void ExtinguisherOutFire();
 };
 #endif
