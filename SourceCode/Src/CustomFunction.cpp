@@ -3,7 +3,7 @@
 #include <ctime>
 #include <random>
 
-void FloorMove(int tmp_iFloorNum, vector<Floor *> &l_floor)
+void FloorMove(int cur_FloorNum, int tmp_iFloorNum, vector<Floor *> &l_floor)
 {
     for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
     {
@@ -12,6 +12,7 @@ void FloorMove(int tmp_iFloorNum, vector<Floor *> &l_floor)
         l_floor[i]->SetFloorPosition(tmpX, tmpY + tmp_iFloorNum * FLOOR_Y);
         l_floor[i]->FloorUpdate();
     }
+    l_floor[cur_FloorNum-1]->SetFloorNumVisble(false);
     l_floor[tmp_iFloorNum + 1]->SetFloorNumVisble(true);
     l_floor[tmp_iFloorNum + 1]->SetDoorVisble();
 }

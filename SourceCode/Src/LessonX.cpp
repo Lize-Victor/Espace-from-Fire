@@ -85,6 +85,7 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 	{
 		m_pElevatorMap->SetSpriteVisible(true);
 		m_pElevatorPerson->SetSpriteVisible(true);
+		GameRun(fDeltaTime);
 	}
 	break;
 		// 游戏结束/等待按空格键开始
@@ -110,8 +111,8 @@ void CGameMain::GameInit()
 
 	// 电梯地图的初始化
 	m_pElevatorMap = new CSprite("elevator_map");
-	m_pElevatorMap->SetSpriteVisible(false);
 	m_pElevatorPerson = new CSprite("elevator_person");
+	m_pElevatorMap->SetSpriteVisible(false);
 	m_pElevatorPerson->SetSpriteVisible(false);
 
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
@@ -125,7 +126,7 @@ void CGameMain::GameInit()
 	// 寻找中心点
 	srand(time(nullptr));
 	m_iPlayer1InFloorNum = rand() % FLOOR_HEIGHT_NUM + 1; // 范围 1~9
-	FloorMove(m_iPlayer1InFloorNum - 2, g_Floor);
+	FloorMove(2, m_iPlayer1InFloorNum - 2, g_Floor);
 
 	// 道具的初始化
 	m_pProp = new prop;
@@ -276,6 +277,19 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 		{
 			g_Floor[m_iPlayer1InFloorNum - 1]->ExtinguisherOutFire();
 		}
+		// 丢弃道具
+		if (m_iPropNumInTable && iKey == KEY_K)
+		{
+			m_pProp->OutPropTable(Player1->GetSpritePositionX() + 10, Player1->GetSpritePositionY());
+			m_iPropNumInTable = 0;
+		}
+		// 人物进入电梯
+		if (Player1->GetSpritePositionX() < 80.f && Player1->GetSpritePositionX() > 60.125 && iKey == KEY_U)
+		{
+			m_pElevatorMap->SetSpriteVisible(true);
+			m_pElevatorPerson->SetSpriteVisible(true);
+			m_iGameState = 3;
+		}
 	}
 
 	// 实现电梯的楼层移动
@@ -285,63 +299,72 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 		{
 		case KEY_1:
 			m_iGameState = 2;
-			FloorMove(-1, g_Floor);
+			FloorMove(m_iPlayer1InFloorNum, -1, g_Floor);
+			m_iPlayer1InFloorNum = 1;
 			m_pProp->PropUpdate(g_Floor[0]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_2:
 			m_iGameState = 2;
-			FloorMove(0, g_Floor);
+			FloorMove(m_iPlayer1InFloorNum, 0, g_Floor);
+			m_iPlayer1InFloorNum = 2;
 			m_pProp->PropUpdate(g_Floor[1]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_3:
 			m_iGameState = 2;
-			FloorMove(1, g_Floor);
+			FloorMove(m_iPlayer1InFloorNum, 1, g_Floor);
+			m_iPlayer1InFloorNum = 3;
 			m_pProp->PropUpdate(g_Floor[2]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_4:
 			m_iGameState = 2;
-			FloorMove(2, g_Floor);
+			FloorMove(m_iPlayer1InFloorNum, 2, g_Floor);
+			m_iPlayer1InFloorNum = 4;
 			m_pProp->PropUpdate(g_Floor[3]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_5:
 			m_iGameState = 2;
-			FloorMove(3, g_Floor);
+			FloorMove(m_iPlayer1InFloorNum, 3, g_Floor);
+			m_iPlayer1InFloorNum = 5;
 			m_pProp->PropUpdate(g_Floor[4]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_6:
 			m_iGameState = 2;
-			FloorMove(4, g_Floor);
+			FloorMove(m_iPlayer1InFloorNum, 4, g_Floor);
+			m_iPlayer1InFloorNum = 6;
 			m_pProp->PropUpdate(g_Floor[5]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_7:
 			m_iGameState = 2;
-			FloorMove(5, g_Floor);
+			FloorMove(m_iPlayer1InFloorNum, 5, g_Floor);
+			m_iPlayer1InFloorNum = 7;
 			m_pProp->PropUpdate(g_Floor[6]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_8:
 			m_iGameState = 2;
-			FloorMove(6, g_Floor);
+			FloorMove(m_iPlayer1InFloorNum, 6, g_Floor);
+			m_iPlayer1InFloorNum = 8;
 			m_pProp->PropUpdate(g_Floor[7]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
 			break;
 		case KEY_9:
 			m_iGameState = 2;
-			FloorMove(7, g_Floor);
+			FloorMove(m_iPlayer1InFloorNum, 7, g_Floor);
+			m_iPlayer1InFloorNum = 9;
 			m_pProp->PropUpdate(g_Floor[8]->GetPropNum());
 			m_pElevatorMap->SetSpriteVisible(false);
 			m_pElevatorPerson->SetSpriteVisible(false);
@@ -415,7 +438,7 @@ void CGameMain::OnSpriteColSprite(const char *szSrcName, const char *szTarName)
 	}
 
 	// 人物碰到道具的响应
-	if (m_pProp->GetPropNumByName(szTarName) && !strcmp(szSrcName, "Player1"))
+	if (m_pProp->GetPropNumByName(szTarName) && !strcmp(szSrcName, "Player1") && !m_iPropNumInTable)
 	{
 		m_pProp->IntoPropTable();
 		m_iPropNumInTable = m_pProp->GetPropNumByName(szTarName);

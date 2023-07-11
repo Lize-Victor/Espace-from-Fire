@@ -25,12 +25,12 @@ private:
 
 	int m_jumpFlag;
 	CSprite *Player1;
-	CSprite *player2;
+	CSprite *Player2;
 	float Player1_x1;
 	float Player1_y1;
 	int Player1_Blood;
 	CTextSprite *m_pP1Blood;
-	int m_iPropNumInTable;
+	int m_iPropNumInTable; // 人物持有的道具编码
 	int m_iPlayer1InFloorNum; // 人物所在楼层位置，范围1~9
 
 	float player2_x2;
@@ -47,7 +47,6 @@ private:
 	float m_fSpeedDOWN;
 	float m_fSpeedLEFT;
 	float m_fSpeedRIGHT;
-	int iPropNum;
 
 	prop *m_pProp; // 道具
 
