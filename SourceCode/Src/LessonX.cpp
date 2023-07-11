@@ -31,13 +31,15 @@ vector<Floor *> g_Floor;
 CGameMain::CGameMain()
 {
 	m_iGameState = 0;
-	Player1 = new CSprite("Player1");
-	iPosX = 5;
-	iPosY = -15;
+    Player1 = new CSprite("Player1");
+	Player2 = new CSprite("Player2");
+    iPosX=5;
+	iPosY=-15;
 	m_fScreenBottom = 0.f;
 	m_fScreenLeft = 0.f;
 	m_fScreenRight = 0.f;
 	m_fScreenTop = 0.f;
+	a=0;
 }
 //==============================================================================
 //
@@ -107,7 +109,10 @@ void CGameMain::GameInit()
 
 	// 血量的初始化
 	Player1_Blood = 100;
+	Player2_Blood = 100;
 	m_pP1Blood = new CTextSprite("blood");
+	m_pP2Blood = new CTextSprite("blood2");
+
 
 	// 电梯地图的初始化
 	m_pElevatorMap = new CSprite("elevator_map");
@@ -126,7 +131,8 @@ void CGameMain::GameInit()
 	// 寻找中心点
 	srand(time(nullptr));
 	m_iPlayer1InFloorNum = rand() % FLOOR_HEIGHT_NUM + 1; // 范围 1~9
-	FloorMove(2, m_iPlayer1InFloorNum - 2, g_Floor);
+	m_iPlayer2InFloorNum = m_iPlayer1InFloorNum;
+    FloorMove(2, m_iPlayer1InFloorNum - 2, g_Floor);
 
 	// 道具的初始化
 	m_pProp = new prop;
@@ -159,12 +165,17 @@ void CGameMain::GameInit()
 	m_fScreenRight = 150.f;
 	m_fScreenTop = -56.f;
 	m_fScreenBottom = -32.f;
-	Player1->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft, m_fScreenTop, m_fScreenRight, m_fScreenBottom);
 
 	// 人物属性的初始化
-	Player1->SetSpriteLinearVelocity(0, 0);
 	Player1->SetSpriteCollisionReceive(true);
+	Player2->SetSpriteCollisionReceive(true);
 	Player1->SetSpriteCollisionSend(true);
+	Player2->SetSpriteCollisionSend(true);
+	Player1->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft,m_fScreenTop, m_fScreenRight, m_fScreenBottom);
+	Player1->SetSpriteLinearVelocity( 0, 0);
+	Player2->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft,m_fScreenTop, m_fScreenRight, m_fScreenBottom);
+	Player2->SetSpriteLinearVelocity( 0, 0);
+
 }
 //=============================================================================
 //
@@ -177,6 +188,7 @@ void CGameMain::GameRun(float fDeltaTime)
 
 	// 血量更新
 	m_pP1Blood->SetTextValue(Player1_Blood);
+	m_pP2Blood->SetTextValue(Player2_Blood);
 
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
@@ -186,6 +198,7 @@ void CGameMain::GameRun(float fDeltaTime)
 		g_Floor[i]->SmogDiffusionX(fDeltaTime);
 	}
 
+	Player2->SetSpriteConstantForceY(0);
 	// g_Floor[1]->FireDiffusionX(fDeltaTime);
 }
 //=============================================================================
@@ -261,6 +274,49 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 		else if ((m_fSpeedLEFT + m_fSpeedRIGHT) < 0) // 如果向右则不转向
 			Player1->SetSpriteFlipX(true);
 		Player1->SetSpriteLinearVelocity(m_fSpeedLEFT + m_fSpeedRIGHT, m_fSpeedUP + m_fSpeedDOWN);
+
+		switch (iKey)
+		{
+		case KEY_UP: // W向上
+			m_fSpeedUp = -10.f;
+			break;
+		case KEY_LEFT: // A向左
+		    if(bShiftPress)
+			{
+				m_fSpeedLeft = -30.f;
+			}
+			m_fSpeedLeft = -15.f;
+			break;
+		case KEY_DOWN: // S向下
+			m_fSpeedDown = 10.f;
+			break;
+		case KEY_RIGHT: // D向右
+		    if(bShiftPress)
+			{
+				m_fSpeedRight = -30.f;
+			}
+			m_fSpeedRight = 15.f;
+			break;
+		}
+		if ((m_fSpeedLeft + m_fSpeedRight) > 0) // 如果向左则要转向
+			Player2->SetSpriteFlipX(false);
+		else if ((m_fSpeedLeft + m_fSpeedRight) < 0) // 如果向右则不转向
+			Player2->SetSpriteFlipX(true);
+		Player2->SetSpriteLinearVelocity(m_fSpeedLeft + m_fSpeedRight, m_fSpeedUp + m_fSpeedDown);
+		if (iKey == KEY_K)
+			a == 1;
+
+		if (iKey == KEY_0)
+		{ // 向上跳
+			if (m_jumpFlag == 0)
+			{ // 未在跳跃过程中
+				Player2->SetSpriteLinearVelocityY(-30);
+				Player2->SetSpriteImpulseForce(0, -5, false); // 防止跳不上去，给一个瞬时的推力
+				Player2->SetSpriteConstantForceY(20);
+				m_jumpFlag = 1;								  // jumping
+			}
+		}
+
 		if (iKey == KEY_SPACE)
 		{ // 向上跳
 			if (m_jumpFlag == 0)

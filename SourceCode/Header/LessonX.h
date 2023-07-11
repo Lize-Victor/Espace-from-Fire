@@ -37,16 +37,24 @@ private:
 	float player2_y2;
 	float stair_x;
 	float stair_y;
+	int   Player2_Blood;
+	CTextSprite *m_pP2Blood;
+	int m_iPlayer2InFloorNum;
 	int iPosX, iPosY;
-	float m_fScreenLeft;   // 屏幕左边界值
-	float m_fScreenRight;  // 屏幕右边界值
-	float m_fScreenTop;	   // 屏幕上边界值
-	float m_fScreenBottom; // 屏幕下边界值
+	float m_fScreenLeft;
+	float m_fScreenRight;
+	float m_fScreenTop;
+	float m_fScreenBottom;//人物所在楼层位置，范围1-9
+	int   a;
 
 	float m_fSpeedUP;
 	float m_fSpeedDOWN;
 	float m_fSpeedLEFT;
 	float m_fSpeedRIGHT;
+	float m_fSpeedUp;
+	float m_fSpeedDown;
+	float m_fSpeedLeft;
+	float m_fSpeedRight;
 
 	prop *m_pProp; // 道具
 
