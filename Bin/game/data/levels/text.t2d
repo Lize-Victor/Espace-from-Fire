@@ -55,7 +55,7 @@
       canSaveDynamicFields = "1";
       Position = "75.000 12.000";
       size = "150.000 24.000";
-      Layer = "10";
+      Layer = "9";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "3";
@@ -72,7 +72,7 @@
    };
    new t2dAnimatedSprite(smogwarning) {
       canSaveDynamicFields = "1";
-      Position = "133.948 4.377";
+      Position = "133.948 5.377";
       size = "4.696 3.384";
       Layer = "4";
       WorldLimitMin = "-50.000 -37.500";
@@ -92,45 +92,6 @@
       WorldLimitMax = "50.000 37.500";
          mountID = "6";
    };
-   new t2dStaticSprite(floor) {
-      imageMap = "floor3ImageMap";
-      frame = "0";
-      useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
-      canSaveDynamicFields = "1";
-      Position = "75.000 -68.000";
-      size = "150.000 24.000";
-      Layer = "10";
-      WorldLimitMin = "-50.000 -37.500";
-      WorldLimitMax = "50.000 37.500";
-         mountID = "7";
-   };
-   new t2dStaticSprite(floor) {
-      imageMap = "floor3ImageMap";
-      frame = "0";
-      useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
-      canSaveDynamicFields = "1";
-      Position = "75.000 -43.000";
-      size = "150.000 24.000";
-      Layer = "10";
-      WorldLimitMin = "-50.000 -37.500";
-      WorldLimitMax = "50.000 37.500";
-         mountID = "8";
-   };
-   new t2dStaticSprite(floor) {
-      imageMap = "floor3ImageMap";
-      frame = "0";
-      useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
-      canSaveDynamicFields = "1";
-      Position = "75.000 -20.000";
-      size = "150.000 24.000";
-      Layer = "10";
-      WorldLimitMin = "-50.000 -37.500";
-      WorldLimitMax = "50.000 37.500";
-         mountID = "9";
-   };
    new t2dStaticSprite(door) {
       imageMap = "door1ImageMap";
       frame = "0";
@@ -142,7 +103,7 @@
       Layer = "2";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "10";
+         mountID = "7";
    };
    new t2dStaticSprite() {
       imageMap = "tiziImageMap";
@@ -155,7 +116,7 @@
       Layer = "2";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "11";
+         mountID = "8";
    };
    new t2dStaticSprite(viewdown) {
       imageMap = "viewImageMap";
@@ -168,7 +129,7 @@
       Layer = "1";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "12";
+         mountID = "9";
    };
    new t2dStaticSprite(viewup) {
       imageMap = "viewImageMap";
@@ -176,12 +137,12 @@
       useSourceRect = "0";
       sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
-      Position = "75.000 -67.000";
+      Position = "75.000 -122.000";
       size = "150.000 24.000";
       Layer = "1";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "13";
+         mountID = "10";
    };
    new t2dScroller() {
       imageMap = "tiziImageMap";
@@ -193,7 +154,7 @@
       Layer = "2";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "14";
+         mountID = "11";
    };
    new t2dStaticSprite() {
       imageMap = "officeImageMap";
@@ -206,7 +167,7 @@
       Layer = "2";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "15";
+         mountID = "12";
    };
    new t2dAnimatedSprite() {
       animationName = "WCAnimationfalse";
@@ -216,7 +177,7 @@
       Layer = "2";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "16";
+         mountID = "13";
    };
    new t2dStaticSprite(window) {
       imageMap = "WindowImageMap1";
@@ -229,7 +190,7 @@
       Layer = "2";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "17";
+         mountID = "14";
    };
    new t2dStaticSprite(curtain) {
       imageMap = "curtainImageMap";
@@ -242,7 +203,7 @@
       Layer = "3";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "18";
+         mountID = "15";
    };
    new t2dStaticSprite(pillow) {
       imageMap = "pillowImageMap";
@@ -255,7 +216,7 @@
       Layer = "3";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "19";
+         mountID = "16";
    };
    new t2dStaticSprite(pliers) {
       imageMap = "pliersImageMap";
@@ -268,7 +229,7 @@
       Layer = "3";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "20";
+         mountID = "17";
    };
    new t2dStaticSprite() {
       imageMap = "PropTableImageMap";
@@ -281,7 +242,7 @@
       Layer = "9";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "21";
+         mountID = "18";
    };
    new t2dStaticSprite(extinguisher) {
       imageMap = "extinguisherImageMap";
@@ -294,7 +255,7 @@
       Layer = "3";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "22";
+         mountID = "19";
    };
    new t2dStaticSprite(pliers1) {
       imageMap = "pliersImageMap";
@@ -306,7 +267,7 @@
       size = "4.894 6.613";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "23";
+         mountID = "20";
    };
    new t2dStaticSprite(pillow1) {
       imageMap = "pillowImageMap";
@@ -318,7 +279,7 @@
       size = "5.611 6.100";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "24";
+         mountID = "21";
    };
    new t2dStaticSprite(extinguisher1) {
       imageMap = "extinguisherImageMap";
@@ -330,7 +291,7 @@
       size = "4.972 6.350";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "25";
+         mountID = "22";
    };
    new t2dStaticSprite(curtain1) {
       imageMap = "curtainImageMap";
@@ -342,7 +303,7 @@
       size = "5.691 5.000";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "26";
+         mountID = "23";
    };
    new t2dTextObject(FloorNum) {
       canSaveDynamicFields = "1";
@@ -368,7 +329,7 @@
       snapToInteger = "0";
       noUnicode = "0";
          hideOverlap = "0";
-         mountID = "27";
+         mountID = "24";
    };
    new t2dTextObject() {
       canSaveDynamicFields = "1";
@@ -393,7 +354,7 @@
       snapToInteger = "0";
       noUnicode = "0";
          hideOverlap = "0";
-         mountID = "28";
+         mountID = "25";
    };
    new t2dTextObject() {
       canSaveDynamicFields = "1";
@@ -418,7 +379,7 @@
       snapToInteger = "0";
       noUnicode = "0";
          hideOverlap = "0";
-         mountID = "29";
+         mountID = "26";
    };
    new t2dTextObject() {
       canSaveDynamicFields = "1";
@@ -443,7 +404,7 @@
       snapToInteger = "0";
       noUnicode = "0";
          hideOverlap = "0";
-         mountID = "30";
+         mountID = "27";
    };
    new t2dStaticSprite(towel) {
       imageMap = "TowelImageMap";
@@ -456,7 +417,7 @@
       Layer = "3";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "31";
+         mountID = "28";
    };
    new t2dStaticSprite(towel1) {
       imageMap = "TowelImageMap";
@@ -468,7 +429,7 @@
       size = "7.875 5.395";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "32";
+         mountID = "29";
    };
    new t2dTextObject(time) {
       canSaveDynamicFields = "1";
@@ -492,7 +453,7 @@
       snapToInteger = "0";
       noUnicode = "0";
          hideOverlap = "0";
-         mountID = "33";
+         mountID = "30";
    };
    new t2dTextObject() {
       canSaveDynamicFields = "1";
@@ -517,7 +478,7 @@
       snapToInteger = "0";
       noUnicode = "0";
          hideOverlap = "0";
-         mountID = "34";
+         mountID = "31";
    };
    new t2dStaticSprite(elevator_map) {
       imageMap = "elevator1ImageMap";
@@ -529,7 +490,7 @@
       size = "150.000 80.000";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "35";
+         mountID = "32";
    };
    new t2dStaticSprite(elevator_person) {
       imageMap = "Player1";
@@ -541,7 +502,7 @@
       size = "23.110 36.938";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "36";
+         mountID = "33";
    };
    new t2dAnimatedSprite(Player1) {
       animationName = "PlayerPic03Animation3";
@@ -551,12 +512,12 @@
       Layer = "1";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "37";
+         mountID = "34";
    };
    new t2dTextObject(blood) {
       canSaveDynamicFields = "1";
-      Position = "10.985 -3.500";
-      size = "1.969 3.000";
+      Position = "10.505 -3.500";
+      size = "1.009 3.000";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
       BlendColor = "0 0.890196 0.180392 1";
@@ -565,7 +526,7 @@
       hideOverflow = "1";
       textAlign = "Left";
       lineHeight = "3";
-      aspectRatio = "7.87812";
+      aspectRatio = "4.03902";
       lineSpacing = "0";
       characterSpacing = "0";
       autoSize = "1";
@@ -575,7 +536,7 @@
       snapToInteger = "0";
       noUnicode = "0";
          hideOverlap = "0";
-         mountID = "38";
+         mountID = "35";
    };
    new t2dAnimatedSprite(Player2) {
       animationName = "PlayerPic04Animation3";
@@ -584,7 +545,7 @@
       size = "8.239 13.645";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
-         mountID = "39";
+         mountID = "36";
    };
    new t2dTextObject() {
       canSaveDynamicFields = "1";
@@ -608,12 +569,12 @@
       snapToInteger = "0";
       noUnicode = "0";
          hideOverlap = "0";
-         mountID = "40";
+         mountID = "37";
    };
    new t2dTextObject(blood2) {
       canSaveDynamicFields = "1";
-      Position = "35.083 -3.500";
-      size = "3.907 3.000";
+      Position = "33.564 -3.500";
+      size = "0.869 3.000";
       FlipX = "1";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
@@ -623,7 +584,7 @@
       hideOverflow = "1";
       textAlign = "Left";
       lineHeight = "3";
-      aspectRatio = "15.6336";
+      aspectRatio = "3.47853";
       lineSpacing = "0";
       characterSpacing = "0";
       autoSize = "1";
@@ -633,6 +594,45 @@
       snapToInteger = "0";
       noUnicode = "0";
          hideOverlap = "0";
+         mountID = "38";
+   };
+   new t2dStaticSprite(floor) {
+      imageMap = "floor3ImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "2.37825e-039 0 2.36006e-039 6.22914e-039";
+      canSaveDynamicFields = "1";
+      Position = "75.000 -68.000";
+      size = "150.000 24.000";
+      Layer = "10";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "39";
+   };
+   new t2dStaticSprite(floor) {
+      imageMap = "floor3ImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "2.37825e-039 0 2.36006e-039 6.22914e-039";
+      canSaveDynamicFields = "1";
+      Position = "75.000 -44.000";
+      size = "150.000 24.000";
+      Layer = "10";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "40";
+   };
+   new t2dStaticSprite(floor) {
+      imageMap = "floor3ImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "2.37825e-039 0 2.36006e-039 6.22914e-039";
+      canSaveDynamicFields = "1";
+      Position = "75.000 -20.288";
+      size = "150.000 24.000";
+      Layer = "10";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
          mountID = "41";
    };
 };

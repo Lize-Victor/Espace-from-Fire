@@ -12,6 +12,7 @@
 #include "Floor.h"
 #include "Prop.h"
 #include "Win.h"
+#include "View.h"
 #include <mmsystem.h>
 #pragma comment(lib, "Winmm.lib")
 
@@ -45,7 +46,6 @@ private:
 	float m_fScreenRight;
 	float m_fScreenTop;
 	float m_fScreenBottom;//人物所在楼层位置，范围1-9
-	int   a;
 
 	float m_fSpeedUP;
 	float m_fSpeedDOWN;
@@ -57,6 +57,7 @@ private:
 	float m_fSpeedRight;
 
 	prop *m_pProp; // 道具
+	Win *m_pWin; // 窗户
 
 	float m_fTime;		  // 计时器
 	CTextSprite *m_pTime; // 计时器
@@ -64,7 +65,12 @@ private:
 	CSprite *m_pElevatorMap;	// 电梯地图
 	CSprite *m_pElevatorPerson; // 电梯地图中的角色
 
-	Win *m_pWin; // 窗户
+	view *m_pView;
+
+	bool m_bGameMode; // 单人： 0     双人：1
+	int m_iGameSorce;
+	int m_iGameLevel; // 范围1~3
+	bool m_bGameResult; // 游戏状态 0：失败 1：胜利
 
 public:
 	CGameMain();  // 构造函数

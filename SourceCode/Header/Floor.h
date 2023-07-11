@@ -86,6 +86,16 @@ public:
         m_pFloorNum->SetSpriteVisible(tmp_State);
     }
 
+    void SetPropNum(int tmp_PropNum)
+    {
+        m_iPropNum = tmp_PropNum;
+    }
+
+    void SetWinState(bool tmp_WinState)
+    {
+        m_bDoorState = tmp_WinState;
+    }
+
     // 参数tmp_State：门的开关，默认使用类中保存的状态
     void SetDoorVisble(bool tmp_State = m_bDoorState);
 

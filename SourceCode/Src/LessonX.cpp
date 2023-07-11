@@ -31,15 +31,16 @@ vector<Floor *> g_Floor;
 CGameMain::CGameMain()
 {
 	m_iGameState = 0;
-    Player1 = new CSprite("Player1");
+	Player1 = new CSprite("Player1");
 	Player2 = new CSprite("Player2");
-    iPosX=5;
-	iPosY=-15;
+	iPosX = 5;
+	iPosY = -15;
 	m_fScreenBottom = 0.f;
 	m_fScreenLeft = 0.f;
 	m_fScreenRight = 0.f;
 	m_fScreenTop = 0.f;
-	a=0;
+
+	m_iGameLevel = 1;
 }
 //==============================================================================
 //
@@ -69,15 +70,19 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 		// 游戏进行中，处理各种游戏逻辑
 	case 2:
 	{
-		// TODO 修改此处游戏循环条件，完成正确游戏逻辑
-		if (true)
+		GameRun(fDeltaTime);
+		if (Player1_Blood <= 0)
 		{
-			GameRun(fDeltaTime);
-		}
-		else // 游戏结束。调用游戏结算函数，并把游戏状态修改为结束状态
-		{
-			SetGameState(0);
-			GameEnd();
+			if (m_bGameMode = 0)
+			{
+				m_iGameState = 5;
+				m_bGameResult = 0;
+			}
+			else if (Player2_Blood <= 0)
+			{
+				m_iGameState = 5;
+				m_bGameResult = 0;
+			}
 		}
 	}
 	break;
@@ -90,7 +95,18 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 		GameRun(fDeltaTime);
 	}
 	break;
-		// 游戏结束/等待按空格键开始
+		// 在阅读界面
+	case 4:
+	{
+	}
+	break;
+		// 游戏结算
+	case 5:
+	{
+		GameEnd();
+	}
+	break;
+		// 游戏开始界面
 	case 0:
 	{
 		CSystem::LoadMap("elevator_map.t2d"); // 载入开始界面
@@ -113,34 +129,57 @@ void CGameMain::GameInit()
 	m_pP1Blood = new CTextSprite("blood");
 	m_pP2Blood = new CTextSprite("blood2");
 
-
 	// 电梯地图的初始化
 	m_pElevatorMap = new CSprite("elevator_map");
 	m_pElevatorPerson = new CSprite("elevator_person");
 	m_pElevatorMap->SetSpriteVisible(false);
 	m_pElevatorPerson->SetSpriteVisible(false);
 
+	// 楼层的初始化
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
 	{
 		Floor *tmp_Floor;
 		tmp_Floor = new Floor;
 		tmp_Floor->FloorInit(i + 1);
 		g_Floor.push_back(tmp_Floor);
+
+		// 随机刷出道具
+		srand(time(nullptr));
+		tmp_Floor->SetPropNum(rand() % 5 + 1);
+
+		// 随机窗户上锁
+		tmp_Floor->SetWinState(rand() % 2);
 	}
 
 	// 寻找中心点
 	srand(time(nullptr));
 	m_iPlayer1InFloorNum = rand() % FLOOR_HEIGHT_NUM + 1; // 范围 1~9
 	m_iPlayer2InFloorNum = m_iPlayer1InFloorNum;
-    FloorMove(2, m_iPlayer1InFloorNum - 2, g_Floor);
+	FloorMove(2, m_iPlayer1InFloorNum - 2, g_Floor);
 
 	// 道具的初始化
-	m_pProp = new prop;
-	m_pProp->PropInit(g_Floor[m_iPlayer1InFloorNum - 1]->GetPropNum());
+	if (m_iGameLevel == 2) // 第二关刷新道具
+	{
+		m_pProp = new prop;
+		m_pProp->PropInit(g_Floor[m_iPlayer1InFloorNum - 1]->GetPropNum());
+	}
 
 	// 窗户的初始化
-	m_pWin = new Win;
-	m_pWin->WindowInit(g_Floor[m_iPlayer1InFloorNum - 1]->GetWinLockState());
+	if (m_iGameLevel >= 2) // 后两关上锁
+	{
+		m_pWin = new Win;
+		m_pWin->WindowInit(g_Floor[m_iPlayer1InFloorNum - 1]->GetWinLockState());
+	}
+	else if (m_iGameLevel == 1) // 第1关不上锁
+	{
+		m_pWin = new Win;
+		m_pWin->WindowInit(0);
+	}
+
+	if (m_iGameLevel == 3) // 第三关 初始化视野
+	{
+		m_pView->ViewInit();
+	}
 
 	// 火焰和烟雾的初始化
 	for (int i = 0; i < FLOOR_HEIGHT_NUM; i++)
@@ -171,11 +210,10 @@ void CGameMain::GameInit()
 	Player2->SetSpriteCollisionReceive(true);
 	Player1->SetSpriteCollisionSend(true);
 	Player2->SetSpriteCollisionSend(true);
-	Player1->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft,m_fScreenTop, m_fScreenRight, m_fScreenBottom);
-	Player1->SetSpriteLinearVelocity( 0, 0);
-	Player2->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft,m_fScreenTop, m_fScreenRight, m_fScreenBottom);
-	Player2->SetSpriteLinearVelocity( 0, 0);
-
+	Player1->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft, m_fScreenTop, m_fScreenRight, m_fScreenBottom);
+	Player1->SetSpriteLinearVelocity(0, 0);
+	Player2->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft, m_fScreenTop, m_fScreenRight, m_fScreenBottom);
+	Player2->SetSpriteLinearVelocity(0, 0);
 }
 //=============================================================================
 //
@@ -197,8 +235,6 @@ void CGameMain::GameRun(float fDeltaTime)
 		g_Floor[i]->FireDiffusionX(fDeltaTime);
 		g_Floor[i]->SmogDiffusionX(fDeltaTime);
 	}
-
-	Player2->SetSpriteConstantForceY(0);
 	// g_Floor[1]->FireDiffusionX(fDeltaTime);
 }
 //=============================================================================
@@ -206,6 +242,19 @@ void CGameMain::GameRun(float fDeltaTime)
 // 本局游戏结束
 void CGameMain::GameEnd()
 {
+	if (m_bGameResult == 0) // 游戏输了
+	{
+		CSystem::LoadMap("GameEndLose.t2d");
+		CTextSprite *l_pSroce = new CTextSprite("fen");
+		l_pSroce->SetTextValue(m_iGameSorce);
+	}
+	else if (m_bGameResult == 1) // 游戏赢了
+	{
+		CSystem::LoadMap("GameEndWin.t2d");
+		CTextSprite *l_pSroce = new CTextSprite("fen");
+		l_pSroce->SetTextValue(m_iGameSorce);
+		m_iGameLevel += 1;
+	}
 }
 //==========================================================================
 //
@@ -221,11 +270,6 @@ void CGameMain::OnMouseMove(const float fMouseX, const float fMouseY)
 // 参数 fMouseX, fMouseY：为鼠标当前坐标
 void CGameMain::OnMouseClick(const int iMouseType, const float fMouseX, const float fMouseY)
 {
-	if (m_iGameState == 0)
-	{
-		m_iGameState = 1;
-		CSystem::LoadMap("text.t2d");
-	}
 }
 //==========================================================================
 //
@@ -241,7 +285,55 @@ void CGameMain::OnMouseUp(const int iMouseType, const float fMouseX, const float
 // 参数 iKey：被按下的键，值见 enum KeyCodes 宏定义
 // 参数 iAltPress, iShiftPress，iCtrlPress：键盘上的功能键Alt，Ctrl，Shift当前是否也处于按下状态(0未按下，1按下)
 void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShiftPress, const bool bCtrlPress)
-{ // 游戏正常运行时
+{
+	// 游戏开始界面等待
+	if (m_iGameState == 0)
+	{
+		if (iKey == KEY_F1)
+		{
+			m_bGameMode = 0; // 单人模式
+			m_iGameState = 1;
+			CSystem::LoadMap("text.t2d");
+		}
+		else if (iKey == KEY_F2)
+		{
+			m_bGameMode = 1; // 双人模式
+			m_iGameState = 1;
+			CSystem::LoadMap("text.t2d");
+		}
+		else if (iKey == KEY_F3)
+		{
+			CSystem::LoadMap(""); // 游戏规则
+			m_iGameState = 4;
+		}
+		else if (iKey == KEY_F4)
+		{
+			CSystem::LoadMap(""); // 逃生地图
+			m_iGameState = 4;
+		}
+	}
+
+	// 在阅读界面
+	if (m_iGameState == 4)
+	{
+		if (iKey == KEY_ENTER)
+		{
+			SetGameState(1); // 游戏开始
+		}
+	}
+
+	// 在游戏结算界面
+	if (m_iGameState == 5)
+	{
+		if (iKey == KEY_ESCAPE)
+		{
+		}
+		if (iKey == KEY_ENTER)
+		{
+		}
+	}
+
+	// 游戏正常运行时
 	if (m_iGameState == 2)
 	{
 
@@ -281,7 +373,7 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 			m_fSpeedUp = -10.f;
 			break;
 		case KEY_LEFT: // A向左
-		    if(bShiftPress)
+			if (bShiftPress)
 			{
 				m_fSpeedLeft = -30.f;
 			}
@@ -291,7 +383,7 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 			m_fSpeedDown = 10.f;
 			break;
 		case KEY_RIGHT: // D向右
-		    if(bShiftPress)
+			if (bShiftPress)
 			{
 				m_fSpeedRight = -30.f;
 			}
@@ -303,8 +395,6 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 		else if ((m_fSpeedLeft + m_fSpeedRight) < 0) // 如果向右则不转向
 			Player2->SetSpriteFlipX(true);
 		Player2->SetSpriteLinearVelocity(m_fSpeedLeft + m_fSpeedRight, m_fSpeedUp + m_fSpeedDown);
-		if (iKey == KEY_K)
-			a == 1;
 
 		if (iKey == KEY_0)
 		{ // 向上跳
@@ -313,7 +403,7 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 				Player2->SetSpriteLinearVelocityY(-30);
 				Player2->SetSpriteImpulseForce(0, -5, false); // 防止跳不上去，给一个瞬时的推力
 				Player2->SetSpriteConstantForceY(20);
-				m_jumpFlag = 1;								  // jumping
+				m_jumpFlag = 1; // jumping
 			}
 		}
 
@@ -332,6 +422,8 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 		if (m_iPropNumInTable == 5 && iKey == KEY_J)
 		{
 			g_Floor[m_iPlayer1InFloorNum - 1]->ExtinguisherOutFire();
+			m_pProp->OutPropTable(1000, -1000);
+			m_iPropNumInTable = 0;
 		}
 		// 丢弃道具
 		if (m_iPropNumInTable && iKey == KEY_K)
@@ -339,6 +431,18 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 			m_pProp->OutPropTable(Player1->GetSpritePositionX() + 10, Player1->GetSpritePositionY());
 			m_iPropNumInTable = 0;
 		}
+		// 破窗响应
+		if (m_pWin->GetWinLockState() == 1 && m_iPropNumInTable == 1 && Player1->GetSpritePositionX() < 125.f && Player1->GetSpritePositionX() > 113.09 && iKey == KEY_J)
+		{
+			g_Floor[m_iPlayer1InFloorNum - 1]->SetWinState(0);
+			m_pWin->WindowUpdate(0);
+		}
+		// 响应从窗户中逃生
+		if (Player1->GetSpritePositionX() < 125.f && Player1->GetSpritePositionX() > 113.09 && iKey == KEY_I && m_pWin->GetWinLockState() == 0)
+		{
+			m_iGameState = 5; // 游戏结算
+		}
+
 		// 人物进入电梯
 		if (Player1->GetSpritePositionX() < 80.f && Player1->GetSpritePositionX() > 60.125 && iKey == KEY_U)
 		{
@@ -351,82 +455,30 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 	// 实现电梯的楼层移动
 	if (m_iGameState == 3)
 	{
-		switch (iKey)
+		for (int i = 0; i < 9; i++)
 		{
-		case KEY_1:
-			m_iGameState = 2;
-			FloorMove(m_iPlayer1InFloorNum, -1, g_Floor);
-			m_iPlayer1InFloorNum = 1;
-			m_pProp->PropUpdate(g_Floor[0]->GetPropNum());
-			m_pElevatorMap->SetSpriteVisible(false);
-			m_pElevatorPerson->SetSpriteVisible(false);
-			break;
-		case KEY_2:
-			m_iGameState = 2;
-			FloorMove(m_iPlayer1InFloorNum, 0, g_Floor);
-			m_iPlayer1InFloorNum = 2;
-			m_pProp->PropUpdate(g_Floor[1]->GetPropNum());
-			m_pElevatorMap->SetSpriteVisible(false);
-			m_pElevatorPerson->SetSpriteVisible(false);
-			break;
-		case KEY_3:
-			m_iGameState = 2;
-			FloorMove(m_iPlayer1InFloorNum, 1, g_Floor);
-			m_iPlayer1InFloorNum = 3;
-			m_pProp->PropUpdate(g_Floor[2]->GetPropNum());
-			m_pElevatorMap->SetSpriteVisible(false);
-			m_pElevatorPerson->SetSpriteVisible(false);
-			break;
-		case KEY_4:
-			m_iGameState = 2;
-			FloorMove(m_iPlayer1InFloorNum, 2, g_Floor);
-			m_iPlayer1InFloorNum = 4;
-			m_pProp->PropUpdate(g_Floor[3]->GetPropNum());
-			m_pElevatorMap->SetSpriteVisible(false);
-			m_pElevatorPerson->SetSpriteVisible(false);
-			break;
-		case KEY_5:
-			m_iGameState = 2;
-			FloorMove(m_iPlayer1InFloorNum, 3, g_Floor);
-			m_iPlayer1InFloorNum = 5;
-			m_pProp->PropUpdate(g_Floor[4]->GetPropNum());
-			m_pElevatorMap->SetSpriteVisible(false);
-			m_pElevatorPerson->SetSpriteVisible(false);
-			break;
-		case KEY_6:
-			m_iGameState = 2;
-			FloorMove(m_iPlayer1InFloorNum, 4, g_Floor);
-			m_iPlayer1InFloorNum = 6;
-			m_pProp->PropUpdate(g_Floor[5]->GetPropNum());
-			m_pElevatorMap->SetSpriteVisible(false);
-			m_pElevatorPerson->SetSpriteVisible(false);
-			break;
-		case KEY_7:
-			m_iGameState = 2;
-			FloorMove(m_iPlayer1InFloorNum, 5, g_Floor);
-			m_iPlayer1InFloorNum = 7;
-			m_pProp->PropUpdate(g_Floor[6]->GetPropNum());
-			m_pElevatorMap->SetSpriteVisible(false);
-			m_pElevatorPerson->SetSpriteVisible(false);
-			break;
-		case KEY_8:
-			m_iGameState = 2;
-			FloorMove(m_iPlayer1InFloorNum, 6, g_Floor);
-			m_iPlayer1InFloorNum = 8;
-			m_pProp->PropUpdate(g_Floor[7]->GetPropNum());
-			m_pElevatorMap->SetSpriteVisible(false);
-			m_pElevatorPerson->SetSpriteVisible(false);
-			break;
-		case KEY_9:
-			m_iGameState = 2;
-			FloorMove(m_iPlayer1InFloorNum, 7, g_Floor);
-			m_iPlayer1InFloorNum = 9;
-			m_pProp->PropUpdate(g_Floor[8]->GetPropNum());
-			m_pElevatorMap->SetSpriteVisible(false);
-			m_pElevatorPerson->SetSpriteVisible(false);
-			break;
-		default:
-			break;
+			if (iKey == KEY_1 + i)
+			{
+				m_iGameState = 2;
+				FloorMove(m_iPlayer1InFloorNum, i - 1, g_Floor);
+				m_iPlayer1InFloorNum = i + 1;
+				if (m_pProp != nullptr)
+					m_pProp->PropUpdate(g_Floor[i]->GetPropNum());
+				m_pWin->WindowUpdate(g_Floor[i]->GetWinLockState());
+				m_pElevatorMap->SetSpriteVisible(false);
+				m_pElevatorPerson->SetSpriteVisible(false);
+				if (m_iGameLevel == 3)
+				{
+					if (m_iPlayer1InFloorNum == 1)
+					{
+						m_pView->ShowViewBottom(true);
+					}
+					if (m_iPlayer1InFloorNum == 9)
+					{
+						m_pView->ShowViewTop(true);
+					}
+				}
+			}
 		}
 	}
 }
