@@ -1,13 +1,14 @@
-﻿生成启动时间为 2023/7/11 17:40:15。
+﻿生成启动时间为 2023/7/11 19:30:23。
 项目“E:\FunCode_CppProject\FunCode_Project\SourceCode\VCProject2012\VCProject2012\VCProject2012.vcxproj”在节点 2 上(build 个目标)。
 InitializeBuildStatus:
   正在创建“Debug\VCProject2012.unsuccessfulbuild”，因为已指定“AlwaysCreate”。
 ClCompile:
   F:\VS2010\VC\bin\CL.exe /c /I../../Header /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc100.pdb" /Gd /TP /analyze- /errorReport:prompt ..\..\Src\LessonX.cpp
   LessonX.cpp
-e:\funcode_cppproject\funcode_project\sourcecode\src\lessonx.cpp(147): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
-e:\funcode_cppproject\funcode_project\sourcecode\src\lessonx.cpp(151): warning C4800: “int”: 将值强制为布尔值“true”或“false”(性能警告)
-e:\funcode_cppproject\funcode_project\sourcecode\src\lessonx.cpp(155): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\lessonx.cpp(158): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\lessonx.cpp(162): warning C4800: “int”: 将值强制为布尔值“true”或“false”(性能警告)
+e:\funcode_cppproject\funcode_project\sourcecode\src\lessonx.cpp(166): warning C4244: “参数”: 从“time_t”转换到“unsigned int”，可能丢失数据
+e:\funcode_cppproject\funcode_project\sourcecode\src\lessonx.cpp(479): warning C4244: “+=”: 从“double”转换到“int”，可能丢失数据
 ResourceCompile:
   所有输出均为最新。
 Link:
@@ -32,4 +33,4 @@ FinalizeBuildStatus:
 
 生成成功。
 
-已用时间 00:00:02.05
+已用时间 00:00:01.70
