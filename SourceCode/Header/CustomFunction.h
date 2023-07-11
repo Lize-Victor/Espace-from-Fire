@@ -7,10 +7,11 @@
 #include "Floor.h"
 #include <vector>
 using std::vector;
-// FloorMove: 竖直移动楼层
-//  参数 tmp_iFloorNum: 范围 -1~7
-//  参数 l_floor： 楼层向量
-void FloorMove(int tmp_iFloorNum, vector<Floor *> &l_floor);
+// FloorMove: 进行楼层的平移
+// 参数 cur_FloorNum:当前的楼层 范围1~9
+// 参数 tmp_FloorNum:目标楼层 范围-1~7
+// 参数 l_floor: 楼层向量
+void FloorMove(int cur_FloorNum, int tmp_iFloorNum, vector<Floor *> &l_floor);
 
 // FireHurt: 火焰伤害
 // 参数 tmp_Blood: 血量

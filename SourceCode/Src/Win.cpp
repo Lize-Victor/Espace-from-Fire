@@ -15,6 +15,7 @@ void Win::WindowInit(bool tmp_WinLockState)
     m_bWinLockState = tmp_WinLockState;
 }
 
-void Win::WindowUpdate()
+void Win::WindowUpdate(bool tmp_WinLockState)
 {
+    m_bWinLockState = tmp_WinLockState;
 }

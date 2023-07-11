@@ -72,6 +72,12 @@ void prop::IntoPropTable()
     m_pPropInTable->SetSpriteVisible(true);
 }
 
+void prop::OutPropTable(float tmp_PersonPoiX, float tmp_PersonPoiY)
+{
+    m_pProp->SetSpritePosition(tmp_PersonPoiX,tmp_PersonPoiY);
+    m_pPropInTable->SetSpriteVisible(false);
+}
+
 int prop::GetPropNumByName(const char *PropName)
 {
     if (!strcmp(PropName, PLIERS_API_NAME))

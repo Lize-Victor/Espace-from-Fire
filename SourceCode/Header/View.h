@@ -5,12 +5,17 @@ private:
     CSprite *m_pViewUp;
     CSprite *m_pViewDown;
 
+    CSprite *m_pViewTop;
+    CSprite *m_pViewBottom;
 public:
     view();
 
     void ViewInit();
-    // 当中层为2楼时，将下层上移一层
-    void MoveViewDown();
-    // 当中层为8楼上，人物上9楼，则向下移一层
-    void MoveViewUp();
+
+    void SetViewVisble(bool tmp_bVisbleState);
+
+    // 显示 顶层
+    void ShowViewTop(bool tmp_bVisbleState);
+    // 显示 底层
+    void ShowViewBottom(bool tmp_bVisbleState);
 };

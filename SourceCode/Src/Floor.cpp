@@ -89,13 +89,7 @@ void Floor::FloorInit(int iFloorNum)
     tmp_pFloorNum = new CTextSprite(FLOORNUM_API_NAME);
     tmp_pFloorNum->SetSpriteVisible(false);
 
-    // 随机刷出道具
-    srand(time(nullptr));
-    // m_iPropNum = rand() % 5 + 1;
-    m_iPropNum = 5;
 
-    // 随机窗户上锁、
-    m_bWinstate = rand() % 2;
     FloorUpdate();
 }
 
@@ -110,7 +104,7 @@ void Floor::FireInit()
         m_pFire[i] = new CAnimateSprite(destName);
         m_pFire[i]->CloneSprite(FIRE_API_NAME);
 
-        // m_pFire[i]->SetSpriteCollisionSend(true);
+        m_pFire[i]->SetSpriteCollisionSend(true);
     }
 
     // 初始化纵向火焰
@@ -125,7 +119,7 @@ void Floor::FireInit()
             m_pFireY[j][i] = new CAnimateSprite(destName1);
             m_pFireY[j][i]->CloneSprite(FIRE_API_NAME);
 
-            // m_pFireY[j][i]->SetSpriteCollisionSend(true);
+            m_pFireY[j][i]->SetSpriteCollisionSend(true);
         }
     }
 }
@@ -143,7 +137,7 @@ void Floor::SmogInit()
             m_pSmog[j][i] = new CAnimateSprite(destName);
             m_pSmog[j][i]->CloneSprite(SMOG_API_NAME);
 
-            // m_pSmog[j][i]->SetSpriteCollisionSend(true);
+            m_pSmog[j][i]->SetSpriteCollisionSend(true);
         }
     }
 }
@@ -291,7 +285,7 @@ void Floor::SmogWarningInit()
 
     m_pSmogWarning->SetSpritePosition(SMOGWARNING_START_X, SMOGWARNING_START_Y - (m_iFloorNum - 1) * FLOOR_Y);
     m_pSmogWarning->AnimateSpritePlayAnimation("SmogWarningAnimation1", 1);
-    // m_pSmogWarning->SetSpriteCollisionReceive(true);
+    m_pSmogWarning->SetSpriteCollisionReceive(true);
 }
 void Floor::SmogWarningBing()
 {

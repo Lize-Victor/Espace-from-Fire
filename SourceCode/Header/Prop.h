@@ -18,6 +18,11 @@ public:
     // IntoPropTable: 道具进入道具栏
     void IntoPropTable();
 
+    // OutPropTable: 丢弃道具
+    // 参数 tmp_PersonPoiX：丢弃道具时，人物所在位置X
+    // 参数 tmp_PersonPoiY：丢弃道具时，人物所在位置Y
+    void OutPropTable(float tmp_PersonPoiX, float tmp_PersonPoiY);
+
     // GetPropNumByName: 根据道具名返回编号
     int GetPropNumByName(const char * PropName);
 
