@@ -5,6 +5,10 @@
 #include <vector>
 #include <cstring>
 
+#include <Windows.h>
+#include<mmsystem.h>
+#pragma comment(lib, "Winmm.lib")
+
 using std::vector;
 
 extern vector<Floor *> g_Floor;
@@ -290,8 +294,11 @@ void Floor::SmogWarningInit()
 }
 void Floor::SmogWarningBing()
 {
+    mciSendString("close game\\data\\audio\\Music.mp3", NULL, 0, NULL);
+    mciSendString("play game\\data\\audio\\GameMusic.mp3 repeat", NULL, 0, NULL);
     m_pSmog[1][FLOOR_HEIGHT_NUM - 2]->SetSpriteVisible(false);
     m_pSmogWarning->AnimateSpritePlayAnimation("SmogWarningAnimation4", 1);
+
 }
 void Floor::ExtinguisherOutFire()
 {

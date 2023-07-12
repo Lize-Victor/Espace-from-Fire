@@ -6,17 +6,20 @@ view::view()
     m_pViewUp = nullptr;
 }
 
-void view::ViewInit()
+void view::ViewInit(int tmp_iGameLevel)
 {
     m_pViewUp = new CSprite("viewup");
     m_pViewDown = new CSprite("viewdown");
     m_pViewTop = new CSprite("viewtop");
     m_pViewBottom = new CSprite("viewbottom");
 
-    m_pViewUp->SetSpritePosition(75,-68);
-    m_pViewDown->SetSpritePosition(75,-20);
-    m_pViewTop->SetSpritePosition(75,-68);
-    m_pViewBottom->SetSpritePosition(75,-20);
+    if (tmp_iGameLevel == 3)
+    {
+        m_pViewUp->SetSpritePosition(75, -68);
+        m_pViewDown->SetSpritePosition(75, -20);
+        m_pViewTop->SetSpritePosition(75, -68);
+        m_pViewBottom->SetSpritePosition(75, -20);
+    }
 
     m_pViewTop->SetSpriteVisible(false);
     m_pViewBottom->SetSpriteVisible(false);

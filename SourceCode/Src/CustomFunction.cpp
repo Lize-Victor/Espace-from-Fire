@@ -14,14 +14,9 @@ void FloorMove(int cur_FloorNum, int tmp_iFloorNum, vector<Floor *> &l_floor)
         l_floor[i]->SetFloorPosition(tmpX, tmpY + (tmp_iFloorNum - cur_FloorNum + 2) * FLOOR_Y);
         l_floor[i]->FloorUpdate();
     }
-    CSprite *ElevatorRunning = new CSprite("ElevatorRunning");
-    ElevatorRunning->SetSpritePosition(75.f,-40.f);
-    //Sleep((tmp_iFloorNum - cur_FloorNum + 2) * 1000);
-    ElevatorRunning->SetSpritePosition(1000,-1000);
     l_floor[cur_FloorNum - 1]->SetFloorNumVisble(false);
     l_floor[tmp_iFloorNum + 1]->SetFloorNumVisble(true);
     l_floor[tmp_iFloorNum + 1]->SetDoorVisble();
-    ElevatorRunning->DeleteSprite();
 }
 
 void FireHurt(int &tmp_Blood)

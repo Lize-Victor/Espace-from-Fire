@@ -10,7 +10,7 @@ private:
 public:
     view();
 
-    void ViewInit();
+    void ViewInit(int tmp_iGameLevel);
 
     void SetViewVisble(bool tmp_bVisbleState);
 
