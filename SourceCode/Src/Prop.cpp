@@ -10,6 +10,12 @@ prop::prop()
     m_iPropNum = 0;
 }
 
+prop::~prop()
+{
+    delete m_pProp;
+    delete m_pPropInTable;
+}
+
 void prop::PropInit(int tmp_PropNum)
 {
     // 道具栏中的道具初始化
@@ -107,7 +113,6 @@ int prop::GetPropNumByName(const char *PropName)
 void prop::PropUpdate(int tmp_PropNum)
 {
     m_pProp->SetSpritePosition(1000, -1000); // 将现有道具移出边界
-
     switch (tmp_PropNum) // 加入新道具
     {
     case 1: // 压力钳
@@ -124,11 +129,12 @@ void prop::PropUpdate(int tmp_PropNum)
         m_iPropNum = 3;
         m_pProp = new CSprite(CURTAIN_API_NAME);
         m_pProp->SetSpritePosition(CURTAIN_START_X, CURTAIN_START_Y);
+        break;
     case 4: // 毛巾
         m_iPropNum = 4;
         m_pProp = new CSprite(TOWEL_API_NAME);
         m_pProp->SetSpritePosition(TOWEL_START_X, TOWEL_START_Y);
-        break;
+	        break;
     case 5: // 灭火器
         m_iPropNum = 5;
         m_pProp = new CSprite(EXTINGUISHER_API_NAME);

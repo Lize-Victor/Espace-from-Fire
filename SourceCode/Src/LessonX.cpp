@@ -40,7 +40,7 @@ CGameMain::CGameMain()
 	m_fScreenRight = 0.f;
 	m_fScreenTop = 0.f;
 
-	m_iGameLevel = 1;
+	m_iGameLevel = 0;
 }
 //==============================================================================
 //
@@ -71,6 +71,11 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 		// 游戏进行中，处理各种游戏逻辑
 	case 2:
 	{
+		if (m_iGameLevel == 4)
+		{
+			m_iGameState = 0;
+		}
+
 		GameRun(fDeltaTime);
 		if (Player1_Blood <= 0)
 		{
@@ -96,7 +101,7 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 		GameRun(fDeltaTime);
 	}
 	break;
-		// 在阅读界面
+		// 在阅读界面, 等待
 	case 4:
 	{
 	}
@@ -155,11 +160,13 @@ void CGameMain::GameInit()
 		g_Floor.push_back(tmp_Floor);
 
 		// 随机刷出道具
-		srand(time(nullptr));
-		tmp_Floor->SetPropNum(rand() % 5 + 1);
+		tmp_Floor->SetPropNum(i % 5 + 1);
 
-		// 随机窗户上锁
-		tmp_Floor->SetWinState(rand() % 2);
+		if (m_iGameLevel == 1)
+			tmp_Floor->SetWinState(0);
+		else
+			// 随机窗户上锁
+			tmp_Floor->SetWinState(i % 2);
 	}
 
 	// 寻找中心点
@@ -226,6 +233,9 @@ void CGameMain::GameInit()
 	Player1->SetSpriteLinearVelocity(0, 0);
 	Player2->SetSpriteWorldLimit(WORLD_LIMIT_NULL, m_fScreenLeft, m_fScreenTop, m_fScreenRight, m_fScreenBottom);
 	Player2->SetSpriteLinearVelocity(0, 0);
+
+	// 道具清空
+	m_iPropNumInTable = 0;
 }
 //=============================================================================
 //
@@ -254,17 +264,20 @@ void CGameMain::GameRun(float fDeltaTime)
 // 本局游戏结束
 void CGameMain::GameEnd()
 {
+	g_Floor.clear();
 	if (m_bGameResult == 0) // 游戏输了
 	{
 		CSystem::LoadMap("GameEndLose.t2d");
 		CTextSprite *l_pSroce = new CTextSprite("fen");
 		l_pSroce->SetTextValue(m_iGameSorce);
+		m_iGameState = 4;
 	}
 	else if (m_bGameResult == 1) // 游戏赢了
 	{
 		CSystem::LoadMap("GameEndWin.t2d");
 		CTextSprite *l_pSroce = new CTextSprite("fen");
 		l_pSroce->SetTextValue(m_iGameSorce);
+		m_iGameState = 4;
 	}
 }
 //==========================================================================
@@ -304,35 +317,38 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 		{
 			m_bGameMode = 0; // 单人模式
 			m_iGameState = 1;
+			m_iGameLevel++;
 		}
 		else if (iKey == KEY_F2)
 		{
 			m_bGameMode = 1; // 双人模式
 			m_iGameState = 1;
+			m_iGameLevel++;
 		}
 		else if (iKey == KEY_F3)
 		{
-			CSystem::LoadMap(""); // 游戏规则
+			CSystem::LoadMap("GameRule.t2d"); // 游戏规则
 			m_iGameState = 4;
 		}
 		else if (iKey == KEY_F4)
 		{
-			CSystem::LoadMap(""); // 逃生地图
+			CSystem::LoadMap("ExitMap.t2d"); // 逃生地图
 			m_iGameState = 4;
 		}
 	}
 
-	// 在阅读界面
+	// 在等待界面
 	if (m_iGameState == 4)
 	{
 		if (iKey == KEY_ENTER)
 		{
+			m_iGameLevel++;
 			SetGameState(1); // 游戏开始
 		}
 	}
 
 	// 在游戏结算界面
-	if (m_iGameState == 5)
+	if (m_iGameState == 4)
 	{
 		if (iKey == KEY_ESCAPE)
 		{
@@ -370,20 +386,12 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 			m_fSpeedUP = -10.f;
 			break;
 		case KEY_A: // A向左
-			if (bShiftPress)
-			{
-				m_fSpeedLEFT = -30.f;
-			}
 			m_fSpeedLEFT = -15.f;
 			break;
 		case KEY_S: // S向下
 			m_fSpeedDOWN = 10.f;
 			break;
 		case KEY_D: // D向右
-			if (bShiftPress)
-			{
-				m_fScreenRight = 30.f;
-			}
 			m_fSpeedRIGHT = 15.f;
 			break;
 		}
@@ -399,20 +407,12 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 			m_fSpeedUp = -10.f;
 			break;
 		case KEY_LEFT: // A向左
-			if (bShiftPress)
-			{
-				m_fSpeedLeft = -30.f;
-			}
 			m_fSpeedLeft = -15.f;
 			break;
 		case KEY_DOWN: // S向下
 			m_fSpeedDown = 10.f;
 			break;
 		case KEY_RIGHT: // D向右
-			if (bShiftPress)
-			{
-				m_fSpeedRight = -30.f;
-			}
 			m_fSpeedRight = 15.f;
 			break;
 		}
@@ -428,7 +428,7 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 			{ // 未在跳跃过程中
 				Player2->SetSpriteLinearVelocityY(-30);
 				Player2->SetSpriteImpulseForce(0, -5, false); // 防止跳不上去，给一个瞬时的推力
-				Player2->SetSpriteConstantForceY(20);
+				Player2->SetSpriteConstantForceY(30);
 				m_jumpFlag = 1; // jumping
 			}
 		}
@@ -439,7 +439,7 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 			{ // 未在跳跃过程中
 				Player1->SetSpriteLinearVelocityY(-30);
 				Player1->SetSpriteImpulseForce(0, -5, false); // 防止跳不上去，给一个瞬时的推力
-				Player1->SetSpriteConstantForceY(20);
+				Player1->SetSpriteConstantForceY(30);
 				m_jumpFlag = 1; // jumping
 			}
 		}
@@ -454,6 +454,7 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 		// 丢弃道具
 		if (m_iPropNumInTable && iKey == KEY_K)
 		{
+			int tmp_iPropNum = g_Floor[m_iPlayer1InFloorNum - 1]->GetPropNum();
 			m_pProp->OutPropTable(Player1->GetSpritePositionX() + 10, Player1->GetSpritePositionY());
 			m_iPropNumInTable = 0;
 		}
@@ -475,9 +476,9 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 				Player1_Blood -= m_iPlayer2InFloorNum * 5;
 			}
 
-			m_iGameSorce += 10;
-			m_iGameSorce += Player1_Blood * 0.4;
-			if (m_fTime < 60)
+			m_iGameSorce += 10;					 // 逃生方式
+			m_iGameSorce += Player1_Blood * 0.4; // 血量
+			if (m_fTime < 60)					 // 时间
 			{
 				m_iGameSorce += 40;
 			}
@@ -617,11 +618,44 @@ void CGameMain::OnSpriteColSprite(const char *szSrcName, const char *szTarName)
 // 参数 iColSide：碰撞到的边界 0 左边，1 右边，2 上边，3 下边
 void CGameMain::OnSpriteColWorldLimit(const char *szName, const int iColSide)
 {
-	if (strcmp(szName, "Player1") == 0)
+	if (strcmp(szName, "Player1") == 0 && iColSide == 3)
 	{
 		m_fSpeedDOWN = 0;
-		m_fScreenBottom = 0;
-		Player1->SetSpriteLinearVelocity(m_fSpeedLEFT + m_fSpeedRIGHT, 0);
+		m_fSpeedUP = 0;
+		Player1->SetSpriteLinearVelocity(m_fSpeedLEFT + m_fSpeedRIGHT, m_fSpeedDOWN + m_fSpeedUP);
 		Player1->SetSpriteConstantForceY(0);
+	}
+	if (strcmp(szName, "Player1") == 0 && iColSide == 2)
+	{
+		m_fSpeedDOWN = 0;
+		m_fSpeedUP = 0;
+		Player1->SetSpriteLinearVelocity(m_fSpeedLEFT + m_fSpeedRIGHT, m_fSpeedDOWN + m_fSpeedUP);
+		Player1->SetSpriteConstantForceY(30);
+	}
+	if (strcmp(szName, "Player1") == 0 && (iColSide == 1 || iColSide == 0))
+	{
+		m_fSpeedLEFT = 0;
+		m_fSpeedRIGHT = 0;
+		Player1->SetSpriteLinearVelocity(m_fSpeedLEFT + m_fSpeedRIGHT, m_fSpeedDOWN + m_fSpeedUP);
+	}
+
+	if (strcmp(szName, "Player1") == 0 && Player1->GetSpritePositionX() > 140 && Player1->GetSpritePositionX() < 150 && m_iPlayer1InFloorNum == 1 && iColSide == 3)
+	{
+		m_iGameSorce += 20;
+		m_iGameSorce += Player1_Blood * 0.4;
+		if (m_fTime < 60) // 时间
+		{
+			m_iGameSorce += 40;
+		}
+		else if (m_fTime < 120)
+		{
+			m_iGameSorce += 30;
+		}
+		else
+		{
+			m_iGameSorce += 0;
+		}
+		m_iGameState = 5;
+		m_bGameResult = 1;
 	}
 }

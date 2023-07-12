@@ -52,6 +52,7 @@ Floor::Floor()
 
     m_bWinstate = 0;
 }
+
 void Floor::SetDoorVisble(bool tmp_State)
 {
     m_pDoor->SetSpriteVisible(tmp_State);

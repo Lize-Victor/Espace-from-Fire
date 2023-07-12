@@ -51,7 +51,7 @@
       imageMap = "floor3ImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "75.000 12.000";
       size = "150.000 24.000";
@@ -83,7 +83,7 @@
       imageMap = "elevatorImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "70.063 -43.239";
       size = "19.875 23.522";
@@ -96,7 +96,7 @@
       imageMap = "door1ImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "135.400 -39.101";
       size = "8.812 14.000";
@@ -109,7 +109,7 @@
       imageMap = "tiziImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "144.132 -20.000";
       size = "9.463 24.000";
@@ -122,7 +122,7 @@
       imageMap = "viewImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "75.000 -97.000";
       size = "150.000 24.000";
@@ -135,7 +135,7 @@
       imageMap = "viewImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "75.000 -122.000";
       size = "150.000 24.000";
@@ -147,7 +147,7 @@
    new t2dScroller() {
       imageMap = "tiziImageMap";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.20699e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.20699e-039";
       canSaveDynamicFields = "1";
       Position = "144.375 -43.538";
       size = "8.751 23.000";
@@ -160,7 +160,7 @@
       imageMap = "officeImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "27.350 -38.291";
       size = "47.717 14.763";
@@ -174,7 +174,7 @@
       canSaveDynamicFields = "1";
       Position = "96.454 -38.942";
       size = "15.188 17.333";
-      Layer = "2";
+      Layer = "4";
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "13";
@@ -183,7 +183,7 @@
       imageMap = "WindowImageMap1";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "119.045 -43.920";
       size = "11.910 10.000";
@@ -196,7 +196,7 @@
       imageMap = "curtainImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "160.154 -12.101";
       size = "19.693 10.328";
@@ -209,7 +209,7 @@
       imageMap = "pillowImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "154.499 -33.211";
       size = "8.999 9.055";
@@ -222,7 +222,7 @@
       imageMap = "pliersImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "154.565 -23.243";
       size = "4.801 6.487";
@@ -235,7 +235,7 @@
       imageMap = "PropTableImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "145.218 -4.035";
       size = "7.372 8.070";
@@ -248,7 +248,7 @@
       imageMap = "extinguisherImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "153.867 -52.004";
       size = "7.735 8.896";
@@ -261,7 +261,7 @@
       imageMap = "pliersImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "145.101 -4.315";
       size = "4.894 6.613";
@@ -273,7 +273,7 @@
       imageMap = "pillowImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "145.322 -4.255";
       size = "5.611 6.100";
@@ -285,7 +285,7 @@
       imageMap = "extinguisherImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "144.656 -4.369";
       size = "4.972 6.350";
@@ -297,7 +297,7 @@
       imageMap = "curtainImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "145.177 -3.875";
       size = "5.691 5.000";
@@ -410,7 +410,7 @@
       imageMap = "TowelImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "154.968 -42.697";
       size = "7.875 5.395";
@@ -423,7 +423,7 @@
       imageMap = "TowelImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "145.037 -4.042";
       size = "7.875 5.395";
@@ -484,7 +484,7 @@
       imageMap = "elevator1ImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "-77.965 -40.000";
       size = "150.000 80.000";
@@ -496,7 +496,7 @@
       imageMap = "Player1";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "-35.214 -26.531";
       size = "23.110 36.938";
@@ -600,7 +600,7 @@
       imageMap = "floor3ImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "227.760 -69.193";
       size = "150.000 24.000";
@@ -613,7 +613,7 @@
       imageMap = "floor3ImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "237.606 -44.895";
       size = "150.000 24.000";
@@ -626,7 +626,7 @@
       imageMap = "floor3ImageMap";
       frame = "0";
       useSourceRect = "0";
-      sourceRect = "2.36006e-039 0 2.37252e-039 6.22914e-039";
+      sourceRect = "2.36006e-039 0 2.36006e-039 6.22914e-039";
       canSaveDynamicFields = "1";
       Position = "248.645 -19.691";
       size = "150.000 24.000";
@@ -634,5 +634,43 @@
       WorldLimitMin = "-50.000 -37.500";
       WorldLimitMax = "50.000 37.500";
          mountID = "41";
+   };
+   new t2dStaticSprite(viewtop) {
+      imageMap = "FLoorTopImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 2.36006e-039 6.22914e-039";
+      canSaveDynamicFields = "1";
+      Position = "75.000 -68.000";
+      size = "150.000 24.000";
+      Layer = "11";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "42";
+   };
+   new t2dStaticSprite(viewbottom) {
+      imageMap = "FloorBottomImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 2.36006e-039 6.22914e-039";
+      canSaveDynamicFields = "1";
+      Position = "75.000 -19.545";
+      size = "150.000 24.000";
+      Layer = "11";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "43";
+   };
+   new t2dStaticSprite(ElevatorRunning) {
+      imageMap = "ElevatorRunningImageMap";
+      frame = "0";
+      useSourceRect = "0";
+      sourceRect = "0 0 2.36006e-039 6.22914e-039";
+      canSaveDynamicFields = "1";
+      Position = "-78.892 -123.207";
+      size = "150.000 80.000";
+      WorldLimitMin = "-50.000 -37.500";
+      WorldLimitMax = "50.000 37.500";
+         mountID = "44";
    };
 };
