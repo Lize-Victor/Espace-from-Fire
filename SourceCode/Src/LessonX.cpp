@@ -610,6 +610,20 @@ void CGameMain::OnSpriteColSprite(const char *szSrcName, const char *szTarName)
 		m_pProp->IntoPropTable();
 		m_iPropNumInTable = m_pProp->GetPropNumByName(szTarName);
 	}
+	if (strcmp(szTarName, "Player2") == 0 && strstr(szSrcName, "Fire"))
+	{
+		FireHurt(Player2_Blood);
+	}
+
+	if (strcmp(szTarName, "Player2") == 0 && strstr(szSrcName, "Smog"))
+	{
+		SmogHurt(Player2_Blood, m_iPropNumInTable);
+	}
+	if (m_pProp->GetPropNumByName(szTarName) && !strcmp(szSrcName, "Player2") && !m_iPropNumInTable)
+	{
+		m_pProp->IntoPropTable();
+		m_iPropNumInTable = m_pProp->GetPropNumByName(szTarName);
+	}
 }
 //===========================================================================
 //
@@ -624,6 +638,13 @@ void CGameMain::OnSpriteColWorldLimit(const char *szName, const int iColSide)
 		m_fSpeedUP = 0;
 		Player1->SetSpriteLinearVelocity(m_fSpeedLEFT + m_fSpeedRIGHT, m_fSpeedDOWN + m_fSpeedUP);
 		Player1->SetSpriteConstantForceY(0);
+	}
+	if (strcmp(szName, "Player2") == 0)
+	{
+		m_fSpeedDown = 0;
+		m_fScreenBottom = 0;
+		Player2->SetSpriteLinearVelocity(m_fSpeedLeft + m_fSpeedRight, 0);
+		Player2->SetSpriteConstantForceY(0);
 	}
 	if (strcmp(szName, "Player1") == 0 && iColSide == 2)
 	{
