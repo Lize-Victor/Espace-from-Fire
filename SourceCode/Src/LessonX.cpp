@@ -61,6 +61,7 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 		// 初始化游戏，清空上一局相关数据
 	case 1:
 	{
+		CSystem::LoadMap("text.t2d");
 		GameInit();
 		SetGameState(2); // 初始化之后，将游戏状态设置为进行中
 						 // PlaySound("E:\\FunCode_CppProject\\FunCode_Project\\Music\\新建文件夹\\Music.wav", NULL, SND_ASYNC | SND_LOOP);
@@ -73,7 +74,7 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 		GameRun(fDeltaTime);
 		if (Player1_Blood <= 0)
 		{
-			if (m_bGameMode = 0)
+			if (m_bGameMode == 0)
 			{
 				m_iGameState = 5;
 				m_bGameResult = 0;
@@ -119,6 +120,8 @@ void CGameMain::GameMainLoop(float fDeltaTime)
 // 每局开始前进行初始化，清空上一局相关数据
 void CGameMain::GameInit()
 {
+	// 分数初始化
+	m_iGameSorce = 0;
 	// 计时器的初始化
 	m_fTime = 0.f;
 	m_pTime = new CTextSprite("time");
@@ -128,6 +131,14 @@ void CGameMain::GameInit()
 	Player2_Blood = 100;
 	m_pP1Blood = new CTextSprite("blood");
 	m_pP2Blood = new CTextSprite("blood2");
+
+	if (m_bGameMode == 0)
+	{
+		CTextSprite *pP2BloodHp = new CTextSprite("P2blood");
+		pP2BloodHp->SetSpriteVisible(false);
+		m_pP2Blood->SetSpriteVisible(false);
+		Player2->SetSpritePosition(1000, -1000);
+	}
 
 	// 电梯地图的初始化
 	m_pElevatorMap = new CSprite("elevator_map");
@@ -158,7 +169,7 @@ void CGameMain::GameInit()
 	FloorMove(2, m_iPlayer1InFloorNum - 2, g_Floor);
 
 	// 道具的初始化
-	if (m_iGameLevel == 2) // 第二关刷新道具
+	if (m_iGameLevel >= 2) // 第二关刷新道具
 	{
 		m_pProp = new prop;
 		m_pProp->PropInit(g_Floor[m_iPlayer1InFloorNum - 1]->GetPropNum());
@@ -178,6 +189,7 @@ void CGameMain::GameInit()
 
 	if (m_iGameLevel == 3) // 第三关 初始化视野
 	{
+		m_pView = new view;
 		m_pView->ViewInit();
 	}
 
@@ -253,7 +265,6 @@ void CGameMain::GameEnd()
 		CSystem::LoadMap("GameEndWin.t2d");
 		CTextSprite *l_pSroce = new CTextSprite("fen");
 		l_pSroce->SetTextValue(m_iGameSorce);
-		m_iGameLevel += 1;
 	}
 }
 //==========================================================================
@@ -293,13 +304,11 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 		{
 			m_bGameMode = 0; // 单人模式
 			m_iGameState = 1;
-			CSystem::LoadMap("text.t2d");
 		}
 		else if (iKey == KEY_F2)
 		{
 			m_bGameMode = 1; // 双人模式
 			m_iGameState = 1;
-			CSystem::LoadMap("text.t2d");
 		}
 		else if (iKey == KEY_F3)
 		{
@@ -327,9 +336,26 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 	{
 		if (iKey == KEY_ESCAPE)
 		{
+			CSystem::LoadMap("elevator_map.t2d");
 		}
-		if (iKey == KEY_ENTER)
+		else if (iKey == KEY_ENTER)
 		{
+			if (m_iGameLevel <= 3)
+			{
+				if (m_bGameResult == 1)
+				{
+					m_iGameLevel++;
+					m_iGameState = 1;
+				}
+				if (m_bGameResult == 0)
+				{
+					m_iGameState = 1;
+				}
+			}
+			else
+			{
+				CSystem::LoadMap("elevator_map.t2d");
+			}
 		}
 	}
 
@@ -440,6 +466,38 @@ void CGameMain::OnKeyDown(const int iKey, const bool bAltPress, const bool bShif
 		// 响应从窗户中逃生
 		if (Player1->GetSpritePositionX() < 125.f && Player1->GetSpritePositionX() > 113.09 && iKey == KEY_I && m_pWin->GetWinLockState() == 0)
 		{
+			if (m_iPropNumInTable == 2) // 枕头
+			{
+				Player1_Blood -= m_iPlayer1InFloorNum * 10;
+			}
+			else if (m_iPropNumInTable == 3) // 窗帘
+			{
+				Player1_Blood -= m_iPlayer2InFloorNum * 5;
+			}
+
+			m_iGameSorce += 10;
+			m_iGameSorce += Player1_Blood * 0.4;
+			if (m_fTime < 60)
+			{
+				m_iGameSorce += 40;
+			}
+			else if (m_fTime < 120)
+			{
+				m_iGameSorce += 30;
+			}
+			else
+			{
+				m_iGameSorce += 0;
+			}
+
+			if (Player1_Blood <= 0)
+			{
+				m_bGameResult = 0;
+			}
+			else
+			{
+				m_bGameResult = 1;
+			}
 			m_iGameState = 5; // 游戏结算
 		}
 
